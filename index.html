@@ -45,13 +45,18 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80' fill='none' stroke='rgb(214,179,110)' stroke-width='1'%3E%3Crect x='20' y='20' width='40' height='40'/%3E%3Cpolygon points='40,11.7 68.3,40 40,68.3 11.7,40'/%3E%3Ccircle cx='40' cy='40' r='6'/%3E%3C/svg%3E");
             background-size: 80px 80px;
         }
-        /* Photo : le haut se fond dans le décor (zone du titre), le reste reste net */
+
+        /* Photo : posée en bas, les têtes passent sous le titre.
+           Le fondu ne touche que le mur de feuillage au-dessus d'eux (0 → 16 %),
+           les visages (à ~23 % de la photo) restent 100 % nets. */
         .photo {
-            position: absolute; inset: 0; z-index: -2;
-            width: 100%; height: 100%;
+            position: absolute; z-index: -2;
+            left: 0; right: 0; bottom: 0; top: auto;
+            width: 100%;
+            height: 80%;                       /* 75% = têtes plus bas, plus de place pour le titre */
             object-fit: cover; object-position: 50% 100%;
-            -webkit-mask-image: linear-gradient(to bottom, transparent 0, transparent 23%, #000 32%);
-            mask-image: linear-gradient(to bottom, transparent 0, transparent 23%, #000 32%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 16%);
+            mask-image: linear-gradient(to bottom, transparent 0, #000 16%);
         }
         /* Voile chaud pour la lisibilité du compteur */
         .hero::after {
@@ -99,16 +104,16 @@
         }
         .count li {
             width: clamp(4.1rem, 19vw, 5.4rem);
-            aspect-ratio: 1 / 1;                       /* carré */
+            aspect-ratio: 1 / 1;
             display: flex; flex-direction: column;
             justify-content: center; align-items: center;
             padding: 0;
-            border: 1px solid rgba(214,179,110,.35);   /* bordure discrète */
+            border: 1px solid rgba(214,179,110,.35);
             border-radius: .4rem;                      /* mets 0 pour des angles vifs */
-            background: rgba(184,89,59,.14);           /* fond plus transparent */
+            background: rgba(184,89,59,.14);
             -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
             text-align: center;
-            opacity: .85;                              /* effet estompé */
+            opacity: .85;
         }
         .count b {
             display: block;
@@ -124,25 +129,45 @@
             color: var(--beige);
             opacity: .75;
         }
-        .stage > section { margin-bottom: 9vh; }       /* remonte le compteur (augmente pour monter plus) */
+        .stage > section { margin-bottom: 9vh; }       /* remonte le compteur */
         .today {
             font-family: var(--serif); font-style: italic;
             font-size: 1.9rem; color: var(--gold-light);
         }
 
+        /* ---------- Bouton « Découvrir l'invitation » ---------- */
+        .cta {
+            display: inline-block;
+            margin-top: 1.6rem;
+            padding: .95rem 2.1rem;
+            font-family: var(--serif);
+            font-size: 1.25rem; font-weight: 500;
+            letter-spacing: .02em;
+            text-decoration: none;
+            color: var(--bg);
+            background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 100%);
+            border: 1px solid var(--gold);
+            border-radius: .4rem;                      /* même arrondi que les cases du compteur */
+            box-shadow: 0 6px 22px rgba(0,0,0,.35);
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+        }
+        .cta:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,.45); }
+        .cta:active { transform: translateY(0); }
+        .cta:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
+
         /* ---------- Entrée : une seule séquence au chargement ---------- */
         .in { animation: rise 1s cubic-bezier(.2,.7,.2,1) both; animation-delay: var(--d, 0s); }
         @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-        @media (prefers-reduced-motion: reduce) { .in { animation: none; } }
+        @media (prefers-reduced-motion: reduce) { .in { animation: none; } .cta { transition: none; } }
 
         /* ---------- Grand écran : texte à gauche, photo à droite ---------- */
         @media (min-width: 900px) and (min-aspect-ratio: 5/4) {
             .photo {
                 inset: auto 0 0 auto;
                 width: auto; height: 100%; max-width: 64%;
-                -webkit-mask-image: linear-gradient(to bottom, transparent 0, transparent 23%, #000 32%), linear-gradient(to right, transparent 0, #000 32%);
+                -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14%), linear-gradient(to right, transparent 0, #000 22%);
                 -webkit-mask-composite: source-in;
-                mask-image: linear-gradient(to bottom, transparent 0, transparent 23%, #000 32%), linear-gradient(to right, transparent 0, #000 32%);
+                mask-image: linear-gradient(to bottom, transparent 0, #000 14%), linear-gradient(to right, transparent 0, #000 22%);
                 mask-composite: intersect;
             }
             .hero::after {
@@ -166,7 +191,8 @@
 </head>
 <body>
 <main class="hero">
-    <img class="photo" src="seph.jpg" width="1400" height="1867" fetchpriority="high"
+    <!-- Renomme ta photo en photo.jpg (pas d'espace dans le nom) et mets-la à côté de ce fichier -->
+    <img class="photo" src="3686c78a-8eb9-40aa-8c39-3c491a5a3441%202.JPG" width="1200" height="1600" fetchpriority="high"
          alt="Jonathan et Sephora, enlacés, souriants">
 
     <div class="stage">
@@ -183,6 +209,9 @@
                 <li><b data-u="s">00</b><small data-s="seconde" data-p="secondes">secondes</small></li>
             </ul>
             <p class="today" id="today" hidden>C'est le grand jour</p>
+
+            <!-- → Remplace href par l'adresse de ta page d'invitation (ex. "invitation.html") -->
+            <a class="cta" href="invitation.html">Découvrir l'invitation</a>
         </section>
     </div>
 </main>
