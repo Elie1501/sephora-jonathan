@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Jonathan &amp; Sephora – 7 et 8 décembre 2026</title>
+    <meta name="description" content="Jonathan et Sephora se marient les 7 et 8 décembre 2026. Mairie, houppa et soirée orientale.">
+    <meta name="theme-color" content="#2a1611">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #2a1611;            /* brun terracotta profond */
+            --terra: #b8593b;         /* terracotta */
+            --gold: #d6b36e;          /* doré */
+            --gold-light: #ecd9a8;
+            --beige: #eadcc3;         /* beige sable */
+            --serif: "Cormorant Garamond", Georgia, serif;
+            --sans: "Jost", system-ui, sans-serif;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { background: var(--bg); }
+        body {
+            font-family: var(--sans);
+            font-weight: 300;
+            color: var(--beige);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            min-height: 100svh;
+            overflow: hidden;
+            isolation: isolate;
+            background: var(--bg);
+        }
+        /* Motif oriental : filigrane doré */
+        .hero::before {
+            content: "";
+            position: absolute; inset: 0; z-index: -3;
+            opacity: .16;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80' fill='none' stroke='rgb(214,179,110)' stroke-width='1'%3E%3Crect x='20' y='20' width='40' height='40'/%3E%3Cpolygon points='40,11.7 68.3,40 40,68.3 11.7,40'/%3E%3Ccircle cx='40' cy='40' r='6'/%3E%3C/svg%3E");
+            background-size: 80px 80px;
+        }
+        /* Photo : le haut se fond dans le décor (zone du titre), le reste reste net */
+        .photo {
+            position: absolute; inset: 0; z-index: -2;
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: 50% 100%;
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0, transparent 23%, #000 32%);
+            mask-image: linear-gradient(to bottom, transparent 0, transparent 23%, #000 32%);
+        }
+        /* Voile chaud pour la lisibilité du compteur */
+        .hero::after {
+            content: "";
+            position: absolute; inset: 0; z-index: -1;
+            background:
+                    linear-gradient(to top, rgba(42,22,17,.94) 0, rgba(42,22,17,.78) 22%, rgba(42,22,17,0) 52%),
+                    linear-gradient(to bottom, rgba(184,89,59,.14), rgba(184,89,59,0) 40%);
+            pointer-events: none;
+        }
+
+        .stage {
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex; flex-direction: column;
+            justify-content: space-between; align-items: center;
+            text-align: center;
+            padding: max(2.2rem, env(safe-area-inset-top)) 1.1rem max(1.6rem, env(safe-area-inset-bottom));
+        }
+
+        h1 {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(2.9rem, 13vw, 4.6rem);
+            line-height: .95;
+            letter-spacing: .01em;
+            background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 58%, #a9823f 100%);
+            -webkit-background-clip: text; background-clip: text;
+            color: transparent;
+        }
+        h1 span { display: block; }
+        .lede {
+            margin-top: .9rem;
+            font-family: var(--serif);
+            font-style: italic; font-weight: 300;
+            font-size: 1.3rem;
+            color: var(--beige);
+        }
+        .lede span { display: none; }
+
+        /* ---------- Compteur (cases carrées, estompées) ---------- */
+        .count {
+            display: flex; justify-content: center; gap: .6rem;
+            list-style: none;
+        }
+        .count li {
+            width: clamp(4.1rem, 19vw, 5.4rem);
+            aspect-ratio: 1 / 1;                       /* carré */
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            padding: 0;
+            border: 1px solid rgba(214,179,110,.35);   /* bordure discrète */
+            border-radius: .4rem;                      /* mets 0 pour des angles vifs */
+            background: rgba(184,89,59,.14);           /* fond plus transparent */
+            -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+            text-align: center;
+            opacity: .85;                              /* effet estompé */
+        }
+        .count b {
+            display: block;
+            font-family: var(--serif); font-weight: 400;
+            font-size: clamp(1.7rem, 8vw, 2.4rem);
+            line-height: 1;
+            color: var(--gold-light);
+            font-variant-numeric: tabular-nums;
+        }
+        .count small {
+            display: block; margin-top: .35rem;
+            font-size: .72rem; letter-spacing: .06em;
+            color: var(--beige);
+            opacity: .75;
+        }
+        .stage > section { margin-bottom: 9vh; }       /* remonte le compteur (augmente pour monter plus) */
+        .today {
+            font-family: var(--serif); font-style: italic;
+            font-size: 1.9rem; color: var(--gold-light);
+        }
+
+        /* ---------- Entrée : une seule séquence au chargement ---------- */
+        .in { animation: rise 1s cubic-bezier(.2,.7,.2,1) both; animation-delay: var(--d, 0s); }
+        @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+        @media (prefers-reduced-motion: reduce) { .in { animation: none; } }
+
+        /* ---------- Grand écran : texte à gauche, photo à droite ---------- */
+        @media (min-width: 900px) and (min-aspect-ratio: 5/4) {
+            .photo {
+                inset: auto 0 0 auto;
+                width: auto; height: 100%; max-width: 64%;
+                -webkit-mask-image: linear-gradient(to bottom, transparent 0, transparent 23%, #000 32%), linear-gradient(to right, transparent 0, #000 32%);
+                -webkit-mask-composite: source-in;
+                mask-image: linear-gradient(to bottom, transparent 0, transparent 23%, #000 32%), linear-gradient(to right, transparent 0, #000 32%);
+                mask-composite: intersect;
+            }
+            .hero::after {
+                background: linear-gradient(to right, rgba(42,22,17,.9) 0, rgba(42,22,17,.55) 45%, rgba(42,22,17,0) 62%);
+            }
+            .stage {
+                justify-content: center; align-items: flex-start; text-align: left;
+                gap: clamp(2rem, 6vh, 3.5rem);
+                width: min(100%, 50rem);
+                padding-left: clamp(3rem, 7vw, 7rem);
+            }
+            h1 { font-size: clamp(4rem, 6.6vw, 6.8rem); }
+            .lede { font-size: 1.6rem; }
+            .lede span { display: inline; }
+            .stage > section { margin-bottom: 0; }
+            .count { justify-content: flex-start; gap: .9rem; }
+            .count li { width: 5.6rem; }
+            .count b { font-size: 2.6rem; }
+        }
+    </style>
+</head>
+<body>
+<main class="hero">
+    <img class="photo" src="seph.jpg" width="1400" height="1867" fetchpriority="high"
+         alt="Jonathan et Sephora, enlacés, souriants">
+
+    <div class="stage">
+        <header class="in">
+            <h1><span>Jonathan</span><span>&amp; Sephora</span></h1>
+            <p class="lede">se marient <span>et vous invitent à célébrer avec eux</span></p>
+        </header>
+
+        <section class="in" style="--d:.35s" aria-label="Compte à rebours jusqu'au mariage">
+            <ul class="count" id="count" role="timer" aria-live="off">
+                <li><b data-u="d">00</b><small data-s="jour" data-p="jours">jours</small></li>
+                <li><b data-u="h">00</b><small data-s="heure" data-p="heures">heures</small></li>
+                <li><b data-u="m">00</b><small data-s="minute" data-p="minutes">minutes</small></li>
+                <li><b data-u="s">00</b><small data-s="seconde" data-p="secondes">secondes</small></li>
+            </ul>
+            <p class="today" id="today" hidden>C'est le grand jour</p>
+        </section>
+    </div>
+</main>
+
+<script>
+    // Cible : début de la mairie, heure de Paris (UTC+1 en décembre).
+    // → Remplace 00:00 par l'heure réelle de la cérémonie quand elle sera connue.
+    const TARGET = new Date('2026-12-07T00:00:00+01:00').getTime();
+
+    const nodes = {
+        d: document.querySelector('[data-u="d"]'),
+        h: document.querySelector('[data-u="h"]'),
+        m: document.querySelector('[data-u="m"]'),
+        s: document.querySelector('[data-u="s"]')
+    };
+    const pad = (n) => String(n).padStart(2, '0');
+
+    function set(key, value) {
+        const el = nodes[key];
+        el.textContent = pad(value);
+        const label = el.nextElementSibling;
+        label.textContent = value === 1 ? label.dataset.s : label.dataset.p;
+    }
+
+    function tick() {
+        const diff = TARGET - Date.now();
+        if (diff <= 0) {
+            document.getElementById('count').hidden = true;
+            document.getElementById('today').hidden = false;
+            clearInterval(timer);
+            return;
+        }
+        const s = Math.floor(diff / 1000);
+        set('d', Math.floor(s / 86400));
+        set('h', Math.floor(s % 86400 / 3600));
+        set('m', Math.floor(s % 3600 / 60));
+        set('s', s % 60);
+    }
+
+    const timer = setInterval(tick, 1000);
+    tick();
+</script>
+</body>
+</html>
