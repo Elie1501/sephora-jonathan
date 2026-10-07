@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Houppa & Soirée - Sephora & Jonathan</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700;800&family=Cinzel:wght@400;500;600;700;800&family=Assistant:wght@400;600;700&family=Frank+Ruhl+Libre:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100dvh;
+            background: #000;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
+
+        /* =========================
+           FOND
+        ========================= */
+
+        .bg-container {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+
+            background: url('fond3.png') no-repeat center center;
+            background-size: cover;
+
+            z-index: 1;
+        }
+
+        /* =========================
+           VOILE BLANC LÉGER
+        ========================= */
+
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(255, 255, 255, 0.04);
+
+            z-index: 2;
+        }
+
+        /* =========================
+           CONTENU
+        ========================= */
+
+        .main-ui {
+            position: relative;
+            z-index: 10;
+
+            width: 100%;
+            height: 100dvh;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            text-align: center;
+        }
+
+        .content-card {
+            width: min(470px, 100%);
+
+            padding: 38px 28px 30px;
+
+            background: rgba(255, 255, 255, 0.43);
+
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+
+            border: 1px solid rgba(255, 255, 255, 0.55);
+
+            box-shadow:
+                    0 12px 40px rgba(59, 30, 47, 0.13);
+
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* =========================
+           PETIT LABEL
+        ========================= */
+
+        .top-label {
+            font-size: 8px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 4px;
+
+            color: #3b1e2f;
+
+            font-weight: 600;
+
+            opacity: 0.75;
+
+            margin-bottom: 18px;
+        }
+
+        /* =========================
+           TITRE
+        ========================= */
+
+        .script-title {
+            font-family: 'Great Vibes', cursive;
+
+            font-size: clamp(3.8rem, 15vw, 5.2rem);
+
+            font-weight: 400;
+
+            line-height: 0.95;
+
+            color: #3b1e2f;
+
+            margin-top: 0;
+            margin-bottom: 12px;
+
+            text-shadow:
+                    0 0 10px rgba(255,255,255,0.95),
+                    0 0 20px rgba(255,255,255,0.8),
+                    0 0 35px rgba(255,255,255,0.6);
+        }
+
+        /* =========================
+           DÉCORATION
+        ========================= */
+
+        .title-decoration {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 20px;
+        }
+
+        .title-decoration::before,
+        .title-decoration::after {
+            content: "";
+
+            width: 45px;
+            height: 1px;
+
+            background: #3b1e2f;
+
+            opacity: 0.45;
+        }
+
+        .title-decoration span {
+            color: #3b1e2f;
+
+            font-size: 12px;
+
+            opacity: 0.7;
+        }
+
+        /* =========================
+           NOMS
+        ========================= */
+
+        .couple-names-container {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 18px;
+
+            margin-bottom: 20px;
+        }
+
+        .name-block {
+            display: flex;
+
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .name-fr {
+            font-family: 'Great Vibes', cursive;
+
+            font-size: clamp(2.7rem, 11vw, 3.4rem);
+
+            color: #3b1e2f;
+
+            line-height: 0.9;
+
+            text-shadow:
+                    0 0 10px rgba(255,255,255,0.9);
+        }
+
+        .name-he {
+            font-family: 'Frank Ruhl Libre', serif;
+
+            font-size: 1.25rem;
+
+            color: #3b1e2f;
+
+            margin-top: 4px;
+        }
+
+        .ampersand {
+            font-family: 'Great Vibes', cursive;
+
+            font-size: 2.6rem;
+
+            color: #3b1e2f;
+
+            margin-top: -8px;
+        }
+
+        /* =========================
+           DATE
+        ========================= */
+
+        .event-details {
+            margin-bottom: 17px;
+        }
+
+        .date-text {
+            font-size: 10px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2.5px;
+
+            color: #3b1e2f;
+
+            margin-bottom: 7px;
+        }
+
+        .location-name {
+            font-family: 'Cinzel', serif;
+
+            font-size: clamp(1.1rem, 5vw, 1.35rem);
+
+            letter-spacing: 2px;
+
+            font-weight: 700;
+
+            color: #3b1e2f;
+
+            margin-bottom: 5px;
+        }
+
+        .address-detail {
+            font-size: 9px;
+
+            color: #2a1522;
+
+            font-weight: 500;
+
+            line-height: 1.5;
+
+            letter-spacing: 0.4px;
+        }
+
+        /* =========================
+           BLOC SOIRÉE ORIENTALE
+        ========================= */
+
+        .oriental-box {
+            margin: 18px auto 15px;
+
+            width: min(330px, 95%);
+
+            padding: 14px 18px;
+
+            background: rgba(255, 255, 255, 0.34);
+
+            border: 1px solid rgba(59, 30, 47, 0.25);
+
+            position: relative;
+        }
+
+        .oriental-box::before,
+        .oriental-box::after {
+            content: "✦";
+
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #3b1e2f;
+
+            font-size: 10px;
+
+            opacity: 0.6;
+        }
+
+        .oriental-box::before {
+            left: 10px;
+        }
+
+        .oriental-box::after {
+            right: 10px;
+        }
+
+        .oriental-title {
+            font-family: 'Cinzel', serif;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            color: #3b1e2f;
+
+            margin-bottom: 6px;
+        }
+
+        .oriental-text {
+            font-family: 'Great Vibes', cursive;
+
+            font-size: 1.55rem;
+
+            color: #3b1e2f;
+
+            line-height: 1.1;
+        }
+
+        .oriental-subtitle {
+            font-size: 8px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            color: #2a1522;
+
+            margin-top: 5px;
+
+            font-weight: 600;
+        }
+
+        /* =========================
+           SÉPARATEUR
+        ========================= */
+
+        .divider {
+            width: 50px;
+
+            height: 1px;
+
+            background: #3b1e2f;
+
+            margin: 17px auto;
+
+            opacity: 0.45;
+        }
+
+        /* =========================
+           MESSAGE
+        ========================= */
+
+        .message {
+            font-size: 9px;
+
+            line-height: 1.6;
+
+            letter-spacing: 1.2px;
+
+            text-transform: uppercase;
+
+            color: #3b1e2f;
+
+            opacity: 0.7;
+
+            font-weight: 500;
+        }
+
+        /* =========================
+           BOUTON
+        ========================= */
+
+        .back-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 20px;
+
+            padding: 12px 40px;
+
+            min-width: 140px;
+
+            background: #3b1e2f;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-size: 9px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 4px;
+
+            font-weight: 600;
+
+            box-shadow:
+                    0 5px 18px rgba(59, 30, 47, 0.3);
+
+            transition: 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #52283f;
+
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           ANIMATION
+        ========================= */
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .main-ui {
+                padding: 15px;
+            }
+
+            .content-card {
+                padding: 32px 20px 25px;
+            }
+
+            .top-label {
+                margin-bottom: 16px;
+            }
+
+            .script-title {
+                font-size: 4.2rem;
+            }
+
+            .couple-names-container {
+                gap: 14px;
+            }
+
+            .name-fr {
+                font-size: 2.9rem;
+            }
+
+            .oriental-box {
+                margin-top: 15px;
+                margin-bottom: 12px;
+            }
+
+            .back-btn {
+                margin-top: 17px;
+            }
+        }
+
+        /* =========================
+           PETITS ÉCRANS EN HAUTEUR
+        ========================= */
+
+        @media (max-height: 700px) {
+
+            .content-card {
+                padding: 28px 18px 20px;
+            }
+
+            .top-label {
+                margin-bottom: 15px;
+            }
+
+            .script-title {
+                font-size: 3.7rem;
+            }
+
+            .title-decoration {
+                margin-bottom: 13px;
+            }
+
+            .couple-names-container {
+                margin-bottom: 14px;
+            }
+
+            .name-fr {
+                font-size: 2.5rem;
+            }
+
+            .oriental-box {
+                margin: 12px auto;
+                padding: 10px 15px;
+            }
+
+            .oriental-text {
+                font-size: 1.35rem;
+            }
+
+            .divider {
+                margin: 12px auto;
+            }
+
+            .back-btn {
+                margin-top: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- FOND -->
+<div class="bg-container"></div>
+
+<!-- VOILE BLANC -->
+<div class="bg-overlay"></div>
+
+<main class="main-ui">
+
+    <div class="content-card">
+
+        <!-- NOMS -->
+        <div class="top-label">
+            Sephora & Jonathan
+        </div>
+
+        <!-- TITRE -->
+        <h1 class="script-title">
+            Houppa
+        </h1>
+
+        <!-- DÉCORATION -->
+        <div class="title-decoration">
+            <span>♡</span>
+        </div>
+
+        <!-- COUPLE -->
+        <div class="couple-names-container">
+
+            <div class="name-block">
+                <span class="name-fr">
+                    Sephora
+                </span>
+            </div>
+
+            <span class="ampersand">
+                &
+            </span>
+
+            <div class="name-block">
+                <span class="name-fr">
+                    Jonathan
+                </span>
+            </div>
+
+        </div>
+
+        <!-- INFORMATIONS -->
+        <div class="event-details">
+
+            <p class="date-text">
+                Mardi 8 décembre 2026
+            </p>
+
+            <h2 class="location-name">
+                Houppa & Soirée
+            </h2>
+
+        </div>
+
+        <!-- BLOC THÈME -->
+        <div class="oriental-box">
+
+            <div class="oriental-title">
+                Thème de la soirée
+            </div>
+
+            <div class="oriental-text">
+                Soirée Orientale
+            </div>
+
+            <div class="oriental-subtitle">
+                Toute la soirée sera sur le thème oriental
+            </div>
+
+        </div>
+
+        <!-- SÉPARATEUR -->
+        <div class="divider"></div>
+
+        <!-- MESSAGE -->
+        <p class="message">
+            Une soirée placée sous le signe<br>
+            de la fête, du partage et de la tradition
+        </p>
+
+        <!-- RETOUR -->
+        <a href="index.html" class="back-btn">
+            Retour
+        </a>
+
+    </div>
+
+</main>
+
+</body>
+</html>

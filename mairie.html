@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Mairie - Sephora & Jonathan</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700;800&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100dvh;
+            background: #000;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
+
+        /* =========================
+           FOND
+        ========================= */
+
+        .bg-container {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+
+            background: url('fond2.png') no-repeat center center;
+            background-size: cover;
+
+            z-index: 1;
+        }
+
+        /* =========================
+           VOILE BLANC LÉGER
+        ========================= */
+
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(255, 255, 255, 0.03);
+
+            z-index: 2;
+        }
+
+        /* =========================
+           CONTENU
+        ========================= */
+
+        .main-ui {
+            position: relative;
+            z-index: 10;
+
+            width: 100%;
+            height: 100dvh;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px 20px;
+
+            text-align: center;
+        }
+
+        /* =========================
+           CARTE CENTRALE
+        ========================= */
+
+        .content-card {
+            width: min(460px, 100%);
+
+            padding: 38px 30px 35px;
+
+            background: rgba(255, 255, 255, 0.42);
+
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+
+            border: 1px solid rgba(255, 255, 255, 0.5);
+
+            box-shadow:
+                    0 10px 35px rgba(59, 30, 47, 0.10);
+
+            animation: fadeIn 1.8s ease-out;
+        }
+
+        /* =========================
+           PETIT LABEL
+        ========================= */
+
+        .top-label {
+            font-size: 8px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 5px;
+
+            color: #3b1e2f;
+
+            font-weight: 600;
+
+            opacity: 0.75;
+
+            margin-bottom: 18px;
+        }
+
+        /* =========================
+           TITRE MAIRIE
+        ========================= */
+
+        .script-title {
+            font-family: 'Great Vibes', cursive;
+
+            font-size: clamp(4rem, 16vw, 5.5rem);
+
+            color: #3b1e2f;
+
+            font-weight: 400;
+
+            line-height: 0.95;
+
+            margin-top: 0;
+            margin-bottom: 12px;
+
+            text-shadow:
+                    0 0 8px rgba(255,255,255,0.95),
+                    0 0 20px rgba(255,255,255,0.8),
+                    0 0 35px rgba(255,255,255,0.6);
+        }
+
+        /* =========================
+           DÉCORATION
+        ========================= */
+
+        .title-decoration {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 25px;
+        }
+
+        .title-decoration::before,
+        .title-decoration::after {
+            content: "";
+
+            width: 40px;
+            height: 1px;
+
+            background: #3b1e2f;
+
+            opacity: 0.45;
+        }
+
+        .title-decoration span {
+            color: #3b1e2f;
+
+            font-size: 12px;
+
+            opacity: 0.7;
+        }
+
+        /* =========================
+           INTRO
+        ========================= */
+
+        .names-intro {
+            font-family: 'Great Vibes', cursive;
+
+            font-size: clamp(2rem, 9vw, 2.8rem);
+
+            color: #3b1e2f;
+
+            line-height: 1.15;
+
+            margin-bottom: 28px;
+
+            text-shadow:
+                    0 0 10px rgba(255,255,255,0.8);
+        }
+
+        /* =========================
+           GROUPE D'INFORMATIONS
+        ========================= */
+
+        .event-group {
+            margin-bottom: 22px;
+        }
+
+        /* =========================
+           DATE
+        ========================= */
+
+        .date-time {
+            font-size: 10px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2.5px;
+
+            color: #2a1522;
+
+            margin-bottom: 9px;
+        }
+
+        /* =========================
+           LIEU
+        ========================= */
+
+        .location-name {
+            font-family: 'Cinzel', serif;
+
+            font-size: clamp(1.15rem, 5vw, 1.4rem);
+
+            letter-spacing: 2px;
+
+            font-weight: 600;
+
+            color: #3b1e2f;
+
+            margin-bottom: 7px;
+        }
+
+        /* =========================
+           ADRESSE
+        ========================= */
+
+        .address-detail {
+            font-size: 10px;
+
+            color: #2a1522;
+
+            font-weight: 500;
+
+            line-height: 1.5;
+
+            letter-spacing: 0.5px;
+        }
+
+        /* =========================
+           SÉPARATEUR
+        ========================= */
+
+        .divider {
+            width: 55px;
+
+            height: 1px;
+
+            background: #3b1e2f;
+
+            margin: 24px auto;
+
+            opacity: 0.45;
+        }
+
+        /* =========================
+           PETIT MESSAGE
+        ========================= */
+
+        .message {
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 9px;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            color: #3b1e2f;
+
+            opacity: 0.65;
+
+            margin-top: 20px;
+        }
+
+        /* =========================
+           BOUTON RETOUR
+        ========================= */
+
+        .back-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 28px;
+
+            padding: 13px 42px;
+
+            min-width: 140px;
+
+            background: #3b1e2f;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-size: 9px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 4px;
+
+            font-weight: 600;
+
+            box-shadow:
+                    0 5px 18px rgba(59, 30, 47, 0.3);
+
+            transition: 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #52283f;
+
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           ANIMATION
+        ========================= */
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .main-ui {
+                padding: 18px;
+            }
+
+            .content-card {
+                padding: 32px 22px 28px;
+            }
+
+            .top-label {
+                font-size: 7px;
+                letter-spacing: 4px;
+                margin-bottom: 16px;
+            }
+
+            .script-title {
+                font-size: 4.2rem;
+            }
+
+            .names-intro {
+                font-size: 2.2rem;
+                margin-bottom: 24px;
+            }
+
+            .event-group {
+                margin-bottom: 18px;
+            }
+
+            .divider {
+                margin: 20px auto;
+            }
+
+            .back-btn {
+                margin-top: 22px;
+            }
+        }
+
+        /* =========================
+           PETITS ÉCRANS EN HAUTEUR
+        ========================= */
+
+        @media (max-height: 700px) {
+
+            .content-card {
+                padding: 28px 20px 22px;
+            }
+
+            .top-label {
+                margin-bottom: 15px;
+            }
+
+            .script-title {
+                font-size: 3.7rem;
+            }
+
+            .names-intro {
+                font-size: 1.9rem;
+                margin-bottom: 18px;
+            }
+
+            .event-group {
+                margin-bottom: 12px;
+            }
+
+            .divider {
+                margin: 15px auto;
+            }
+
+            .back-btn {
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     FOND
+========================= -->
+
+<div class="bg-container"></div>
+
+<div class="bg-overlay"></div>
+
+
+<!-- =========================
+     CONTENU
+========================= -->
+
+<main class="main-ui">
+
+    <div class="content-card">
+
+        <div class="top-label">
+            Sephora & Jonathan
+        </div>
+
+        <h1 class="script-title">
+            Mairie
+        </h1>
+
+        <div class="title-decoration">
+            <span>♡</span>
+        </div>
+
+        <div class="names-intro">
+            Sephora et Jonathan<br>
+            se diront « Oui »
+        </div>
+
+        <div class="event-group">
+
+            <p class="date-time">
+                Lundi 7 décembre 2026
+            </p>
+
+            <h2 class="location-name">
+                Mairie de Levallois
+            </h2>
+
+            <p class="address-detail">
+                Levallois-Perret
+            </p>
+
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="message">
+            Nous avons hâte de partager<br>
+            ce moment avec vous
+        </p>
+
+        <a href="index.html" class="back-btn">
+            Retour
+        </a>
+
+    </div>
+
+</main>
+
+</body>
+</html>

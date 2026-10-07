@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>RSVP - Sephora & Jonathan</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100dvh;
+            background: #000;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           FOND
+        ========================= */
+
+        .bg-container {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: url('fond1.png') no-repeat center center;
+            background-size: cover;
+            z-index: 1;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.04);
+            z-index: 2;
+        }
+
+        /* =========================
+           CONTENU
+        ========================= */
+
+        .main-ui {
+            position: relative;
+            z-index: 10;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .overlay-card {
+            width: min(460px, 100%);
+
+            padding: 38px 28px 25px;
+
+            background: rgba(255, 255, 255, 0.43);
+
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+
+            border: 1px solid rgba(255, 255, 255, 0.55);
+
+            box-shadow:
+                    0 12px 40px rgba(59, 30, 47, 0.14);
+
+            text-align: center;
+
+            animation: fadeIn 1.4s ease-out;
+        }
+
+        /* =========================
+           EN-TÊTE
+        ========================= */
+
+        .top-label {
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #3b1e2f;
+            font-weight: 600;
+            opacity: 0.75;
+
+            margin-bottom: 18px;
+        }
+
+        .script-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3.8rem, 15vw, 5rem);
+            font-weight: 400;
+            line-height: 0.95;
+            color: #3b1e2f;
+
+            margin-top: 0;
+            margin-bottom: 12px;
+
+            text-shadow:
+                    0 0 10px rgba(255,255,255,0.95),
+                    0 0 20px rgba(255,255,255,0.8),
+                    0 0 35px rgba(255,255,255,0.6);
+        }
+
+        .title-decoration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            margin-bottom: 10px;
+        }
+
+        .title-decoration::before,
+        .title-decoration::after {
+            content: "";
+
+            width: 42px;
+            height: 1px;
+
+            background: #3b1e2f;
+            opacity: 0.4;
+        }
+
+        .title-decoration span {
+            color: #3b1e2f;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .instruction {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            line-height: 1.5;
+            color: #2a1522;
+            font-style: italic;
+
+            margin-bottom: 20px;
+
+            opacity: 0.8;
+        }
+
+        /* =========================
+           FORMULAIRE
+        ========================= */
+
+        .rsvp-form {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+
+            font-family: 'Cinzel', serif;
+            font-size: 9px;
+            color: #3b1e2f;
+
+            margin-top: 14px;
+            margin-bottom: 7px;
+
+            letter-spacing: 1.2px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+
+            padding: 10px 9px;
+
+            border: none;
+            border-bottom: 1px solid rgba(59, 30, 47, 0.55);
+
+            outline: none;
+
+            background: rgba(255,255,255,0.22);
+
+            color: #1a1a1a;
+
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+
+            transition: 0.25s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-bottom-color: #3b1e2f;
+            background: rgba(255,255,255,0.4);
+        }
+
+        input::placeholder {
+            color: #555;
+            opacity: 0.65;
+        }
+
+        /* =========================
+           OPTIONS
+        ========================= */
+
+        .presence-options {
+            display: flex;
+            gap: 25px;
+            margin-top: 3px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            cursor: pointer;
+
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8px;
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            color: #2a1522;
+            font-weight: 600;
+
+            margin: 0;
+        }
+
+        input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+
+            width: 13px;
+            height: 13px;
+
+            border: 1px solid #3b1e2f;
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.25);
+
+            position: relative;
+            cursor: pointer;
+        }
+
+        input[type="radio"]:checked::after {
+            content: "";
+
+            position: absolute;
+
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #3b1e2f;
+
+            top: 2px;
+            left: 2px;
+        }
+
+        /* =========================
+           NOMBRE DE PERSONNES
+        ========================= */
+
+        .guest-count-box {
+            display: none;
+
+            margin-top: 8px;
+
+            animation: slideDown 0.3s ease;
+        }
+
+        .guest-count-box input {
+            font-size: 0.8rem;
+        }
+
+        /* =========================
+           SÉPARATEUR
+        ========================= */
+
+        .form-divider {
+            width: 45px;
+            height: 1px;
+
+            background: #3b1e2f;
+            opacity: 0.4;
+
+            margin: 20px auto 5px;
+        }
+
+        /* =========================
+           BOUTON
+        ========================= */
+
+        .btn-submit {
+            width: 100%;
+
+            margin-top: 24px;
+
+            padding: 13px;
+
+            border: none;
+
+            background: #3b1e2f;
+            color: #fff;
+
+            font-family: 'Montserrat', sans-serif;
+
+            text-transform: uppercase;
+            letter-spacing: 3px;
+
+            font-size: 8px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            box-shadow:
+                    0 5px 18px rgba(59, 30, 47, 0.25);
+
+            transition: 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #52283f;
+            transform: translateY(-2px);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: wait;
+            transform: none;
+        }
+
+        /* =========================
+           RETOUR
+        ========================= */
+
+        .back-btn {
+            display: inline-block;
+
+            margin-top: 17px;
+
+            text-decoration: none;
+
+            color: #3b1e2f;
+
+            font-size: 8px;
+
+            text-transform: uppercase;
+            letter-spacing: 3px;
+
+            opacity: 0.65;
+
+            border-bottom: 1px solid rgba(59, 30, 47, 0.55);
+
+            padding-bottom: 3px;
+
+            transition: 0.25s ease;
+        }
+
+        .back-btn:hover {
+            opacity: 1;
+        }
+
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .main-ui {
+                padding: 15px;
+            }
+
+            .overlay-card {
+                padding: 32px 21px 22px;
+            }
+
+            .top-label {
+                margin-bottom: 16px;
+            }
+
+            .script-title {
+                font-size: 4.1rem;
+            }
+
+            .instruction {
+                margin-bottom: 16px;
+            }
+
+            label {
+                margin-top: 12px;
+            }
+        }
+
+        /* =========================
+           PETITS ÉCRANS
+        ========================= */
+
+        @media (max-height: 700px) {
+
+            .main-ui {
+                padding: 12px;
+            }
+
+            .overlay-card {
+                padding: 28px 20px 18px;
+            }
+
+            .top-label {
+                margin-bottom: 15px;
+            }
+
+            .script-title {
+                font-size: 3.6rem;
+            }
+
+            .title-decoration {
+                margin-bottom: 5px;
+            }
+
+            .instruction {
+                margin-bottom: 10px;
+            }
+
+            label {
+                margin-top: 9px;
+                margin-bottom: 5px;
+            }
+
+            .btn-submit {
+                margin-top: 17px;
+            }
+
+            .back-btn {
+                margin-top: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- FOND -->
+<div class="bg-container"></div>
+
+<!-- VOILE BLANC -->
+<div class="bg-overlay"></div>
+
+<main class="main-ui">
+
+    <div class="overlay-card">
+
+        <!-- EN-TÊTE -->
+        <div class="top-label">
+            Sephora & Jonathan
+        </div>
+
+        <h1 class="script-title">
+            Réponse
+        </h1>
+
+        <div class="title-decoration">
+            <span>♡</span>
+        </div>
+
+        <p class="instruction">
+            Merci de confirmer votre présence
+        </p>
+
+        <!-- FORMULAIRE -->
+        <form id="rsvpForm" class="rsvp-form">
+
+            <input
+                    type="hidden"
+                    name="Chabbat_present"
+                    value="Non"
+            >
+
+            <input
+                    type="hidden"
+                    name="Chabbat_nombre"
+                    value="0"
+            >
+
+            <!-- NOM -->
+            <label>
+                Nom & Prénom
+            </label>
+
+            <input
+                    type="text"
+                    name="Nom"
+                    required
+                    placeholder="Ex : Famille Cohen"
+            >
+
+            <!-- MAIRIE -->
+            <label>
+                Mairie — 7 décembre 2026
+            </label>
+
+            <div class="presence-options">
+
+                <label class="option-item">
+                    <input
+                            type="radio"
+                            name="Mairie_present"
+                            value="Present"
+                            onclick="showCount('mairie', true)"
+                            required
+                    >
+                    Présent
+                </label>
+
+                <label class="option-item">
+                    <input
+                            type="radio"
+                            name="Mairie_present"
+                            value="Non"
+                            onclick="showCount('mairie', false)"
+                    >
+                    Non
+                </label>
+
+            </div>
+
+            <div
+                    id="count_mairie"
+                    class="guest-count-box"
+            >
+                <input
+                        type="number"
+                        name="Mairie_nombre"
+                        placeholder="Nombre de personnes"
+                        min="1"
+                >
+            </div>
+
+            <!-- HOUPPA -->
+            <label>
+                Houppa & Soirée — 8 décembre 2026
+            </label>
+
+            <div class="presence-options">
+
+                <label class="option-item">
+                    <input
+                            type="radio"
+                            name="Houppa_present"
+                            value="Present"
+                            onclick="showCount('houppa', true)"
+                            required
+                    >
+                    Présent
+                </label>
+
+                <label class="option-item">
+                    <input
+                            type="radio"
+                            name="Houppa_present"
+                            value="Non"
+                            onclick="showCount('houppa', false)"
+                    >
+                    Non
+                </label>
+
+            </div>
+
+            <div
+                    id="count_houppa"
+                    class="guest-count-box"
+            >
+                <input
+                        type="number"
+                        name="Houppa_nombre"
+                        placeholder="Nombre de personnes"
+                        min="1"
+                >
+            </div>
+
+            <div class="form-divider"></div>
+
+            <!-- BOUTON -->
+            <button
+                    type="submit"
+                    class="btn-submit"
+                    id="submitBtn"
+            >
+                Confirmer ma venue
+            </button>
+
+        </form>
+
+        <!-- RETOUR -->
+        <a
+                href="index.html"
+                class="back-btn"
+        >
+            Retour
+        </a>
+
+    </div>
+
+</main>
+
+<script>
+
+    /* =========================
+       AFFICHAGE NOMBRE INVITÉS
+    ========================= */
+
+    function showCount(event, isPresent) {
+
+        const box = document.getElementById(
+            'count_' + event
+        );
+
+        const input = box.querySelector('input');
+
+        box.style.display = isPresent
+            ? 'block'
+            : 'none';
+
+        if (!isPresent) {
+
+            input.value = "";
+            input.required = false;
+
+        } else {
+
+            input.required = true;
+        }
+    }
+
+
+    /* =========================
+       GOOGLE APPS SCRIPT
+    ========================= */
+
+    const scriptURL =
+        'https://script.google.com/macros/s/AKfycbxRJvIxCqOPLGQ3IKx7YEEGptfV872PrGsRdNbqHJqQUHWMJnn4sEFjoks-qmXlCGNLPw/exec';
+
+    const form =
+        document.getElementById('rsvpForm');
+
+    form.addEventListener('submit', e => {
+
+        e.preventDefault();
+
+        const btn =
+            document.getElementById('submitBtn');
+
+        btn.innerHTML = "Envoi...";
+        btn.disabled = true;
+
+        fetch(scriptURL, {
+
+            method: 'POST',
+
+            body: new FormData(form)
+
+        })
+            .then(() => {
+
+                btn.innerHTML = "Merci !";
+
+                form.reset();
+
+                setTimeout(() => {
+
+                    window.location.href =
+                        "premiere-page.html";
+
+                }, 2000);
+
+            })
+            .catch(() => {
+
+                alert(
+                    "Une erreur est survenue lors de l'envoi."
+                );
+
+                btn.disabled = false;
+
+                btn.innerHTML =
+                    "Confirmer ma venue";
+            });
+
+    });
+
+</script>
+
+</body>
+</html>
