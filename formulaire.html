@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
 
     <title>RSVP - Sephora & Jonathan</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+    >
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -19,10 +28,14 @@
         html,
         body {
             width: 100%;
-            min-height: 100dvh;
+            min-height: 100%;
             background: #000;
             font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
             overflow-x: hidden;
+            overflow-y: auto;
         }
 
         /* =========================================
@@ -32,17 +45,22 @@
         .bg-container {
             position: fixed;
             inset: 0;
+
             width: 100%;
             height: 100%;
+
             background: url('fond1.png') no-repeat center center;
             background-size: cover;
+
             z-index: 1;
         }
 
         .bg-overlay {
             position: fixed;
             inset: 0;
+
             background: rgba(255, 255, 255, 0.02);
+
             z-index: 2;
         }
 
@@ -53,25 +71,32 @@
         .main-ui {
             position: relative;
             z-index: 10;
+
+            width: 100%;
             min-height: 100dvh;
 
             display: flex;
+            flex-direction: column;
+
             align-items: center;
             justify-content: center;
 
             padding: 20px;
+
+            text-align: center;
         }
 
         /* =========================================
-           CARTE CENTRALE
+           CARTE
         ========================================= */
 
         .overlay-card {
+
             width: min(460px, 100%);
 
-            padding: 38px 28px 25px;
+            padding: 34px 28px 27px;
 
-            background: rgba(255, 255, 255, 0.30);
+            background: rgba(255, 255, 255, 0.20);
 
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
@@ -91,86 +116,144 @@
         ========================================= */
 
         .top-label {
+
             font-family: 'Montserrat', sans-serif;
-            font-size: 8px;
+
+            font-size: 10px;
+
             text-transform: uppercase;
-            letter-spacing: 4px;
+
+            letter-spacing: 3px;
+
+            line-height: 1.6;
 
             color: #C66A4A;
-            font-weight: 700;
-            opacity: 0.85;
 
-            margin-bottom: 18px;
+            font-weight: 800;
+
+            margin-bottom: 14px;
 
             text-shadow:
-                    0 0 8px rgba(255, 255, 255, 1),
-                    0 0 15px rgba(255, 255, 255, 0.8);
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 15px rgba(255,255,255,.85);
         }
+
+        /* =========================================
+           TITRE
+        ========================================= */
 
         .script-title {
+
             font-family: 'Great Vibes', cursive;
 
-            font-size: clamp(3.8rem, 15vw, 5rem);
+            font-size: clamp(4rem, 15vw, 5rem);
 
             font-weight: 400;
-            line-height: 0.95;
+
+            line-height: .95;
 
             color: #C66A4A;
 
-            margin-bottom: 12px;
+            margin-bottom: 8px;
 
             text-shadow:
-                    0 0 10px rgba(255, 255, 255, 0.95),
-                    0 0 25px rgba(255, 255, 255, 0.8),
-                    0 0 45px rgba(255, 255, 255, 0.5);
+                    0 0 10px rgba(255,255,255,.95),
+                    0 0 25px rgba(255,255,255,.8),
+                    0 0 45px rgba(255,255,255,.5);
         }
 
+        /* =========================================
+           DÉCORATION
+        ========================================= */
+
         .title-decoration {
+
             display: flex;
+
             align-items: center;
             justify-content: center;
 
             gap: 10px;
-            margin-bottom: 10px;
+
+            margin-bottom: 13px;
         }
 
         .title-decoration::before,
         .title-decoration::after {
+
             content: "";
 
             width: 42px;
+
             height: 1px;
 
             background: #C66A4A;
-            opacity: 0.5;
+
+            opacity: .6;
         }
 
         .title-decoration span {
+
             color: #C66A4A;
 
-            font-size: 12px;
-            opacity: 0.8;
+            font-size: 13px;
+
+            opacity: .9;
 
             text-shadow:
-                    0 0 8px rgba(255, 255, 255, 1),
-                    0 0 15px rgba(255, 255, 255, 0.8);
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 15px rgba(255,255,255,.8);
         }
 
+        /* =========================================
+           INSTRUCTION
+        ========================================= */
+
         .instruction {
+
             font-family: 'Montserrat', sans-serif;
 
-            font-size: 9px;
-            line-height: 1.5;
+            font-size: 10px;
+
+            line-height: 1.6;
 
             color: #6F3828;
+
             font-style: italic;
 
-            margin-bottom: 20px;
+            font-weight: 600;
 
-            opacity: 0.8;
+            margin-bottom: 9px;
 
             text-shadow:
-                    0 0 7px rgba(255, 255, 255, 0.8);
+                    0 0 7px rgba(255,255,255,.9);
+        }
+
+        /* =========================================
+           DATE LIMITE
+        ========================================= */
+
+        .deadline {
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 10px;
+
+            line-height: 1.5;
+
+            color: #C66A4A;
+
+            font-weight: 700;
+
+            letter-spacing: .8px;
+
+            margin-top: 0;
+
+            margin-bottom: 18px;
+
+            text-shadow:
+                    0 0 7px rgba(255,255,255,.95),
+                    0 0 12px rgba(255,255,255,.75);
         }
 
         /* =========================================
@@ -181,59 +264,82 @@
             text-align: left;
         }
 
-        label {
+        /* =========================================
+           LABELS
+        ========================================= */
+
+        .rsvp-form > label:not(.option-item) {
+
             display: block;
 
             font-family: 'Cinzel', serif;
 
-            font-size: 9px;
+            font-size: 10px;
 
             color: #C66A4A;
 
-            margin-top: 14px;
+            margin-top: 15px;
             margin-bottom: 7px;
 
-            letter-spacing: 1.2px;
-            font-weight: 600;
+            letter-spacing: 1.1px;
+
+            font-weight: 800;
+
+            line-height: 1.5;
 
             text-shadow:
-                    0 0 6px rgba(255, 255, 255, 0.8);
+                    0 0 6px rgba(255,255,255,.9);
         }
+
+        /* =========================================
+           INPUTS
+        ========================================= */
 
         input[type="text"],
         input[type="number"] {
+
             width: 100%;
 
-            padding: 10px 9px;
+            padding: 11px 10px;
 
             border: none;
-            border-bottom: 1px solid rgba(198, 106, 74, 0.55);
+
+            border-bottom:
+                    1px solid rgba(198,106,74,.55);
 
             outline: none;
 
-            background: rgba(255, 255, 255, 0.18);
+            background: rgba(255,255,255,.18);
 
             color: #1a1a1a;
 
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
 
-            transition: 0.25s ease;
+            font-size: 14px;
+
+            font-weight: 500;
+
+            border-radius: 3px 3px 0 0;
+
+            transition: .25s ease;
         }
 
         input[type="text"]:focus,
         input[type="number"]:focus {
+
             border-bottom-color: #C66A4A;
 
-            background: rgba(255, 255, 255, 0.30);
+            background: rgba(255,255,255,.30);
 
             box-shadow:
-                    0 4px 10px rgba(198, 106, 74, 0.08);
+                    0 4px 10px rgba(198,106,74,.08);
         }
 
         input::placeholder {
+
             color: #555;
-            opacity: 0.65;
+
+            opacity: .65;
         }
 
         /* =========================================
@@ -241,72 +347,94 @@
         ========================================= */
 
         .presence-options {
+
             display: flex;
+
+            align-items: center;
+
             gap: 25px;
 
-            margin-top: 3px;
+            margin-top: 4px;
         }
 
         .option-item {
+
             display: flex;
+
             align-items: center;
 
-            gap: 6px;
+            gap: 7px;
 
             cursor: pointer;
 
             font-family: 'Montserrat', sans-serif;
 
-            font-size: 8px;
+            font-size: 10px;
 
             text-transform: uppercase;
+
             letter-spacing: 1px;
 
             color: #6F3828;
 
-            font-weight: 600;
+            font-weight: 700;
 
             margin: 0;
 
+            line-height: 1.4;
+
             text-shadow:
-                    0 0 6px rgba(255, 255, 255, 0.7);
+                    0 0 6px rgba(255,255,255,.8);
         }
 
+        /* =========================================
+           RADIO
+        ========================================= */
+
         input[type="radio"] {
+
             appearance: none;
             -webkit-appearance: none;
 
-            width: 13px;
-            height: 13px;
+            width: 16px;
+            height: 16px;
 
-            border: 1px solid #C66A4A;
+            flex-shrink: 0;
+
+            border:
+                    1.5px solid #C66A4A;
+
             border-radius: 50%;
 
-            background: rgba(255, 255, 255, 0.20);
+            background:
+                    rgba(255,255,255,.20);
 
             position: relative;
+
             cursor: pointer;
         }
 
         input[type="radio"]:checked {
+
             box-shadow:
-                    0 0 8px rgba(198, 106, 74, 0.25);
+                    0 0 8px rgba(198,106,74,.25);
         }
 
         input[type="radio"]:checked::after {
+
             content: "";
 
             position: absolute;
 
-            width: 7px;
-            height: 7px;
+            width: 8px;
+            height: 8px;
 
             border-radius: 50%;
 
             background: #C66A4A;
 
-            top: 2px;
-            left: 2px;
+            top: 2.5px;
+            left: 2.5px;
         }
 
         /* =========================================
@@ -314,15 +442,17 @@
         ========================================= */
 
         .guest-count-box {
+
             display: none;
 
             margin-top: 8px;
 
-            animation: slideDown 0.3s ease;
+            animation: slideDown .3s ease;
         }
 
         .guest-count-box input {
-            font-size: 0.8rem;
+
+            font-size: 13px;
         }
 
         /* =========================================
@@ -330,14 +460,16 @@
         ========================================= */
 
         .form-divider {
-            width: 45px;
+
+            width: 55px;
+
             height: 1px;
 
             background: #C66A4A;
 
-            opacity: 0.5;
+            opacity: .55;
 
-            margin: 20px auto 5px;
+            margin: 19px auto 5px;
         }
 
         /* =========================================
@@ -345,52 +477,61 @@
         ========================================= */
 
         .btn-submit {
+
             width: 100%;
 
-            margin-top: 24px;
+            margin-top: 22px;
 
-            padding: 13px;
+            padding: 13px 12px;
 
             border: none;
 
             background: #C66A4A;
+
             color: #fff;
 
             font-family: 'Montserrat', sans-serif;
 
             text-transform: uppercase;
-            letter-spacing: 3px;
 
-            font-size: 8px;
-            font-weight: 600;
+            letter-spacing: 2.5px;
+
+            font-size: 9px;
+
+            font-weight: 800;
 
             cursor: pointer;
 
             box-shadow:
-                    0 5px 18px rgba(198, 106, 74, 0.3);
+                    0 5px 18px rgba(198,106,74,.3);
 
             transition:
-                    transform 0.3s ease,
-                    background 0.3s ease,
-                    box-shadow 0.3s ease;
+                    transform .3s ease,
+                    background .3s ease,
+                    box-shadow .3s ease;
         }
 
         .btn-submit:hover {
+
             background: #B85D40;
 
             transform: translateY(-2px);
 
             box-shadow:
-                    0 8px 25px rgba(198, 106, 74, 0.4);
+                    0 8px 25px rgba(198,106,74,.4);
         }
 
         .btn-submit:active {
+
             transform: translateY(-1px);
         }
 
         .btn-submit:disabled {
-            opacity: 0.7;
+
+            opacity: .7;
+
             cursor: wait;
+
             transform: none;
         }
 
@@ -399,33 +540,40 @@
         ========================================= */
 
         .back-btn {
+
             display: inline-block;
 
-            margin-top: 17px;
+            margin-top: 16px;
 
             text-decoration: none;
 
             color: #C66A4A;
 
-            font-size: 8px;
+            font-size: 9px;
 
             text-transform: uppercase;
-            letter-spacing: 3px;
 
-            opacity: 0.75;
+            letter-spacing: 2.5px;
 
-            border-bottom: 1px solid rgba(198, 106, 74, 0.55);
+            font-weight: 700;
+
+            opacity: .85;
+
+            border-bottom:
+                    1px solid rgba(198,106,74,.55);
 
             padding-bottom: 3px;
 
-            transition: 0.25s ease;
+            transition: .25s ease;
 
             text-shadow:
-                    0 0 7px rgba(255, 255, 255, 0.8);
+                    0 0 7px rgba(255,255,255,.9);
         }
 
         .back-btn:hover {
+
             opacity: 1;
+
             color: #B85D40;
         }
 
@@ -434,6 +582,7 @@
         ========================================= */
 
         @keyframes fadeIn {
+
             from {
                 opacity: 0;
                 transform: translateY(18px);
@@ -446,6 +595,7 @@
         }
 
         @keyframes slideDown {
+
             from {
                 opacity: 0;
                 transform: translateY(-5px);
@@ -464,80 +614,377 @@
         @media (max-width: 600px) {
 
             .main-ui {
-                padding: 15px;
+
+                min-height: 100dvh;
+
+                padding: 14px 10px;
+
+                justify-content: center;
             }
 
             .overlay-card {
-                padding: 32px 21px 22px;
+
+                width: 100%;
+
+                max-width: 430px;
+
+                padding: 28px 19px 24px;
+
+                border-radius: 18px;
             }
+
+            /* EN-TÊTE */
 
             .top-label {
-                margin-bottom: 16px;
+
+                font-size: 10px;
+
+                font-weight: 800;
+
+                letter-spacing: 2px;
+
+                margin-bottom: 12px;
             }
+
+            /* TITRE */
 
             .script-title {
-                font-size: 4.1rem;
+
+                font-size: 4.15rem;
+
+                margin-bottom: 7px;
             }
+
+            .title-decoration {
+
+                margin-bottom: 12px;
+            }
+
+            .title-decoration::before,
+            .title-decoration::after {
+
+                width: 35px;
+
+                height: 2px;
+            }
+
+            .title-decoration span {
+
+                font-size: 14px;
+            }
+
+            /* INSTRUCTION */
 
             .instruction {
-                margin-bottom: 16px;
+
+                font-size: 10px;
+
+                font-weight: 700;
+
+                line-height: 1.6;
+
+                margin-bottom: 7px;
             }
 
-            label {
-                margin-top: 12px;
+            /* DATE LIMITE */
+
+            .deadline {
+
+                font-size: 10px;
+
+                font-weight: 800;
+
+                letter-spacing: .5px;
+
+                line-height: 1.6;
+
+                margin-top: 0;
+
+                margin-bottom: 15px;
+            }
+
+            /* LABELS */
+
+            .rsvp-form > label:not(.option-item) {
+
+                font-size: 11px;
+
+                font-weight: 800;
+
+                letter-spacing: .9px;
+
+                margin-top: 13px;
+
+                margin-bottom: 7px;
+            }
+
+            /* INPUTS */
+
+            input[type="text"],
+            input[type="number"] {
+
+                padding: 12px 10px;
+
+                font-size: 14px;
+
+                font-weight: 600;
+            }
+
+            /* OPTIONS */
+
+            .presence-options {
+
+                gap: 24px;
+
+                margin-top: 5px;
+            }
+
+            .option-item {
+
+                font-size: 10px;
+
+                font-weight: 800;
+
+                gap: 7px;
+            }
+
+            input[type="radio"] {
+
+                width: 17px;
+
+                height: 17px;
+            }
+
+            input[type="radio"]:checked::after {
+
+                width: 9px;
+
+                height: 9px;
+
+                top: 3px;
+
+                left: 3px;
+            }
+
+            /* NOMBRE */
+
+            .guest-count-box {
+
+                margin-top: 8px;
+            }
+
+            .guest-count-box input {
+
+                font-size: 13px;
+
+                font-weight: 600;
+            }
+
+            /* SÉPARATEUR */
+
+            .form-divider {
+
+                width: 55px;
+
+                height: 2px;
+
+                margin: 16px auto 4px;
+            }
+
+            /* BOUTON */
+
+            .btn-submit {
+
+                margin-top: 19px;
+
+                padding: 14px 10px;
+
+                font-size: 9px;
+
+                font-weight: 800;
+
+                letter-spacing: 2.2px;
+            }
+
+            /* RETOUR */
+
+            .back-btn {
+
+                margin-top: 15px;
+
+                font-size: 9px;
+
+                font-weight: 800;
+
+                letter-spacing: 2.2px;
             }
         }
 
         /* =========================================
-           PETITS ÉCRANS
+           TRÈS PETITS TÉLÉPHONES
         ========================================= */
 
-        @media (max-height: 700px) {
+        @media (max-width: 380px) {
 
             .main-ui {
-                padding: 12px;
+
+                padding: 10px 7px;
             }
 
             .overlay-card {
-                padding: 28px 20px 18px;
+
+                padding: 23px 15px 20px;
             }
 
             .top-label {
-                margin-bottom: 15px;
+
+                font-size: 9px;
+
+                letter-spacing: 1.5px;
             }
 
             .script-title {
-                font-size: 3.6rem;
-            }
 
-            .title-decoration {
-                margin-bottom: 5px;
+                font-size: 3.7rem;
             }
 
             .instruction {
-                margin-bottom: 10px;
+
+                font-size: 9.5px;
             }
 
-            label {
-                margin-top: 9px;
-                margin-bottom: 5px;
+            .deadline {
+
+                font-size: 9px;
+
+                font-weight: 800;
+
+                letter-spacing: .3px;
+
+                margin-bottom: 13px;
+            }
+
+            .rsvp-form > label:not(.option-item) {
+
+                font-size: 10px;
+
+                margin-top: 11px;
+            }
+
+            input[type="text"],
+            input[type="number"] {
+
+                font-size: 13px;
+
+                padding: 11px 9px;
+            }
+
+            .option-item {
+
+                font-size: 9.5px;
             }
 
             .btn-submit {
-                margin-top: 17px;
+
+                font-size: 8px;
+
+                letter-spacing: 1.8px;
             }
 
             .back-btn {
-                margin-top: 12px;
+
+                font-size: 8px;
             }
         }
+
+        /* =========================================
+           PETITS ÉCRANS EN HAUTEUR
+        ========================================= */
+
+        @media (max-height: 700px) and (max-width: 600px) {
+
+            .main-ui {
+
+                justify-content: flex-start;
+
+                padding-top: 10px;
+
+                padding-bottom: 10px;
+            }
+
+            .overlay-card {
+
+                padding-top: 20px;
+
+                padding-bottom: 18px;
+            }
+
+            .top-label {
+
+                margin-bottom: 7px;
+            }
+
+            .script-title {
+
+                font-size: 3.5rem;
+            }
+
+            .title-decoration {
+
+                margin-bottom: 8px;
+            }
+
+            .instruction {
+
+                margin-bottom: 5px;
+            }
+
+            .deadline {
+
+                margin-bottom: 9px;
+
+                font-size: 9px;
+            }
+
+            .rsvp-form > label:not(.option-item) {
+
+                margin-top: 8px;
+
+                margin-bottom: 5px;
+            }
+
+            input[type="text"],
+            input[type="number"] {
+
+                padding: 9px;
+            }
+
+            .form-divider {
+
+                margin-top: 12px;
+            }
+
+            .btn-submit {
+
+                margin-top: 14px;
+            }
+
+            .back-btn {
+
+                margin-top: 10px;
+            }
+        }
+
     </style>
+
 </head>
 
 <body>
 
 <div class="bg-container"></div>
+
 <div class="bg-overlay"></div>
+
 
 <main class="main-ui">
 
@@ -549,21 +996,41 @@
             Sephora & Jonathan
         </div>
 
+
+        <!-- TITRE -->
+
         <h1 class="script-title">
             Réponse
         </h1>
+
+
+        <!-- DÉCORATION -->
 
         <div class="title-decoration">
             <span>♡</span>
         </div>
 
+
+        <!-- MESSAGE -->
+
         <p class="instruction">
             Merci de confirmer votre présence
         </p>
 
+
+        <!-- DATE LIMITE -->
+
+        <p class="deadline">
+            Votre réponse est attendue avant le 16/11/2026
+        </p>
+
+
         <!-- FORMULAIRE -->
 
-        <form id="rsvpForm" class="rsvp-form">
+        <form
+                id="rsvpForm"
+                class="rsvp-form"
+        >
 
             <input
                     type="hidden"
@@ -576,6 +1043,7 @@
                     name="Chabbat_nombre"
                     value="0"
             >
+
 
             <!-- NOM -->
 
@@ -590,11 +1058,13 @@
                     placeholder="Ex : Famille Cohen"
             >
 
+
             <!-- MAIRIE -->
 
             <label>
                 Mairie — 7 décembre 2026
             </label>
+
 
             <div class="presence-options">
 
@@ -612,6 +1082,7 @@
 
                 </label>
 
+
                 <label class="option-item">
 
                     <input
@@ -627,6 +1098,7 @@
 
             </div>
 
+
             <div
                     id="count_mairie"
                     class="guest-count-box"
@@ -641,11 +1113,13 @@
 
             </div>
 
+
             <!-- HOUPPA -->
 
             <label>
                 Houppa & Soirée — 8 décembre 2026
             </label>
+
 
             <div class="presence-options">
 
@@ -663,6 +1137,7 @@
 
                 </label>
 
+
                 <label class="option-item">
 
                     <input
@@ -678,6 +1153,7 @@
 
             </div>
 
+
             <div
                     id="count_houppa"
                     class="guest-count-box"
@@ -692,7 +1168,9 @@
 
             </div>
 
+
             <div class="form-divider"></div>
+
 
             <!-- BOUTON -->
 
@@ -705,6 +1183,7 @@
             </button>
 
         </form>
+
 
         <!-- RETOUR -->
 
@@ -719,6 +1198,7 @@
 
 </main>
 
+
 <script>
 
     /* =========================================
@@ -727,19 +1207,25 @@
 
     function showCount(event, isPresent) {
 
-        const box = document.getElementById(
-            'count_' + event
-        );
+        const box =
+            document.getElementById(
+                'count_' + event
+            );
 
-        const input = box.querySelector('input');
+        const input =
+            box.querySelector('input');
 
-        box.style.display = isPresent
-            ? 'block'
-            : 'none';
+
+        box.style.display =
+            isPresent
+                ? 'block'
+                : 'none';
+
 
         if (!isPresent) {
 
             input.value = "";
+
             input.required = false;
 
         } else {
@@ -757,57 +1243,81 @@
     const scriptURL =
         'https://script.google.com/macros/s/AKfycbxRJvIxCqOPLGQ3IKx7YEEGptfV872PrGsRdNbqHJqQUHWMJnn4sEFjoks-qmXlCGNLPw/exec';
 
+
     const form =
         document.getElementById('rsvpForm');
 
-    form.addEventListener('submit', e => {
 
-        e.preventDefault();
+    form.addEventListener(
+        'submit',
+        e => {
 
-        const btn =
-            document.getElementById('submitBtn');
+            e.preventDefault();
 
-        btn.innerHTML = "Envoi...";
-        btn.disabled = true;
 
-        fetch(scriptURL, {
-
-            method: 'POST',
-
-            body: new FormData(form)
-
-        })
-            .then(() => {
-
-                btn.innerHTML = "Merci !";
-
-                form.reset();
-
-                document.getElementById('count_mairie').style.display = 'none';
-                document.getElementById('count_houppa').style.display = 'none';
-
-                setTimeout(() => {
-
-                    window.location.href =
-                        "premiere-page.html";
-
-                }, 2000);
-
-            })
-            .catch(() => {
-
-                alert(
-                    "Une erreur est survenue lors de l'envoi."
+            const btn =
+                document.getElementById(
+                    'submitBtn'
                 );
 
-                btn.disabled = false;
 
-                btn.innerHTML =
-                    "Confirmer ma venue";
+            btn.innerHTML =
+                "Envoi...";
 
-            });
+            btn.disabled = true;
 
-    });
+
+            fetch(
+                scriptURL,
+                {
+                    method: 'POST',
+                    body: new FormData(form)
+                }
+            )
+                .then(() => {
+
+                    btn.innerHTML =
+                        "Merci !";
+
+
+                    form.reset();
+
+
+                    document.getElementById(
+                        'count_mairie'
+                    ).style.display = 'none';
+
+
+                    document.getElementById(
+                        'count_houppa'
+                    ).style.display = 'none';
+
+
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "premiere-page.html";
+
+                    }, 2000);
+
+                })
+                .catch(() => {
+
+                    alert(
+                        "Une erreur est survenue lors de l'envoi."
+                    );
+
+
+                    btn.disabled = false;
+
+
+                    btn.innerHTML =
+                        "Confirmer ma venue";
+
+                });
+
+        }
+    );
 
 </script>
 
