@@ -25,9 +25,9 @@
             overflow-x: hidden;
         }
 
-        /* =========================
+        /* =========================================
            FOND
-        ========================= */
+        ========================================= */
 
         .bg-container {
             position: fixed;
@@ -42,81 +42,95 @@
         .bg-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.02);
             z-index: 2;
         }
 
-        /* =========================
+        /* =========================================
            CONTENU
-        ========================= */
+        ========================================= */
 
         .main-ui {
             position: relative;
             z-index: 10;
             min-height: 100dvh;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             padding: 20px;
         }
+
+        /* =========================================
+           CARTE CENTRALE
+        ========================================= */
 
         .overlay-card {
             width: min(460px, 100%);
 
             padding: 38px 28px 25px;
 
-            background: rgba(255, 255, 255, 0.43);
+            background: rgba(255, 255, 255, 0.30);
 
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
 
-            border: 1px solid rgba(255, 255, 255, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.30);
 
             box-shadow:
-                    0 12px 40px rgba(59, 30, 47, 0.14);
+                    0 10px 35px rgba(198, 106, 74, 0.10);
 
             text-align: center;
 
-            animation: fadeIn 1.4s ease-out;
+            animation: fadeIn 1.2s ease-out;
         }
 
-        /* =========================
+        /* =========================================
            EN-TÊTE
-        ========================= */
+        ========================================= */
 
         .top-label {
+            font-family: 'Montserrat', sans-serif;
             font-size: 8px;
             text-transform: uppercase;
             letter-spacing: 4px;
-            color: #3b1e2f;
-            font-weight: 600;
-            opacity: 0.75;
+
+            color: #C66A4A;
+            font-weight: 700;
+            opacity: 0.85;
 
             margin-bottom: 18px;
+
+            text-shadow:
+                    0 0 8px rgba(255, 255, 255, 1),
+                    0 0 15px rgba(255, 255, 255, 0.8);
         }
 
         .script-title {
             font-family: 'Great Vibes', cursive;
+
             font-size: clamp(3.8rem, 15vw, 5rem);
+
             font-weight: 400;
             line-height: 0.95;
-            color: #3b1e2f;
 
-            margin-top: 0;
+            color: #C66A4A;
+
             margin-bottom: 12px;
 
             text-shadow:
-                    0 0 10px rgba(255,255,255,0.95),
-                    0 0 20px rgba(255,255,255,0.8),
-                    0 0 35px rgba(255,255,255,0.6);
+                    0 0 10px rgba(255, 255, 255, 0.95),
+                    0 0 25px rgba(255, 255, 255, 0.8),
+                    0 0 45px rgba(255, 255, 255, 0.5);
         }
 
         .title-decoration {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
 
+            gap: 10px;
             margin-bottom: 10px;
         }
 
@@ -127,31 +141,41 @@
             width: 42px;
             height: 1px;
 
-            background: #3b1e2f;
-            opacity: 0.4;
+            background: #C66A4A;
+            opacity: 0.5;
         }
 
         .title-decoration span {
-            color: #3b1e2f;
+            color: #C66A4A;
+
             font-size: 12px;
-            opacity: 0.7;
+            opacity: 0.8;
+
+            text-shadow:
+                    0 0 8px rgba(255, 255, 255, 1),
+                    0 0 15px rgba(255, 255, 255, 0.8);
         }
 
         .instruction {
             font-family: 'Montserrat', sans-serif;
+
             font-size: 9px;
             line-height: 1.5;
-            color: #2a1522;
+
+            color: #6F3828;
             font-style: italic;
 
             margin-bottom: 20px;
 
             opacity: 0.8;
+
+            text-shadow:
+                    0 0 7px rgba(255, 255, 255, 0.8);
         }
 
-        /* =========================
+        /* =========================================
            FORMULAIRE
-        ========================= */
+        ========================================= */
 
         .rsvp-form {
             text-align: left;
@@ -161,14 +185,19 @@
             display: block;
 
             font-family: 'Cinzel', serif;
+
             font-size: 9px;
-            color: #3b1e2f;
+
+            color: #C66A4A;
 
             margin-top: 14px;
             margin-bottom: 7px;
 
             letter-spacing: 1.2px;
             font-weight: 600;
+
+            text-shadow:
+                    0 0 6px rgba(255, 255, 255, 0.8);
         }
 
         input[type="text"],
@@ -178,11 +207,11 @@
             padding: 10px 9px;
 
             border: none;
-            border-bottom: 1px solid rgba(59, 30, 47, 0.55);
+            border-bottom: 1px solid rgba(198, 106, 74, 0.55);
 
             outline: none;
 
-            background: rgba(255,255,255,0.22);
+            background: rgba(255, 255, 255, 0.18);
 
             color: #1a1a1a;
 
@@ -194,8 +223,12 @@
 
         input[type="text"]:focus,
         input[type="number"]:focus {
-            border-bottom-color: #3b1e2f;
-            background: rgba(255,255,255,0.4);
+            border-bottom-color: #C66A4A;
+
+            background: rgba(255, 255, 255, 0.30);
+
+            box-shadow:
+                    0 4px 10px rgba(198, 106, 74, 0.08);
         }
 
         input::placeholder {
@@ -203,33 +236,40 @@
             opacity: 0.65;
         }
 
-        /* =========================
+        /* =========================================
            OPTIONS
-        ========================= */
+        ========================================= */
 
         .presence-options {
             display: flex;
             gap: 25px;
+
             margin-top: 3px;
         }
 
         .option-item {
             display: flex;
             align-items: center;
+
             gap: 6px;
 
             cursor: pointer;
 
             font-family: 'Montserrat', sans-serif;
+
             font-size: 8px;
 
             text-transform: uppercase;
             letter-spacing: 1px;
 
-            color: #2a1522;
+            color: #6F3828;
+
             font-weight: 600;
 
             margin: 0;
+
+            text-shadow:
+                    0 0 6px rgba(255, 255, 255, 0.7);
         }
 
         input[type="radio"] {
@@ -239,13 +279,18 @@
             width: 13px;
             height: 13px;
 
-            border: 1px solid #3b1e2f;
+            border: 1px solid #C66A4A;
             border-radius: 50%;
 
-            background: rgba(255,255,255,0.25);
+            background: rgba(255, 255, 255, 0.20);
 
             position: relative;
             cursor: pointer;
+        }
+
+        input[type="radio"]:checked {
+            box-shadow:
+                    0 0 8px rgba(198, 106, 74, 0.25);
         }
 
         input[type="radio"]:checked::after {
@@ -258,15 +303,15 @@
 
             border-radius: 50%;
 
-            background: #3b1e2f;
+            background: #C66A4A;
 
             top: 2px;
             left: 2px;
         }
 
-        /* =========================
+        /* =========================================
            NOMBRE DE PERSONNES
-        ========================= */
+        ========================================= */
 
         .guest-count-box {
             display: none;
@@ -280,23 +325,24 @@
             font-size: 0.8rem;
         }
 
-        /* =========================
+        /* =========================================
            SÉPARATEUR
-        ========================= */
+        ========================================= */
 
         .form-divider {
             width: 45px;
             height: 1px;
 
-            background: #3b1e2f;
-            opacity: 0.4;
+            background: #C66A4A;
+
+            opacity: 0.5;
 
             margin: 20px auto 5px;
         }
 
-        /* =========================
+        /* =========================================
            BOUTON
-        ========================= */
+        ========================================= */
 
         .btn-submit {
             width: 100%;
@@ -307,7 +353,7 @@
 
             border: none;
 
-            background: #3b1e2f;
+            background: #C66A4A;
             color: #fff;
 
             font-family: 'Montserrat', sans-serif;
@@ -321,14 +367,25 @@
             cursor: pointer;
 
             box-shadow:
-                    0 5px 18px rgba(59, 30, 47, 0.25);
+                    0 5px 18px rgba(198, 106, 74, 0.3);
 
-            transition: 0.3s ease;
+            transition:
+                    transform 0.3s ease,
+                    background 0.3s ease,
+                    box-shadow 0.3s ease;
         }
 
         .btn-submit:hover {
-            background: #52283f;
+            background: #B85D40;
+
             transform: translateY(-2px);
+
+            box-shadow:
+                    0 8px 25px rgba(198, 106, 74, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(-1px);
         }
 
         .btn-submit:disabled {
@@ -337,9 +394,9 @@
             transform: none;
         }
 
-        /* =========================
+        /* =========================================
            RETOUR
-        ========================= */
+        ========================================= */
 
         .back-btn {
             display: inline-block;
@@ -348,29 +405,33 @@
 
             text-decoration: none;
 
-            color: #3b1e2f;
+            color: #C66A4A;
 
             font-size: 8px;
 
             text-transform: uppercase;
             letter-spacing: 3px;
 
-            opacity: 0.65;
+            opacity: 0.75;
 
-            border-bottom: 1px solid rgba(59, 30, 47, 0.55);
+            border-bottom: 1px solid rgba(198, 106, 74, 0.55);
 
             padding-bottom: 3px;
 
             transition: 0.25s ease;
+
+            text-shadow:
+                    0 0 7px rgba(255, 255, 255, 0.8);
         }
 
         .back-btn:hover {
             opacity: 1;
+            color: #B85D40;
         }
 
-        /* =========================
+        /* =========================================
            ANIMATIONS
-        ========================= */
+        ========================================= */
 
         @keyframes fadeIn {
             from {
@@ -396,9 +457,9 @@
             }
         }
 
-        /* =========================
+        /* =========================================
            MOBILE
-        ========================= */
+        ========================================= */
 
         @media (max-width: 600px) {
 
@@ -427,9 +488,9 @@
             }
         }
 
-        /* =========================
+        /* =========================================
            PETITS ÉCRANS
-        ========================= */
+        ========================================= */
 
         @media (max-height: 700px) {
 
@@ -475,10 +536,7 @@
 
 <body>
 
-<!-- FOND -->
 <div class="bg-container"></div>
-
-<!-- VOILE BLANC -->
 <div class="bg-overlay"></div>
 
 <main class="main-ui">
@@ -486,6 +544,7 @@
     <div class="overlay-card">
 
         <!-- EN-TÊTE -->
+
         <div class="top-label">
             Sephora & Jonathan
         </div>
@@ -503,6 +562,7 @@
         </p>
 
         <!-- FORMULAIRE -->
+
         <form id="rsvpForm" class="rsvp-form">
 
             <input
@@ -518,6 +578,7 @@
             >
 
             <!-- NOM -->
+
             <label>
                 Nom & Prénom
             </label>
@@ -530,6 +591,7 @@
             >
 
             <!-- MAIRIE -->
+
             <label>
                 Mairie — 7 décembre 2026
             </label>
@@ -537,6 +599,7 @@
             <div class="presence-options">
 
                 <label class="option-item">
+
                     <input
                             type="radio"
                             name="Mairie_present"
@@ -544,17 +607,22 @@
                             onclick="showCount('mairie', true)"
                             required
                     >
+
                     Présent
+
                 </label>
 
                 <label class="option-item">
+
                     <input
                             type="radio"
                             name="Mairie_present"
                             value="Non"
                             onclick="showCount('mairie', false)"
                     >
+
                     Non
+
                 </label>
 
             </div>
@@ -563,15 +631,18 @@
                     id="count_mairie"
                     class="guest-count-box"
             >
+
                 <input
                         type="number"
                         name="Mairie_nombre"
                         placeholder="Nombre de personnes"
                         min="1"
                 >
+
             </div>
 
             <!-- HOUPPA -->
+
             <label>
                 Houppa & Soirée — 8 décembre 2026
             </label>
@@ -579,6 +650,7 @@
             <div class="presence-options">
 
                 <label class="option-item">
+
                     <input
                             type="radio"
                             name="Houppa_present"
@@ -586,17 +658,22 @@
                             onclick="showCount('houppa', true)"
                             required
                     >
+
                     Présent
+
                 </label>
 
                 <label class="option-item">
+
                     <input
                             type="radio"
                             name="Houppa_present"
                             value="Non"
                             onclick="showCount('houppa', false)"
                     >
+
                     Non
+
                 </label>
 
             </div>
@@ -605,17 +682,20 @@
                     id="count_houppa"
                     class="guest-count-box"
             >
+
                 <input
                         type="number"
                         name="Houppa_nombre"
                         placeholder="Nombre de personnes"
                         min="1"
                 >
+
             </div>
 
             <div class="form-divider"></div>
 
             <!-- BOUTON -->
+
             <button
                     type="submit"
                     class="btn-submit"
@@ -627,6 +707,7 @@
         </form>
 
         <!-- RETOUR -->
+
         <a
                 href="menu.html"
                 class="back-btn"
@@ -640,9 +721,9 @@
 
 <script>
 
-    /* =========================
+    /* =========================================
        AFFICHAGE NOMBRE INVITÉS
-    ========================= */
+    ========================================= */
 
     function showCount(event, isPresent) {
 
@@ -664,13 +745,14 @@
         } else {
 
             input.required = true;
+
         }
     }
 
 
-    /* =========================
+    /* =========================================
        GOOGLE APPS SCRIPT
-    ========================= */
+    ========================================= */
 
     const scriptURL =
         'https://script.google.com/macros/s/AKfycbxRJvIxCqOPLGQ3IKx7YEEGptfV872PrGsRdNbqHJqQUHWMJnn4sEFjoks-qmXlCGNLPw/exec';
@@ -701,6 +783,9 @@
 
                 form.reset();
 
+                document.getElementById('count_mairie').style.display = 'none';
+                document.getElementById('count_houppa').style.display = 'none';
+
                 setTimeout(() => {
 
                     window.location.href =
@@ -719,6 +804,7 @@
 
                 btn.innerHTML =
                     "Confirmer ma venue";
+
             });
 
     });
