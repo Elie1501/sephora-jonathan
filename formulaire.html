@@ -1,42 +1,39 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    >
+    <title>Réponse — Sephora & Jonathan</title>
 
-    <title>RSVP - Sephora & Jonathan</title>
+    <!-- POLICES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-            href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap"
             rel="stylesheet"
     >
 
     <style>
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         html,
         body {
             width: 100%;
             min-height: 100%;
-            background: #000;
-            font-family: 'Montserrat', sans-serif;
         }
 
         body {
+            font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
             overflow-y: auto;
+            color: #1a1a1a;
         }
 
         /* =========================================
@@ -46,45 +43,34 @@
         .bg-container {
             position: fixed;
             inset: 0;
+            z-index: -3;
 
-            width: 100%;
-            height: 100%;
-
-            background: url('fond1.png') no-repeat center center;
+            background-image: url("fond1.png");
             background-size: cover;
-
-            z-index: 1;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .bg-overlay {
             position: fixed;
             inset: 0;
+            z-index: -2;
 
-            background: rgba(255, 255, 255, 0.02);
-
-            z-index: 2;
+            background: rgba(255,255,255,.02);
         }
 
         /* =========================================
-           CONTENU
+           CONTENU PRINCIPAL
         ========================================= */
 
         .main-ui {
-            position: relative;
-            z-index: 10;
-
-            width: 100%;
             min-height: 100dvh;
 
             display: flex;
-            flex-direction: column;
-
-            align-items: center;
             justify-content: center;
+            align-items: center;
 
-            padding: 20px;
-
-            text-align: center;
+            padding: 25px 15px;
         }
 
         /* =========================================
@@ -92,170 +78,87 @@
         ========================================= */
 
         .overlay-card {
-
             width: min(460px, 100%);
 
-            padding: 34px 28px 27px;
+            padding: 34px 30px 30px;
 
-            /* BLOC BLANC PLUS OPAQUE */
-            background: rgba(255, 255, 255, 0.65);
+            background: rgba(255,255,255,.65);
 
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
 
-            border: 1px solid rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(255,255,255,.75);
 
             box-shadow:
-                    0 10px 35px rgba(198, 106, 74, 0.10);
+                    0 15px 40px rgba(198,106,74,.15);
+
+            border-radius: 4px;
 
             text-align: center;
-
-            animation: fadeIn 1.2s ease-out;
         }
 
         /* =========================================
-           EN-TÊTE
+           TITRES
         ========================================= */
 
         .top-label {
-
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Cinzel', serif;
 
             font-size: 10px;
-
-            text-transform: uppercase;
-
             letter-spacing: 3px;
 
-            line-height: 1.6;
-
             color: #C66A4A;
 
-            font-weight: 800;
+            margin-bottom: 7px;
 
-            margin-bottom: 14px;
-
-            text-shadow:
-                    0 0 8px rgba(255,255,255,1),
-                    0 0 15px rgba(255,255,255,.85);
+            text-transform: uppercase;
         }
-
-        /* =========================================
-           TITRE
-        ========================================= */
 
         .script-title {
-
             font-family: 'Great Vibes', cursive;
 
-            font-size: clamp(4rem, 15vw, 5rem);
-
+            font-size: 48px;
             font-weight: 400;
-
-            line-height: .95;
 
             color: #C66A4A;
 
-            margin-bottom: 8px;
+            line-height: 1;
 
             text-shadow:
-                    0 0 10px rgba(255,255,255,.95),
-                    0 0 25px rgba(255,255,255,.8),
-                    0 0 45px rgba(255,255,255,.5);
-        }
+                    0 1px 4px rgba(255,255,255,.8);
 
-        /* =========================================
-           DÉCORATION
-        ========================================= */
+            margin-bottom: 8px;
+        }
 
         .title-decoration {
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            gap: 10px;
-
-            margin-bottom: 13px;
-        }
-
-        .title-decoration::before,
-        .title-decoration::after {
-
-            content: "";
-
-            width: 42px;
-
+            width: 45px;
             height: 1px;
+
+            margin: 0 auto 18px;
 
             background: #C66A4A;
 
-            opacity: .6;
+            opacity: .65;
         }
-
-        .title-decoration span {
-
-            color: #C66A4A;
-
-            font-size: 13px;
-
-            opacity: .9;
-
-            text-shadow:
-                    0 0 8px rgba(255,255,255,1),
-                    0 0 15px rgba(255,255,255,.8);
-        }
-
-        /* =========================================
-           INSTRUCTION
-        ========================================= */
 
         .instruction {
+            font-family: 'Cinzel', serif;
 
-            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            letter-spacing: 1px;
 
-            font-size: 10px;
+            margin-bottom: 7px;
 
-            line-height: 1.6;
-
-            color: #6F3828;
-
-            font-style: italic;
-
-            font-weight: 600;
-
-            margin-bottom: 9px;
-
-            text-shadow:
-                    0 0 7px rgba(255,255,255,.9);
+            color: #333;
         }
 
-        /* =========================================
-           DATE LIMITE
-        ========================================= */
-
         .deadline {
-
-            font-family: 'Montserrat', sans-serif;
-
-            font-size: 10px;
-
-            line-height: 1.5;
-
-            color: #C66A4A;
-
-            font-weight: 800;
-
+            font-size: 9px;
             letter-spacing: .8px;
 
-            margin-top: 0;
+            color: #555;
 
-            margin-bottom: 18px;
-
-            text-shadow:
-                    0 0 7px rgba(255,255,255,.95),
-                    0 0 12px rgba(255,255,255,.75);
+            margin-bottom: 25px;
         }
 
         /* =========================================
@@ -263,53 +166,96 @@
         ========================================= */
 
         .rsvp-form {
+            width: 100%;
+
             text-align: left;
         }
 
-        /* =========================================
-           LABELS
-        ========================================= */
-
-        .rsvp-form > label:not(.option-item) {
-
+        .rsvp-form label {
             display: block;
 
             font-family: 'Cinzel', serif;
 
             font-size: 10px;
+            letter-spacing: .7px;
 
-            color: #C66A4A;
+            color: #333;
 
-            margin-top: 15px;
             margin-bottom: 7px;
-
-            letter-spacing: 1.1px;
-
-            font-weight: 800;
-
-            line-height: 1.5;
-
-            text-shadow:
-                    0 0 6px rgba(255,255,255,.9);
         }
 
         /* =========================================
            INPUTS
         ========================================= */
 
-        input[type="text"],
-        input[type="number"] {
+        .rsvp-form input[type="text"],
+        .rsvp-form input[type="number"] {
 
             width: 100%;
 
-            padding: 11px 10px;
+            padding: 10px 9px;
 
             border: none;
-
-            border-bottom:
-                    1px solid rgba(198,106,74,.55);
+            border-bottom: 1px solid rgba(198,106,74,.55);
 
             outline: none;
+
+            background: rgba(255,255,255,.25);
+
+            color: #1a1a1a;
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 12px;
+
+            margin-bottom: 18px;
+
+            transition: .25s ease;
+        }
+
+        .rsvp-form input[type="text"]:focus,
+        .rsvp-form input[type="number"]:focus {
+
+            border-bottom-color: #C66A4A;
+
+            background: rgba(255,255,255,.45);
+
+            box-shadow:
+                    0 4px 10px rgba(198,106,74,.08);
+        }
+
+        .rsvp-form input::placeholder {
+            color: #555;
+            opacity: .65;
+        }
+
+        /* =========================================
+           MOT POUR LES MARIÉS
+        ========================================= */
+
+        .message-group {
+            margin-bottom: 20px;
+        }
+
+        .message-group label {
+            margin-bottom: 8px;
+        }
+
+        .message-box {
+
+            width: 100%;
+
+            min-height: 100px;
+
+            padding: 12px;
+
+            border: 1px solid rgba(198,106,74,.45);
+
+            border-radius: 8px;
+
+            outline: none;
+
+            resize: vertical;
 
             background: rgba(255,255,255,.35);
 
@@ -317,19 +263,18 @@
 
             font-family: 'Montserrat', sans-serif;
 
-            font-size: 14px;
+            font-size: 12px;
 
-            font-weight: 600;
+            font-weight: 500;
 
-            border-radius: 3px 3px 0 0;
+            line-height: 1.5;
 
             transition: .25s ease;
         }
 
-        input[type="text"]:focus,
-        input[type="number"]:focus {
+        .message-box:focus {
 
-            border-bottom-color: #C66A4A;
+            border-color: #C66A4A;
 
             background: rgba(255,255,255,.55);
 
@@ -337,7 +282,7 @@
                     0 4px 10px rgba(198,106,74,.08);
         }
 
-        input::placeholder {
+        .message-box::placeholder {
 
             color: #555;
 
@@ -345,116 +290,106 @@
         }
 
         /* =========================================
-           OPTIONS
-        ========================================= */
-
-        .presence-options {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 25px;
-
-            margin-top: 4px;
-        }
-
-        .option-item {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 7px;
-
-            cursor: pointer;
-
-            font-family: 'Montserrat', sans-serif;
-
-            font-size: 10px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            color: #6F3828;
-
-            font-weight: 800;
-
-            margin: 0;
-
-            line-height: 1.4;
-
-            text-shadow:
-                    0 0 6px rgba(255,255,255,.8);
-        }
-
-        /* =========================================
            RADIO
         ========================================= */
 
-        input[type="radio"] {
+        .radio-group {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            margin-bottom: 10px;
+        }
+
+        .radio-option {
+
+            display: flex !important;
+
+            align-items: center;
+
+            gap: 6px;
+
+            margin: 0 !important;
+
+            font-family: 'Montserrat', sans-serif !important;
+
+            font-size: 11px !important;
+
+            letter-spacing: 0 !important;
+
+            cursor: pointer;
+        }
+
+        .radio-option input {
 
             appearance: none;
             -webkit-appearance: none;
 
-            width: 16px;
-            height: 16px;
+            width: 15px;
+            height: 15px;
 
-            flex-shrink: 0;
-
-            border:
-                    1.5px solid #C66A4A;
+            border: 1px solid #C66A4A;
 
             border-radius: 50%;
 
-            background:
-                    rgba(255,255,255,.35);
-
-            position: relative;
+            background: rgba(255,255,255,.4);
 
             cursor: pointer;
+
+            position: relative;
         }
 
-        input[type="radio"]:checked {
-
-            box-shadow:
-                    0 0 8px rgba(198,106,74,.25);
-        }
-
-        input[type="radio"]:checked::after {
+        .radio-option input:checked::after {
 
             content: "";
 
             position: absolute;
 
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
+
+            top: 3px;
+            left: 3px;
 
             border-radius: 50%;
 
             background: #C66A4A;
-
-            top: 2.5px;
-            left: 2.5px;
         }
 
         /* =========================================
-           NOMBRE DE PERSONNES
+           NOMBRE D'INVITÉS
         ========================================= */
 
         .guest-count-box {
 
             display: none;
 
-            margin-top: 8px;
+            margin: 5px 0 18px;
 
-            animation: slideDown .3s ease;
+            padding: 10px;
+
+            background: rgba(255,255,255,.25);
+
+            border-left: 2px solid #C66A4A;
+        }
+
+        .guest-count-box label {
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 9px;
+
+            letter-spacing: .3px;
+
+            margin-bottom: 5px;
         }
 
         .guest-count-box input {
 
-            font-size: 13px;
+            margin-bottom: 0 !important;
         }
 
         /* =========================================
@@ -463,15 +398,13 @@
 
         .form-divider {
 
-            width: 55px;
+            width: 100%;
 
             height: 1px;
 
-            background: #C66A4A;
+            background: rgba(198,106,74,.25);
 
-            opacity: .55;
-
-            margin: 19px auto 5px;
+            margin: 8px 0 20px;
         }
 
         /* =========================================
@@ -482,48 +415,33 @@
 
             width: 100%;
 
-            margin-top: 22px;
-
-            padding: 13px 12px;
+            padding: 13px 15px;
 
             border: none;
 
             background: #C66A4A;
 
-            color: #fff;
+            color: white;
 
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Cinzel', serif;
 
-            text-transform: uppercase;
+            font-size: 10px;
 
-            letter-spacing: 2.5px;
-
-            font-size: 9px;
-
-            font-weight: 800;
+            letter-spacing: 1.5px;
 
             cursor: pointer;
 
-            box-shadow:
-                    0 5px 18px rgba(198,106,74,.3);
+            border-radius: 2px;
 
-            transition:
-                    transform .3s ease,
-                    background .3s ease,
-                    box-shadow .3s ease;
+            transition: .25s ease;
+
+            box-shadow:
+                    0 5px 15px rgba(198,106,74,.18);
         }
 
         .btn-submit:hover {
 
             background: #B85D40;
-
-            transform: translateY(-2px);
-
-            box-shadow:
-                    0 8px 25px rgba(198,106,74,.4);
-        }
-
-        .btn-submit:active {
 
             transform: translateY(-1px);
         }
@@ -532,7 +450,7 @@
 
             opacity: .7;
 
-            cursor: wait;
+            cursor: not-allowed;
 
             transform: none;
         }
@@ -543,70 +461,27 @@
 
         .back-btn {
 
-            display: inline-block;
+            display: block;
 
-            margin-top: 16px;
+            margin-top: 17px;
+
+            text-align: center;
+
+            color: #555;
 
             text-decoration: none;
 
-            color: #C66A4A;
+            font-family: 'Cinzel', serif;
 
             font-size: 9px;
 
-            text-transform: uppercase;
+            letter-spacing: 1px;
 
-            letter-spacing: 2.5px;
-
-            font-weight: 800;
-
-            opacity: .85;
-
-            border-bottom:
-                    1px solid rgba(198,106,74,.55);
-
-            padding-bottom: 3px;
-
-            transition: .25s ease;
-
-            text-shadow:
-                    0 0 7px rgba(255,255,255,.9);
+            transition: .2s ease;
         }
 
         .back-btn:hover {
-
-            opacity: 1;
-
-            color: #B85D40;
-        }
-
-        /* =========================================
-           ANIMATIONS
-        ========================================= */
-
-        @keyframes fadeIn {
-
-            from {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideDown {
-
-            from {
-                opacity: 0;
-                transform: translateY(-5px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            color: #C66A4A;
         }
 
         /* =========================================
@@ -616,435 +491,193 @@
         @media (max-width: 600px) {
 
             .main-ui {
+                align-items: flex-start;
 
-                min-height: 100dvh;
-
-                padding: 14px 10px;
-
-                justify-content: center;
+                padding: 20px 12px;
             }
 
             .overlay-card {
 
                 width: 100%;
 
-                max-width: 430px;
+                padding: 28px 20px 25px;
 
-                padding: 28px 19px 24px;
+                background: rgba(255,255,255,.65);
 
-                border-radius: 18px;
-
-                background: rgba(255, 255, 255, 0.65);
-
-                border: 1px solid rgba(255, 255, 255, 0.75);
+                border: 1px solid rgba(255,255,255,.75);
             }
-
-            /* EN-TÊTE */
 
             .top-label {
 
                 font-size: 10px;
 
-                font-weight: 800;
+                font-weight: 600;
 
-                letter-spacing: 2px;
-
-                margin-bottom: 12px;
+                letter-spacing: 2.5px;
             }
-
-            /* TITRE */
 
             .script-title {
 
-                font-size: 4.15rem;
-
-                margin-bottom: 7px;
+                font-size: 44px;
             }
-
-            .title-decoration {
-
-                margin-bottom: 12px;
-            }
-
-            .title-decoration::before,
-            .title-decoration::after {
-
-                width: 35px;
-
-                height: 2px;
-            }
-
-            .title-decoration span {
-
-                font-size: 14px;
-            }
-
-            /* INSTRUCTION */
 
             .instruction {
+
+                font-size: 11px;
+
+                font-weight: 600;
+
+                line-height: 1.5;
+            }
+
+            .deadline {
+
+                font-size: 9px;
+
+                font-weight: 600;
+
+                line-height: 1.5;
+
+                margin-bottom: 23px;
+            }
+
+            .rsvp-form label {
 
                 font-size: 10px;
 
                 font-weight: 700;
-
-                line-height: 1.6;
-
-                margin-bottom: 7px;
             }
 
-            /* DATE LIMITE */
-
-            .deadline {
-
-                font-size: 11px;
-
-                font-weight: 800;
-
-                letter-spacing: .4px;
-
-                line-height: 1.6;
-
-                margin-top: 0;
-
-                margin-bottom: 15px;
-            }
-
-            /* LABELS */
-
-            .rsvp-form > label:not(.option-item) {
-
-                font-size: 11px;
-
-                font-weight: 800;
-
-                letter-spacing: .9px;
-
-                margin-top: 13px;
-
-                margin-bottom: 7px;
-            }
-
-            /* INPUTS */
-
-            input[type="text"],
-            input[type="number"] {
-
-                padding: 12px 10px;
-
-                font-size: 14px;
-
-                font-weight: 600;
-            }
-
-            /* OPTIONS */
-
-            .presence-options {
-
-                gap: 24px;
-
-                margin-top: 5px;
-            }
-
-            .option-item {
-
-                font-size: 10px;
-
-                font-weight: 800;
-
-                gap: 7px;
-            }
-
-            input[type="radio"] {
-
-                width: 17px;
-
-                height: 17px;
-            }
-
-            input[type="radio"]:checked::after {
-
-                width: 9px;
-
-                height: 9px;
-
-                top: 3px;
-
-                left: 3px;
-            }
-
-            /* NOMBRE */
-
-            .guest-count-box {
-
-                margin-top: 8px;
-            }
-
-            .guest-count-box input {
+            .rsvp-form input[type="text"],
+            .rsvp-form input[type="number"] {
 
                 font-size: 13px;
 
                 font-weight: 600;
-            }
-
-            /* SÉPARATEUR */
-
-            .form-divider {
-
-                width: 55px;
-
-                height: 2px;
-
-                margin: 16px auto 4px;
-            }
-
-            /* BOUTON */
-
-            .btn-submit {
-
-                margin-top: 19px;
-
-                padding: 14px 10px;
-
-                font-size: 9px;
-
-                font-weight: 800;
-
-                letter-spacing: 2.2px;
-            }
-
-            /* RETOUR */
-
-            .back-btn {
-
-                margin-top: 15px;
-
-                font-size: 9px;
-
-                font-weight: 800;
-
-                letter-spacing: 2.2px;
-            }
-        }
-
-        /* =========================================
-           TRÈS PETITS TÉLÉPHONES
-        ========================================= */
-
-        @media (max-width: 380px) {
-
-            .main-ui {
-
-                padding: 10px 7px;
-            }
-
-            .overlay-card {
-
-                padding: 23px 15px 20px;
-
-                background: rgba(255, 255, 255, 0.65);
-
-                border: 1px solid rgba(255, 255, 255, 0.75);
-            }
-
-            .top-label {
-
-                font-size: 9px;
-
-                letter-spacing: 1.5px;
-            }
-
-            .script-title {
-
-                font-size: 3.7rem;
-            }
-
-            .instruction {
-
-                font-size: 9.5px;
-            }
-
-            .deadline {
-
-                font-size: 10px;
-
-                font-weight: 800;
-
-                letter-spacing: .2px;
-
-                margin-bottom: 13px;
-            }
-
-            .rsvp-form > label:not(.option-item) {
-
-                font-size: 10px;
-
-                margin-top: 11px;
-            }
-
-            input[type="text"],
-            input[type="number"] {
-
-                font-size: 13px;
 
                 padding: 11px 9px;
             }
 
-            .option-item {
+            .message-box {
 
-                font-size: 9.5px;
+                min-height: 105px;
+
+                padding: 12px 10px;
+
+                font-size: 13px;
+
+                font-weight: 600;
+            }
+
+            .radio-option {
+
+                font-size: 12px !important;
+
+                font-weight: 600;
             }
 
             .btn-submit {
 
-                font-size: 8px;
+                font-size: 10px;
 
-                letter-spacing: 1.8px;
+                font-weight: 600;
+
+                padding: 14px;
             }
 
             .back-btn {
 
-                font-size: 8px;
+                font-size: 9px;
+
+                font-weight: 600;
             }
         }
 
         /* =========================================
-           PETITS ÉCRANS EN HAUTEUR
+           PETITS ÉCRANS
         ========================================= */
 
-        @media (max-height: 700px) and (max-width: 600px) {
-
-            .main-ui {
-
-                justify-content: flex-start;
-
-                padding-top: 10px;
-
-                padding-bottom: 10px;
-            }
+        @media (max-width: 380px) {
 
             .overlay-card {
 
-                padding-top: 20px;
-
-                padding-bottom: 18px;
-
-                background: rgba(255, 255, 255, 0.65);
-
-                border: 1px solid rgba(255, 255, 255, 0.75);
-            }
-
-            .top-label {
-
-                margin-bottom: 7px;
+                padding: 25px 17px 22px;
             }
 
             .script-title {
 
-                font-size: 3.5rem;
+                font-size: 40px;
             }
 
-            .title-decoration {
+            .radio-group {
 
-                margin-bottom: 8px;
+                gap: 12px;
             }
 
-            .instruction {
+            .radio-option {
 
-                margin-bottom: 5px;
+                font-size: 11px !important;
             }
+        }
 
-            .deadline {
+        @media (max-height: 700px) {
 
-                margin-bottom: 9px;
+            .main-ui {
 
-                font-size: 9px;
-            }
-
-            .rsvp-form > label:not(.option-item) {
-
-                margin-top: 8px;
-
-                margin-bottom: 5px;
-            }
-
-            input[type="text"],
-            input[type="number"] {
-
-                padding: 9px;
-            }
-
-            .form-divider {
-
-                margin-top: 12px;
-            }
-
-            .btn-submit {
-
-                margin-top: 14px;
-            }
-
-            .back-btn {
-
-                margin-top: 10px;
+                align-items: flex-start;
             }
         }
 
     </style>
-
 </head>
 
 <body>
 
-<div class="bg-container"></div>
+<!-- =========================================
+     FOND
+========================================= -->
 
+<div class="bg-container"></div>
 <div class="bg-overlay"></div>
 
 
+<!-- =========================================
+     CONTENU
+========================================= -->
+
 <main class="main-ui">
 
-    <div class="overlay-card">
-
-        <!-- EN-TÊTE -->
+    <section class="overlay-card">
 
         <div class="top-label">
             Sephora & Jonathan
         </div>
 
-
-        <!-- TITRE -->
-
         <h1 class="script-title">
             Réponse
         </h1>
 
-
-        <!-- DÉCORATION -->
-
-        <div class="title-decoration">
-            <span>♡</span>
-        </div>
-
-
-        <!-- MESSAGE -->
+        <div class="title-decoration"></div>
 
         <p class="instruction">
             Merci de confirmer votre présence
         </p>
-
-
-        <!-- DATE LIMITE -->
 
         <p class="deadline">
             Votre réponse est attendue avant le 16/11/2026
         </p>
 
 
-        <!-- FORMULAIRE -->
+        <!-- =====================================
+             FORMULAIRE
+        ====================================== -->
 
         <form
-                id="rsvpForm"
                 class="rsvp-form"
+                id="rsvpForm"
         >
+
+            <!-- VALEURS PAR DÉFAUT CHABBAT -->
 
             <input
                     type="hidden"
@@ -1061,49 +694,72 @@
 
             <!-- NOM -->
 
-            <label>
+            <label for="nom">
                 Nom & Prénom
             </label>
 
             <input
                     type="text"
+                    id="nom"
                     name="Nom"
                     required
                     placeholder="Ex : Famille Cohen"
             >
 
 
-            <!-- MAIRIE -->
+            <!-- =================================
+                 MOT POUR LES MARIÉS
+            ================================== -->
+
+            <div class="message-group">
+
+                <label for="message">
+                    Un mot pour les mariés
+                </label>
+
+                <textarea
+                        id="message"
+                        name="Mot_pour_les_maries"
+                        class="message-box"
+                        placeholder="Écrivez-nous un petit mot..."
+                        rows="4"
+                ></textarea>
+
+            </div>
+
+
+            <!-- =================================
+                 MAIRIE
+            ================================== -->
 
             <label>
                 Mairie — 7 décembre 2026
             </label>
 
+            <div class="radio-group">
 
-            <div class="presence-options">
-
-                <label class="option-item">
+                <label class="radio-option">
 
                     <input
                             type="radio"
                             name="Mairie_present"
-                            value="Present"
-                            onclick="showCount('mairie', true)"
+                            value="Oui"
+                            onchange="showCount(event, true)"
                             required
                     >
 
-                    Présent
+                    Oui
 
                 </label>
 
 
-                <label class="option-item">
+                <label class="radio-option">
 
                     <input
                             type="radio"
                             name="Mairie_present"
                             value="Non"
-                            onclick="showCount('mairie', false)"
+                            onchange="showCount(event, false)"
                     >
 
                     Non
@@ -1114,51 +770,65 @@
 
 
             <div
-                    id="count_mairie"
                     class="guest-count-box"
+                    id="Mairie_count_box"
             >
+
+                <label for="Mairie_nombre">
+                    Nombre de personnes
+                </label>
 
                 <input
                         type="number"
+                        id="Mairie_nombre"
                         name="Mairie_nombre"
-                        placeholder="Nombre de personnes"
                         min="1"
+                        max="20"
+                        value="1"
                 >
 
             </div>
 
 
-            <!-- HOUPPA -->
+            <!-- =================================
+                 SÉPARATEUR
+            ================================== -->
+
+            <div class="form-divider"></div>
+
+
+            <!-- =================================
+                 HOUPPA
+            ================================== -->
 
             <label>
                 Houppa & Soirée — 8 décembre 2026
             </label>
 
+            <div class="radio-group">
 
-            <div class="presence-options">
-
-                <label class="option-item">
+                <label class="radio-option">
 
                     <input
                             type="radio"
                             name="Houppa_present"
-                            value="Present"
-                            onclick="showCount('houppa', true)"
+                            value="Oui"
+                            onchange="showCount(event, true)"
                             required
                     >
 
-                    Présent
+                    Oui
 
                 </label>
 
 
-                <label class="option-item">
+                <label class="radio-option">
 
                     <input
                             type="radio"
                             name="Houppa_present"
                             value="Non"
-                            onclick="showCount('houppa', false)"
+                            onchange="showCount(event, false)"
                     >
 
                     Non
@@ -1169,24 +839,29 @@
 
 
             <div
-                    id="count_houppa"
                     class="guest-count-box"
+                    id="Houppa_count_box"
             >
+
+                <label for="Houppa_nombre">
+                    Nombre de personnes
+                </label>
 
                 <input
                         type="number"
+                        id="Houppa_nombre"
                         name="Houppa_nombre"
-                        placeholder="Nombre de personnes"
                         min="1"
+                        max="20"
+                        value="1"
                 >
 
             </div>
 
 
-            <div class="form-divider"></div>
-
-
-            <!-- BOUTON -->
+            <!-- =================================
+                 ENVOYER
+            ================================== -->
 
             <button
                     type="submit"
@@ -1199,142 +874,171 @@
         </form>
 
 
-        <!-- RETOUR -->
+        <!-- =====================================
+             RETOUR
+        ====================================== -->
 
         <a
                 href="menu.html"
                 class="back-btn"
         >
-            Retour
+            ← Retour
         </a>
 
-    </div>
+    </section>
 
 </main>
 
 
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
 <script>
 
     /* =========================================
-       AFFICHAGE NOMBRE INVITÉS
+       AFFICHER / MASQUER NOMBRE DE PERSONNES
     ========================================= */
 
     function showCount(event, isPresent) {
 
-        const box =
-            document.getElementById(
-                'count_' + event
-            );
+        const name = event.target.name;
 
-        const input =
-            box.querySelector('input');
+        let boxId = "";
 
+        if (name === "Mairie_present") {
 
-        box.style.display =
-            isPresent
-                ? 'block'
-                : 'none';
+            boxId = "Mairie_count_box";
 
+        } else if (name === "Houppa_present") {
 
-        if (!isPresent) {
+            boxId = "Houppa_count_box";
 
-            input.value = "";
+        }
 
-            input.required = false;
+        const box = document.getElementById(boxId);
+
+        if (!box) {
+            return;
+        }
+
+        if (isPresent) {
+
+            box.style.display = "block";
 
         } else {
 
-            input.required = true;
+            box.style.display = "none";
 
         }
     }
 
 
     /* =========================================
-       GOOGLE APPS SCRIPT
+       ENVOI GOOGLE APPS SCRIPT
     ========================================= */
 
+    const form = document.getElementById("rsvpForm");
+
+    const submitBtn = document.getElementById("submitBtn");
+
     const scriptURL =
-        'https://script.google.com/macros/s/AKfycbxRJvIxCqOPLGQ3IKx7YEEGptfV872PrGsRdNbqHJqQUHWMJnn4sEFjoks-qmXlCGNLPw/exec';
+        "https://script.google.com/macros/s/AKfycbxRJvIxCqOPLGQ3IKx7YEEGptfV872PrGsRdNbqHJqQUHWMJnn4sEFjoks-qmXlCGNLPw/exec";
 
 
-    const form =
-        document.getElementById('rsvpForm');
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
 
 
-    form.addEventListener(
-        'submit',
-        e => {
+        /* Désactivation du bouton */
 
-            e.preventDefault();
+        submitBtn.disabled = true;
+
+        submitBtn.textContent = "Envoi en cours...";
 
 
-            const btn =
+        /* Récupération des données */
+
+        const formData = new FormData(form);
+
+
+        /* Envoi */
+
+        fetch(scriptURL, {
+
+            method: "POST",
+
+            body: formData
+
+        })
+
+            .then(function(response) {
+
+                if (!response.ok) {
+                    throw new Error("Erreur serveur");
+                }
+
+                return response.text();
+
+            })
+
+            .then(function() {
+
+                /* Message de succès */
+
+                submitBtn.textContent = "Merci !";
+
+
+                /* Reset formulaire */
+
+                form.reset();
+
+
+                /* Cacher les compteurs */
+
                 document.getElementById(
-                    'submitBtn'
+                    "Mairie_count_box"
+                ).style.display = "none";
+
+
+                document.getElementById(
+                    "Houppa_count_box"
+                ).style.display = "none";
+
+
+                /*
+                    Redirection après confirmation
+                */
+
+                setTimeout(function() {
+
+                    window.location.href =
+                        "premiere-page.html";
+
+                }, 2000);
+
+            })
+
+            .catch(function(error) {
+
+                console.error(error);
+
+                alert(
+                    "Une erreur est survenue. Merci de réessayer."
                 );
 
 
-            btn.innerHTML =
-                "Envoi...";
+                submitBtn.disabled = false;
 
-            btn.disabled = true;
+                submitBtn.textContent =
+                    "Confirmer ma venue";
 
+            });
 
-            fetch(
-                scriptURL,
-                {
-                    method: 'POST',
-                    body: new FormData(form)
-                }
-            )
-                .then(() => {
-
-                    btn.innerHTML =
-                        "Merci !";
-
-
-                    form.reset();
-
-
-                    document.getElementById(
-                        'count_mairie'
-                    ).style.display = 'none';
-
-
-                    document.getElementById(
-                        'count_houppa'
-                    ).style.display = 'none';
-
-
-                    setTimeout(() => {
-
-                        window.location.href =
-                            "premiere-page.html";
-
-                    }, 2000);
-
-                })
-                .catch(() => {
-
-                    alert(
-                        "Une erreur est survenue lors de l'envoi."
-                    );
-
-
-                    btn.disabled = false;
-
-
-                    btn.innerHTML =
-                        "Confirmer ma venue";
-
-                });
-
-        }
-    );
+    });
 
 </script>
 
 </body>
-
 </html>
