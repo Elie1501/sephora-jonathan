@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Houppa & Soirée - Sephora & Jonathan</title>
+    <title>Mariage - Sephora & Jonathan</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700;800&family=Cinzel:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -19,10 +20,14 @@
         html,
         body {
             width: 100%;
-            height: 100dvh;
+            min-height: 100%;
             background: #000;
             font-family: 'Montserrat', sans-serif;
-            overflow: hidden;
+        }
+
+        body {
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         /* =========================================
@@ -39,10 +44,6 @@
             z-index: 1;
         }
 
-        /* =========================================
-           VOILE LÉGER
-        ========================================= */
-
         .bg-overlay {
             position: fixed;
             inset: 0;
@@ -57,8 +58,9 @@
         .main-ui {
             position: relative;
             z-index: 10;
+
             width: 100%;
-            height: 100dvh;
+            min-height: 100dvh;
 
             display: flex;
             flex-direction: column;
@@ -66,16 +68,18 @@
             justify-content: center;
 
             padding: 20px;
+
             text-align: center;
         }
 
         /* =========================================
-           CARTE CENTRALE
+           CARTE
         ========================================= */
 
         .content-card {
-            width: min(470px, 100%);
-            padding: 38px 28px 30px;
+            width: min(500px, 100%);
+
+            padding: 32px 28px 30px;
 
             background: rgba(255, 255, 255, 0.20);
 
@@ -91,25 +95,86 @@
         }
 
         /* =========================================
-           PETIT LABEL
+           PARENTS
+        ========================================= */
+
+        .parents-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+
+            align-items: center;
+
+            gap: 18px;
+
+            margin-bottom: 22px;
+        }
+
+        .parent-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .parent-side.left {
+            text-align: right;
+        }
+
+        .parent-side.right {
+            text-align: left;
+        }
+
+        .parent-name {
+            font-family: 'Cinzel', serif;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            line-height: 1.6;
+
+            letter-spacing: 0.8px;
+
+            color: #C66A4A;
+
+            text-shadow:
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 15px rgba(255,255,255,.85);
+        }
+
+        .parents-separator {
+            width: 1px;
+            height: 48px;
+
+            background: #C66A4A;
+
+            opacity: .55;
+        }
+
+        /* =========================================
+           INTRODUCTION
         ========================================= */
 
         .top-label {
             font-family: 'Montserrat', sans-serif;
-            font-size: 8px;
+
+            font-size: 10px;
+
             text-transform: uppercase;
-            letter-spacing: 4px;
+
+            letter-spacing: 2.5px;
+
+            line-height: 1.7;
 
             color: #C66A4A;
+
             font-weight: 700;
 
-            opacity: 0.85;
+            opacity: 1;
 
-            margin-bottom: 18px;
+            margin-bottom: 12px;
 
             text-shadow:
-                    0 0 8px rgba(255, 255, 255, 1),
-                    0 0 15px rgba(255, 255, 255, 0.8);
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 15px rgba(255,255,255,.85);
         }
 
         /* =========================================
@@ -118,18 +183,21 @@
 
         .script-title {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(3.8rem, 15vw, 5.2rem);
+
+            font-size: clamp(3.8rem, 14vw, 5rem);
+
             font-weight: 400;
-            line-height: 0.95;
+
+            line-height: .95;
 
             color: #C66A4A;
 
-            margin-bottom: 12px;
+            margin-bottom: 9px;
 
             text-shadow:
-                    0 0 10px rgba(255, 255, 255, 0.95),
-                    0 0 25px rgba(255, 255, 255, 0.8),
-                    0 0 45px rgba(255, 255, 255, 0.5);
+                    0 0 10px rgba(255,255,255,.95),
+                    0 0 25px rgba(255,255,255,.8),
+                    0 0 45px rgba(255,255,255,.5);
         }
 
         /* =========================================
@@ -138,212 +206,161 @@
 
         .title-decoration {
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
             gap: 10px;
 
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .title-decoration::before,
         .title-decoration::after {
             content: "";
 
-            width: 45px;
+            width: 42px;
+
             height: 1px;
 
             background: #C66A4A;
-            opacity: 0.5;
+
+            opacity: .6;
         }
 
         .title-decoration span {
             color: #C66A4A;
-            font-size: 12px;
-            opacity: 0.8;
+
+            font-size: 13px;
+
+            opacity: .9;
 
             text-shadow:
-                    0 0 8px rgba(255, 255, 255, 1),
-                    0 0 15px rgba(255, 255, 255, 0.8);
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 15px rgba(255,255,255,.8);
         }
 
         /* =========================================
-           NOMS
+           NOMS DES MARIÉS
         ========================================= */
 
-        .couple-names-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            gap: 18px;
-            margin-bottom: 20px;
-        }
-
-        .name-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .name-fr {
+        .couple-names {
             font-family: 'Great Vibes', cursive;
 
-            font-size: clamp(2.7rem, 11vw, 3.4rem);
+            font-size: clamp(3rem, 12vw, 4rem);
+
+            font-weight: 400;
+
+            line-height: 1;
 
             color: #C66A4A;
 
-            line-height: 0.9;
+            margin: 5px 0 15px;
 
             text-shadow:
-                    0 0 10px rgba(255, 255, 255, 0.95),
-                    0 0 20px rgba(255, 255, 255, 0.7);
-        }
-
-        .ampersand {
-            font-family: 'Great Vibes', cursive;
-
-            font-size: 2.6rem;
-
-            color: #C66A4A;
-
-            margin-top: -8px;
-
-            text-shadow:
-                    0 0 10px rgba(255, 255, 255, 0.95),
-                    0 0 20px rgba(255, 255, 255, 0.7);
+                    0 0 10px rgba(255,255,255,.95),
+                    0 0 20px rgba(255,255,255,.7);
         }
 
         /* =========================================
-           DATE / LIEU
+           DATE
         ========================================= */
-
-        .event-details {
-            margin-bottom: 17px;
-        }
 
         .date-text {
             font-family: 'Montserrat', sans-serif;
 
-            font-size: 10px;
-            font-weight: 700;
+            font-size: 12px;
+
+            font-weight: 800;
 
             text-transform: uppercase;
-            letter-spacing: 2.5px;
-
-            color: #C66A4A;
-
-            margin-bottom: 7px;
-
-            text-shadow:
-                    0 0 8px rgba(255, 255, 255, 1),
-                    0 0 15px rgba(255, 255, 255, 0.8);
-        }
-
-        .location-name {
-            font-family: 'Cinzel', serif;
-
-            font-size: clamp(1.1rem, 5vw, 1.35rem);
 
             letter-spacing: 2px;
-            font-weight: 700;
 
             color: #C66A4A;
+
+            line-height: 1.6;
 
             margin-bottom: 5px;
 
             text-shadow:
-                    0 0 8px rgba(255, 255, 255, 0.95),
-                    0 0 18px rgba(255, 255, 255, 0.7);
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 15px rgba(255,255,255,.8);
         }
 
-        /* =========================================
-           BLOC SOIRÉE ORIENTALE
-        ========================================= */
-
-        .oriental-box {
-            margin: 18px auto 15px;
-
-            width: min(330px, 95%);
-
-            padding: 14px 18px;
-
-            background: rgba(255, 255, 255, 0.18);
-
-            border: 1px solid rgba(198, 106, 74, 0.30);
-
-            position: relative;
-
-            box-shadow:
-                    0 5px 18px rgba(198, 106, 74, 0.06);
-        }
-
-        .oriental-box::before,
-        .oriental-box::after {
-            content: "✦";
-
-            position: absolute;
-            top: 50%;
-
-            transform: translateY(-50%);
-
-            color: #C66A4A;
-
-            font-size: 10px;
-            opacity: 0.7;
-
-            text-shadow:
-                    0 0 8px rgba(255, 255, 255, 1);
-        }
-
-        .oriental-box::before {
-            left: 10px;
-        }
-
-        .oriental-box::after {
-            right: 10px;
-        }
-
-        .oriental-title {
+        .hebrew-date {
             font-family: 'Cinzel', serif;
 
-            font-size: 10px;
+            font-size: 11px;
+
             font-weight: 700;
 
-            text-transform: uppercase;
             letter-spacing: 2px;
-
-            color: #C66A4A;
-
-            margin-bottom: 6px;
-        }
-
-        .oriental-text {
-            font-family: 'Great Vibes', cursive;
-
-            font-size: 1.55rem;
-
-            color: #C66A4A;
-
-            line-height: 1.1;
-
-            text-shadow:
-                    0 0 8px rgba(255, 255, 255, 0.95),
-                    0 0 18px rgba(255, 255, 255, 0.7);
-        }
-
-        .oriental-subtitle {
-            font-family: 'Montserrat', sans-serif;
-
-            font-size: 8px;
-
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
 
             color: #6F3828;
 
-            margin-top: 5px;
+            margin-bottom: 11px;
+
+            text-shadow:
+                    0 0 7px rgba(255,255,255,.9),
+                    0 0 12px rgba(255,255,255,.7);
+        }
+
+        .time {
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            color: #C66A4A;
+
+            margin-bottom: 15px;
+
+            text-shadow:
+                    0 0 8px rgba(255,255,255,.95);
+        }
+
+        /* =========================================
+           LIEU
+        ========================================= */
+
+        .location-name {
+            font-family: 'Cinzel', serif;
+
+            font-size: clamp(1.05rem, 5vw, 1.3rem);
+
+            letter-spacing: 1.4px;
+
+            font-weight: 800;
+
+            color: #C66A4A;
+
+            line-height: 1.45;
+
+            margin-bottom: 6px;
+
+            text-shadow:
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 18px rgba(255,255,255,.75);
+        }
+
+        .address {
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 11px;
+
+            color: #6F3828;
 
             font-weight: 600;
+
+            letter-spacing: .8px;
+
+            line-height: 1.6;
+
+            text-shadow:
+                    0 0 7px rgba(255,255,255,.9);
         }
 
         /* =========================================
@@ -351,56 +368,67 @@
         ========================================= */
 
         .divider {
-            width: 50px;
+            width: 60px;
+
             height: 1px;
 
             background: #C66A4A;
 
             margin: 17px auto;
 
-            opacity: 0.5;
+            opacity: .55;
         }
 
         /* =========================================
-           MESSAGE
+           SOUVENIR
         ========================================= */
 
-        .message {
+        .memory-text {
             font-family: 'Montserrat', sans-serif;
 
-            font-size: 9px;
+            font-size: 10px;
 
-            line-height: 1.6;
+            line-height: 1.75;
 
-            letter-spacing: 1.2px;
+            letter-spacing: .6px;
 
-            text-transform: uppercase;
+            color: #6F3828;
 
-            color: #C66A4A;
+            font-weight: 600;
 
-            opacity: 0.75;
+            max-width: 420px;
 
-            font-weight: 500;
+            margin: 0 auto;
 
             text-shadow:
-                    0 0 8px rgba(255, 255, 255, 0.9);
+                    0 0 7px rgba(255,255,255,1),
+                    0 0 13px rgba(255,255,255,.75);
+        }
+
+        .memory-text .za-l {
+            font-family: 'Cinzel', serif;
+
+            font-size: 8px;
+
+            font-weight: 700;
         }
 
         /* =========================================
-           BOUTON RETOUR
+           BOUTON
         ========================================= */
 
         .back-btn {
             display: inline-flex;
 
             align-items: center;
+
             justify-content: center;
 
-            margin-top: 20px;
+            margin-top: 19px;
 
-            padding: 12px 40px;
+            padding: 11px 38px;
 
-            min-width: 140px;
+            min-width: 135px;
 
             background: #C66A4A;
 
@@ -413,17 +441,18 @@
             font-size: 9px;
 
             text-transform: uppercase;
-            letter-spacing: 4px;
 
-            font-weight: 600;
+            letter-spacing: 3px;
+
+            font-weight: 700;
 
             box-shadow:
-                    0 5px 18px rgba(198, 106, 74, 0.3);
+                    0 5px 18px rgba(198,106,74,.3);
 
             transition:
-                    transform 0.3s ease,
-                    background 0.3s ease,
-                    box-shadow 0.3s ease;
+                    transform .3s ease,
+                    background .3s ease,
+                    box-shadow .3s ease;
         }
 
         .back-btn:hover {
@@ -432,7 +461,7 @@
             transform: translateY(-2px);
 
             box-shadow:
-                    0 8px 25px rgba(198, 106, 74, 0.4);
+                    0 8px 25px rgba(198,106,74,.4);
         }
 
         /* =========================================
@@ -440,6 +469,7 @@
         ========================================= */
 
         @keyframes fadeIn {
+
             from {
                 opacity: 0;
                 transform: translateY(18px);
@@ -449,6 +479,7 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+
         }
 
         /* =========================================
@@ -458,36 +489,291 @@
         @media (max-width: 600px) {
 
             .main-ui {
-                padding: 15px;
+                min-height: 100dvh;
+
+                padding: 14px 10px;
+
+                justify-content: center;
             }
 
             .content-card {
-                padding: 32px 20px 25px;
+
+                width: 100%;
+
+                max-width: 430px;
+
+                padding: 25px 18px 23px;
+
+                border-radius: 18px;
             }
+
+            /* PARENTS */
+
+            .parents-container {
+
+                grid-template-columns: 1fr auto 1fr;
+
+                gap: 10px;
+
+                margin-bottom: 18px;
+            }
+
+            .parent-name {
+
+                font-size: 10px;
+
+                font-weight: 700;
+
+                line-height: 1.6;
+
+                letter-spacing: .5px;
+            }
+
+            .parents-separator {
+
+                height: 43px;
+            }
+
+            /* INTRO */
 
             .top-label {
-                margin-bottom: 16px;
+
+                font-size: 9px;
+
+                font-weight: 800;
+
+                letter-spacing: 1.6px;
+
+                line-height: 1.65;
+
+                margin-bottom: 10px;
             }
+
+            /* TITRE */
 
             .script-title {
-                font-size: 4.2rem;
+
+                font-size: 3.9rem;
+
+                margin-bottom: 7px;
             }
 
-            .couple-names-container {
-                gap: 14px;
-            }
+            .title-decoration {
 
-            .name-fr {
-                font-size: 2.9rem;
-            }
-
-            .oriental-box {
-                margin-top: 15px;
                 margin-bottom: 12px;
             }
 
+            .title-decoration::before,
+            .title-decoration::after {
+
+                width: 35px;
+            }
+
+            .title-decoration span {
+
+                font-size: 13px;
+            }
+
+            /* MARIÉS */
+
+            .couple-names {
+
+                font-size: 3.1rem;
+
+                margin-bottom: 13px;
+
+                white-space: nowrap;
+            }
+
+            /* DATE */
+
+            .date-text {
+
+                font-size: 11px;
+
+                font-weight: 800;
+
+                letter-spacing: 1.4px;
+
+                line-height: 1.6;
+
+                margin-bottom: 4px;
+            }
+
+            .hebrew-date {
+
+                font-size: 10px;
+
+                font-weight: 700;
+
+                letter-spacing: 1.5px;
+
+                margin-bottom: 8px;
+            }
+
+            .time {
+
+                font-size: 11px;
+
+                font-weight: 700;
+
+                margin-bottom: 12px;
+            }
+
+            /* LIEU */
+
+            .location-name {
+
+                font-size: 1.05rem;
+
+                font-weight: 800;
+
+                letter-spacing: .9px;
+
+                line-height: 1.5;
+
+                margin-bottom: 5px;
+            }
+
+            .address {
+
+                font-size: 10px;
+
+                font-weight: 600;
+
+                letter-spacing: .6px;
+
+                line-height: 1.65;
+            }
+
+            /* SÉPARATEUR */
+
+            .divider {
+
+                width: 55px;
+
+                margin: 13px auto;
+            }
+
+            /* SOUVENIR */
+
+            .memory-text {
+
+                font-size: 9px;
+
+                font-weight: 600;
+
+                line-height: 1.7;
+
+                letter-spacing: .4px;
+
+                max-width: 350px;
+            }
+
+            .memory-text .za-l {
+
+                font-size: 7px;
+
+            }
+
+            /* BOUTON */
+
             .back-btn {
-                margin-top: 17px;
+
+                margin-top: 15px;
+
+                padding: 11px 32px;
+
+                font-size: 8px;
+
+                font-weight: 700;
+
+                letter-spacing: 2.5px;
+            }
+        }
+
+        /* =========================================
+           TRÈS PETITS TÉLÉPHONES
+        ========================================= */
+
+        @media (max-width: 380px) {
+
+            .main-ui {
+
+                padding: 10px 7px;
+            }
+
+            .content-card {
+
+                padding: 22px 14px 20px;
+            }
+
+            .parents-container {
+
+                gap: 7px;
+
+                margin-bottom: 16px;
+            }
+
+            .parent-name {
+
+                font-size: 9px;
+
+                line-height: 1.55;
+            }
+
+            .parents-separator {
+
+                height: 40px;
+            }
+
+            .top-label {
+
+                font-size: 8px;
+
+                letter-spacing: 1.2px;
+            }
+
+            .script-title {
+
+                font-size: 3.5rem;
+            }
+
+            .couple-names {
+
+                font-size: 2.75rem;
+            }
+
+            .date-text {
+
+                font-size: 10px;
+
+                letter-spacing: 1.1px;
+            }
+
+            .hebrew-date {
+
+                font-size: 9px;
+            }
+
+            .time {
+
+                font-size: 10px;
+            }
+
+            .location-name {
+
+                font-size: .98rem;
+            }
+
+            .address {
+
+                font-size: 9px;
+            }
+
+            .memory-text {
+
+                font-size: 8.5px;
             }
         }
 
@@ -495,156 +781,215 @@
            PETITS ÉCRANS EN HAUTEUR
         ========================================= */
 
-        @media (max-height: 700px) {
+        @media (max-height: 700px) and (max-width: 600px) {
+
+            .main-ui {
+
+                justify-content: flex-start;
+
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
 
             .content-card {
-                padding: 28px 18px 20px;
+
+                padding-top: 19px;
+                padding-bottom: 18px;
+            }
+
+            .parents-container {
+
+                margin-bottom: 12px;
             }
 
             .top-label {
-                margin-bottom: 15px;
+
+                margin-bottom: 7px;
             }
 
             .script-title {
-                font-size: 3.7rem;
+
+                font-size: 3.3rem;
             }
 
             .title-decoration {
-                margin-bottom: 13px;
+
+                margin-bottom: 8px;
             }
 
-            .couple-names-container {
-                margin-bottom: 14px;
+            .couple-names {
+
+                font-size: 2.55rem;
+
+                margin-bottom: 8px;
             }
 
-            .name-fr {
-                font-size: 2.5rem;
-            }
+            .time {
 
-            .oriental-box {
-                margin: 12px auto;
-                padding: 10px 15px;
-            }
-
-            .oriental-text {
-                font-size: 1.35rem;
+                margin-bottom: 8px;
             }
 
             .divider {
-                margin: 12px auto;
+
+                margin: 10px auto;
+            }
+
+            .memory-text {
+
+                line-height: 1.55;
             }
 
             .back-btn {
-                margin-top: 13px;
+
+                margin-top: 10px;
             }
         }
+
     </style>
 </head>
 
 <body>
 
-<!-- =========================================
-     FOND
-========================================= -->
-
 <div class="bg-container"></div>
 <div class="bg-overlay"></div>
-
-<!-- =========================================
-     CONTENU
-========================================= -->
 
 <main class="main-ui">
 
     <div class="content-card">
 
-        <!-- PETIT LABEL -->
+        <!-- PARENTS -->
+
+        <div class="parents-container">
+
+            <div class="parent-side left">
+
+                <div class="parent-name">
+                    Joelle & Éric<br>
+                    Zaghdouna
+                </div>
+
+            </div>
+
+            <div class="parents-separator"></div>
+
+            <div class="parent-side right">
+
+                <div class="parent-name">
+                    Michelle & Louis<br>
+                    Cohen-Zardi
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- INTRODUCTION -->
 
         <div class="top-label">
-            Sephora & Jonathan
+
+            Ont l'honneur de vous convier<br>
+            au mariage de leurs enfants
+
         </div>
+
 
         <!-- TITRE -->
 
         <h1 class="script-title">
-            Houppa
+            Mariage
         </h1>
+
 
         <!-- DÉCORATION -->
 
         <div class="title-decoration">
+
             <span>♡</span>
-        </div>
-
-        <!-- COUPLE -->
-
-        <div class="couple-names-container">
-
-            <div class="name-block">
-                    <span class="name-fr">
-                        Sephora
-                    </span>
-            </div>
-
-            <span class="ampersand">
-                    &
-                </span>
-
-            <div class="name-block">
-                    <span class="name-fr">
-                        Jonathan
-                    </span>
-            </div>
 
         </div>
 
-        <!-- INFORMATIONS -->
 
-        <div class="event-details">
+        <!-- NOMS -->
 
-            <p class="date-text">
-                Mardi 8 décembre 2026
-            </p>
+        <div class="couple-names">
 
-            <h2 class="location-name">
-                Houppa & Soirée
-            </h2>
+            Sephora & Jonathan
 
         </div>
 
-        <!-- BLOC THÈME -->
 
-        <div class="oriental-box">
+        <!-- DATE -->
 
-            <div class="oriental-title">
-                Thème de la soirée
-            </div>
+        <div class="date-text">
 
-            <div class="oriental-text">
-                Soirée Orientale
-            </div>
-
-            <div class="oriental-subtitle">
-                Toute la soirée sera sur le thème oriental
-            </div>
+            Le mardi 8 décembre 2026
 
         </div>
+
+
+        <div class="hebrew-date">
+
+            28 Kislev 5787
+
+        </div>
+
+
+        <div class="time">
+
+            À 18h
+
+        </div>
+
+
+        <!-- LIEU -->
+
+        <div class="location-name">
+
+            L'InterContinental Paris Le Grand
+
+        </div>
+
+
+        <div class="address">
+
+            2 rue Scribe<br>
+            75009 Paris
+
+        </div>
+
 
         <!-- SÉPARATEUR -->
 
         <div class="divider"></div>
 
-        <!-- MESSAGE -->
 
-        <p class="message">
-            Une soirée placée sous le signe<br>
-            de la fête, du partage et de la tradition
-        </p>
+        <!-- SOUVENIR -->
+
+        <div class="memory-text">
+
+            Nous portons dans nos cœurs le souvenir béni<br>
+            de nos chers grands-parents
+
+            <br>
+
+            Henriette et Albert Zaghdoun
+            <span class="za-l">Za’l</span>
+
+            <br>
+
+            Marguerite et Hateni Boukhboza
+            <span class="za-l">Za’l</span>
+
+        </div>
+
 
         <!-- RETOUR -->
 
         <a href="menu.html" class="back-btn">
+
             Retour
+
         </a>
 
     </div>
