@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Mairie - Sephora & Jonathan</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700;800&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Mairie - Jonathan & Sephora</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700;800&family=Cinzel:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
 
     <style>
 
@@ -20,12 +25,15 @@
         html,
         body {
             width: 100%;
-            height: 100dvh;
+            min-height: 100%;
             background: #000;
             font-family: 'Montserrat', sans-serif;
-            overflow: hidden;
         }
 
+        body {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
 
         /* =========================================
            FOND
@@ -44,9 +52,8 @@
             z-index: 1;
         }
 
-
         /* =========================================
-           VOILE TRÈS LÉGER
+           VOILE
         ========================================= */
 
         .bg-overlay {
@@ -58,18 +65,16 @@
             z-index: 2;
         }
 
-
         /* =========================================
            CONTENU
         ========================================= */
 
         .main-ui {
             position: relative;
-
             z-index: 10;
 
             width: 100%;
-            height: 100dvh;
+            min-height: 100dvh;
 
             display: flex;
             flex-direction: column;
@@ -77,11 +82,10 @@
             align-items: center;
             justify-content: center;
 
-            padding: 25px 20px;
+            padding: 20px;
 
             text-align: center;
         }
-
 
         /* =========================================
            CARTE CENTRALE
@@ -90,9 +94,8 @@
         .content-card {
             width: min(460px, 100%);
 
-            padding: 38px 30px 35px;
+            padding: 34px 30px 30px;
 
-            /* Bloc blanc beaucoup plus transparent */
             background: rgba(255, 255, 255, 0.20);
 
             backdrop-filter: blur(4px);
@@ -106,7 +109,6 @@
             animation: fadeIn 1.2s ease-out;
         }
 
-
         /* =========================================
            PETIT LABEL
         ========================================= */
@@ -114,25 +116,26 @@
         .top-label {
             font-family: 'Montserrat', sans-serif;
 
-            font-size: 8px;
+            font-size: 10px;
 
             text-transform: uppercase;
 
-            letter-spacing: 5px;
+            letter-spacing: 3px;
 
             color: #C66A4A;
 
-            font-weight: 700;
+            font-weight: 800;
 
-            opacity: 0.85;
+            opacity: 1;
 
-            margin-bottom: 18px;
+            margin-bottom: 15px;
+
+            line-height: 1.6;
 
             text-shadow:
-                    0 0 8px rgba(255, 255, 255, 1),
-                    0 0 15px rgba(255, 255, 255, 0.8);
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 15px rgba(255,255,255,.85);
         }
-
 
         /* =========================================
            TITRE MAIRIE
@@ -147,17 +150,15 @@
 
             font-weight: 400;
 
-            line-height: 0.95;
+            line-height: .95;
 
-            margin-top: 0;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
 
             text-shadow:
-                    0 0 10px rgba(255, 255, 255, 0.95),
-                    0 0 25px rgba(255, 255, 255, 0.8),
-                    0 0 45px rgba(255, 255, 255, 0.5);
+                    0 0 10px rgba(255,255,255,.95),
+                    0 0 25px rgba(255,255,255,.8),
+                    0 0 45px rgba(255,255,255,.5);
         }
-
 
         /* =========================================
            DÉCORATION
@@ -171,73 +172,172 @@
 
             gap: 10px;
 
-            margin-bottom: 25px;
+            margin-bottom: 18px;
         }
 
         .title-decoration::before,
         .title-decoration::after {
+
             content: "";
 
-            width: 40px;
+            width: 42px;
 
             height: 1px;
 
             background: #C66A4A;
 
-            opacity: 0.5;
+            opacity: .6;
         }
 
         .title-decoration span {
+
             color: #C66A4A;
 
-            font-size: 12px;
+            font-size: 13px;
 
-            opacity: 0.8;
+            opacity: .9;
 
             text-shadow:
-                    0 0 8px rgba(255, 255, 255, 1),
-                    0 0 15px rgba(255, 255, 255, 0.8);
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 15px rgba(255,255,255,.8);
         }
-
 
         /* =========================================
            INTRO
         ========================================= */
 
         .names-intro {
+
             font-family: 'Great Vibes', cursive;
 
-            font-size: clamp(2rem, 9vw, 2.8rem);
+            font-size: clamp(2.2rem, 9vw, 2.9rem);
 
             color: #C66A4A;
 
             line-height: 1.15;
 
-            margin-bottom: 28px;
+            margin-bottom: 25px;
 
             text-shadow:
-                    0 0 10px rgba(255, 255, 255, 0.95),
-                    0 0 20px rgba(255, 255, 255, 0.7);
+                    0 0 10px rgba(255,255,255,.95),
+                    0 0 20px rgba(255,255,255,.7);
         }
 
-
         /* =========================================
-           GROUPE D'INFORMATIONS
+           GROUPE INFORMATIONS
         ========================================= */
 
         .event-group {
-            margin-bottom: 22px;
+            margin-bottom: 20px;
         }
 
-
         /* =========================================
-           DATE
+           DATE + HEURE
         ========================================= */
 
         .date-time {
+
             font-family: 'Montserrat', sans-serif;
 
-            font-size: 10px;
+            font-size: 12px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.7px;
+
+            color: #C66A4A;
+
+            line-height: 1.7;
+
+            margin-bottom: 12px;
+
+            text-shadow:
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 15px rgba(255,255,255,.85);
+        }
+
+        /* =========================================
+           LIEU
+        ========================================= */
+
+        .location-name {
+
+            font-family: 'Cinzel', serif;
+
+            font-size: clamp(1.15rem, 5vw, 1.4rem);
+
+            letter-spacing: 1.4px;
+
+            font-weight: 800;
+
+            color: #C66A4A;
+
+            line-height: 1.5;
+
+            margin-bottom: 7px;
+
+            text-shadow:
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 18px rgba(255,255,255,.75);
+        }
+
+        /* =========================================
+           ADRESSE
+        ========================================= */
+
+        .address-detail {
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 11px;
+
+            color: #6F3828;
+
+            font-weight: 600;
+
+            line-height: 1.65;
+
+            letter-spacing: .6px;
+
+            text-shadow:
+                    0 0 7px rgba(255,255,255,.95);
+        }
+
+        /* =========================================
+           SÉPARATEUR
+        ========================================= */
+
+        .divider {
+
+            width: 60px;
+
+            height: 1px;
+
+            background: #C66A4A;
+
+            margin: 19px auto;
+
+            opacity: .55;
+        }
+
+        /* =========================================
+           AFTER MAIRIE
+        ========================================= */
+
+        .after-mairie {
+
+            margin-top: 5px;
+
+            margin-bottom: 10px;
+        }
+
+        .after-title {
+
+            font-family: 'Cinzel', serif;
+
+            font-size: 12px;
 
             font-weight: 700;
 
@@ -247,115 +347,76 @@
 
             color: #C66A4A;
 
-            margin-bottom: 9px;
+            margin-bottom: 8px;
 
             text-shadow:
-                    0 0 8px rgba(255, 255, 255, 1),
-                    0 0 15px rgba(255, 255, 255, 0.8);
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 15px rgba(255,255,255,.85);
         }
 
+        .after-text {
 
-        /* =========================================
-           LIEU
-        ========================================= */
+            font-family: 'Montserrat', sans-serif;
 
-        .location-name {
-            font-family: 'Cinzel', serif;
-
-            font-size: clamp(1.15rem, 5vw, 1.4rem);
-
-            letter-spacing: 2px;
+            font-size: 11px;
 
             font-weight: 600;
 
-            color: #C66A4A;
-
-            margin-bottom: 7px;
-
-            text-shadow:
-                    0 0 8px rgba(255, 255, 255, 0.9),
-                    0 0 15px rgba(255, 255, 255, 0.7);
-        }
-
-
-        /* =========================================
-           ADRESSE
-        ========================================= */
-
-        .address-detail {
-            font-family: 'Montserrat', sans-serif;
-
-            font-size: 10px;
+            letter-spacing: 1px;
 
             color: #6F3828;
 
-            font-weight: 500;
+            text-transform: uppercase;
 
-            line-height: 1.5;
-
-            letter-spacing: 0.5px;
+            opacity: 1;
 
             text-shadow:
-                    0 0 7px rgba(255, 255, 255, 0.8);
+                    0 0 7px rgba(255,255,255,.95);
         }
-
-
-        /* =========================================
-           SÉPARATEUR
-        ========================================= */
-
-        .divider {
-            width: 55px;
-
-            height: 1px;
-
-            background: #C66A4A;
-
-            margin: 24px auto;
-
-            opacity: 0.5;
-        }
-
 
         /* =========================================
            MESSAGE
         ========================================= */
 
         .message {
+
             font-family: 'Montserrat', sans-serif;
 
-            font-size: 9px;
+            font-size: 10px;
 
-            letter-spacing: 1.5px;
+            letter-spacing: 1.2px;
 
             text-transform: uppercase;
 
             color: #C66A4A;
 
-            opacity: 0.75;
+            opacity: .9;
 
-            margin-top: 20px;
+            margin-top: 16px;
 
             line-height: 1.7;
 
-            text-shadow:
-                    0 0 8px rgba(255, 255, 255, 0.9);
-        }
+            font-weight: 600;
 
+            text-shadow:
+                    0 0 8px rgba(255,255,255,1);
+        }
 
         /* =========================================
            BOUTON RETOUR
         ========================================= */
 
         .back-btn {
+
             display: inline-flex;
 
             align-items: center;
+
             justify-content: center;
 
-            margin-top: 28px;
+            margin-top: 20px;
 
-            padding: 13px 42px;
+            padding: 12px 38px;
 
             min-width: 140px;
 
@@ -371,29 +432,28 @@
 
             text-transform: uppercase;
 
-            letter-spacing: 4px;
+            letter-spacing: 3px;
 
-            font-weight: 600;
+            font-weight: 700;
 
             box-shadow:
-                    0 5px 18px rgba(198, 106, 74, 0.3);
+                    0 5px 18px rgba(198,106,74,.3);
 
             transition:
-                    transform 0.3s ease,
-                    background 0.3s ease,
-                    box-shadow 0.3s ease;
+                    transform .3s ease,
+                    background .3s ease,
+                    box-shadow .3s ease;
         }
 
-
         .back-btn:hover {
+
             background: #B85D40;
 
             transform: translateY(-2px);
 
             box-shadow:
-                    0 8px 25px rgba(198, 106, 74, 0.4);
+                    0 8px 25px rgba(198,106,74,.4);
         }
-
 
         /* =========================================
            ANIMATION
@@ -410,8 +470,8 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
 
+        }
 
         /* =========================================
            MOBILE
@@ -420,83 +480,323 @@
         @media (max-width: 600px) {
 
             .main-ui {
-                padding: 18px;
+
+                min-height: 100dvh;
+
+                padding: 14px 10px;
+
+                justify-content: center;
             }
 
             .content-card {
-                padding: 32px 22px 28px;
+
+                width: 100%;
+
+                max-width: 430px;
+
+                padding: 28px 20px 25px;
+
+                border-radius: 18px;
             }
+
+            /* LABEL */
 
             .top-label {
-                font-size: 7px;
 
-                letter-spacing: 4px;
+                font-size: 9px;
 
-                margin-bottom: 16px;
+                font-weight: 800;
+
+                letter-spacing: 1.8px;
+
+                line-height: 1.65;
+
+                margin-bottom: 12px;
             }
+
+            /* TITRE */
 
             .script-title {
-                font-size: 4.2rem;
+
+                font-size: 4.1rem;
+
+                margin-bottom: 7px;
             }
+
+            /* DÉCORATION */
+
+            .title-decoration {
+
+                margin-bottom: 13px;
+            }
+
+            .title-decoration::before,
+            .title-decoration::after {
+
+                width: 35px;
+            }
+
+            .title-decoration span {
+
+                font-size: 13px;
+            }
+
+            /* INTRO */
 
             .names-intro {
-                font-size: 2.2rem;
 
-                margin-bottom: 24px;
+                font-size: 2.35rem;
+
+                line-height: 1.15;
+
+                margin-bottom: 21px;
             }
 
-            .event-group {
-                margin-bottom: 18px;
+            /* DATE */
+
+            .date-time {
+
+                font-size: 11px;
+
+                font-weight: 800;
+
+                letter-spacing: 1.3px;
+
+                line-height: 1.7;
+
+                margin-bottom: 11px;
             }
+
+            /* LIEU */
+
+            .location-name {
+
+                font-size: 1.1rem;
+
+                font-weight: 800;
+
+                letter-spacing: .9px;
+
+                line-height: 1.5;
+
+                margin-bottom: 6px;
+            }
+
+            /* ADRESSE */
+
+            .address-detail {
+
+                font-size: 10px;
+
+                font-weight: 600;
+
+                letter-spacing: .5px;
+
+                line-height: 1.65;
+            }
+
+            /* SÉPARATEUR */
 
             .divider {
-                margin: 20px auto;
+
+                width: 55px;
+
+                margin: 15px auto;
             }
 
+            /* AFTER */
+
+            .after-mairie {
+
+                margin-top: 3px;
+
+                margin-bottom: 9px;
+            }
+
+            .after-title {
+
+                font-size: 11px;
+
+                font-weight: 700;
+
+                letter-spacing: 2px;
+
+                margin-bottom: 7px;
+            }
+
+            .after-text {
+
+                font-size: 10px;
+
+                font-weight: 600;
+
+                letter-spacing: .8px;
+            }
+
+            /* MESSAGE */
+
+            .message {
+
+                font-size: 9px;
+
+                font-weight: 600;
+
+                letter-spacing: 1px;
+
+                line-height: 1.7;
+
+                margin-top: 13px;
+            }
+
+            /* BOUTON */
+
             .back-btn {
-                margin-top: 22px;
+
+                margin-top: 16px;
+
+                padding: 11px 32px;
+
+                font-size: 8px;
+
+                font-weight: 700;
+
+                letter-spacing: 2.5px;
             }
         }
 
-
         /* =========================================
-           PETITS ÉCRANS EN HAUTEUR
+           TRÈS PETITS TÉLÉPHONES
         ========================================= */
 
-        @media (max-height: 700px) {
+        @media (max-width: 380px) {
+
+            .main-ui {
+
+                padding: 10px 7px;
+            }
 
             .content-card {
-                padding: 28px 20px 22px;
+
+                padding: 23px 16px 21px;
             }
 
             .top-label {
-                margin-bottom: 15px;
+
+                font-size: 8px;
+
+                letter-spacing: 1.2px;
             }
 
             .script-title {
+
                 font-size: 3.7rem;
             }
 
             .names-intro {
-                font-size: 1.9rem;
 
-                margin-bottom: 18px;
+                font-size: 2.1rem;
+            }
+
+            .date-time {
+
+                font-size: 10px;
+
+                letter-spacing: 1px;
+            }
+
+            .location-name {
+
+                font-size: 1rem;
+            }
+
+            .address-detail {
+
+                font-size: 9px;
+            }
+
+            .after-title {
+
+                font-size: 10px;
+            }
+
+            .after-text {
+
+                font-size: 9px;
+            }
+
+            .message {
+
+                font-size: 8.5px;
+            }
+        }
+
+        /* =========================================
+           ÉCRANS PETITS EN HAUTEUR
+        ========================================= */
+
+        @media (max-height: 700px) and (max-width: 600px) {
+
+            .main-ui {
+
+                justify-content: flex-start;
+
+                padding-top: 10px;
+
+                padding-bottom: 10px;
+            }
+
+            .content-card {
+
+                padding-top: 20px;
+
+                padding-bottom: 19px;
+            }
+
+            .top-label {
+
+                margin-bottom: 8px;
+            }
+
+            .script-title {
+
+                font-size: 3.5rem;
+            }
+
+            .names-intro {
+
+                font-size: 2rem;
+
+                margin-bottom: 15px;
+            }
+
+            .date-time {
+
+                margin-bottom: 8px;
             }
 
             .event-group {
-                margin-bottom: 12px;
+
+                margin-bottom: 10px;
             }
 
             .divider {
-                margin: 15px auto;
+
+                margin: 11px auto;
+            }
+
+            .message {
+
+                margin-top: 10px;
             }
 
             .back-btn {
-                margin-top: 15px;
+
+                margin-top: 11px;
             }
         }
 
     </style>
+
 </head>
 
 <body>
@@ -509,45 +809,87 @@
 
     <div class="content-card">
 
+        <!-- PETIT LABEL -->
+
         <div class="top-label">
-            Sephora & Jonathan
+            Jonathan & Sephora
         </div>
+
+
+        <!-- TITRE -->
 
         <h1 class="script-title">
             Mairie
         </h1>
 
+
+        <!-- DÉCORATION -->
+
         <div class="title-decoration">
             <span>♡</span>
         </div>
 
+
+        <!-- INTRO -->
+
         <div class="names-intro">
-            Sephora et Jonathan<br>
-            se diront « Oui »
+            Jonathan & Sephora<br>
+            se diront « oui »
         </div>
+
+
+        <!-- INFORMATIONS -->
 
         <div class="event-group">
 
             <p class="date-time">
-                Lundi 7 décembre 2026
+                Le lundi 7 décembre 2026<br>
+                à 14h
             </p>
 
+
             <h2 class="location-name">
-                Mairie de Levallois
+                Mairie de Neuilly-sur-Seine
             </h2>
 
+
             <p class="address-detail">
-                Levallois-Perret
+                96 avenue Achille Perretti<br>
+                92200 Neuilly-sur-Seine
             </p>
 
         </div>
 
+
+        <!-- SÉPARATEUR -->
+
         <div class="divider"></div>
+
+
+        <!-- AFTER MAIRIE -->
+
+        <div class="after-mairie">
+
+            <div class="after-title">
+                After mairie
+            </div>
+
+            <div class="after-text">
+                À venir — en attente
+            </div>
+
+        </div>
+
+
+        <!-- MESSAGE -->
 
         <p class="message">
             Nous avons hâte de partager<br>
             ce moment avec vous
         </p>
+
+
+        <!-- RETOUR -->
 
         <a href="menu.html" class="back-btn">
             Retour
@@ -558,4 +900,5 @@
 </main>
 
 </body>
+
 </html>
