@@ -6,7 +6,6 @@
 
     <title>Sephora & Jonathan</title>
 
-    <!-- Même police que menu.html -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
@@ -42,7 +41,6 @@
             z-index: 1;
         }
 
-        /* Léger voile blanc */
         .bg-overlay {
             position: fixed;
             inset: 0;
@@ -87,7 +85,7 @@
 
             color: #C66A4A;
 
-            font-weight: 600;
+            font-weight: 700;
 
             margin-bottom: 18px;
 
@@ -149,9 +147,9 @@
         ========================= */
 
         .date {
-            font-family: 'Cinzel', serif;
+            font-family: 'Montserrat', sans-serif;
 
-            font-size: clamp(0.65rem, 2.5vw, 0.9rem);
+            font-size: clamp(0.9rem, 3.5vw, 1.15rem);
 
             letter-spacing: 4px;
 
@@ -159,13 +157,33 @@
 
             color: #C66A4A;
 
-            font-weight: 500;
+            font-weight: 400;
 
-            margin-top: 14px;
+            margin-top: 18px;
 
+            line-height: 1.3;
+
+            /* Petit fond blanc très léger */
+            background: rgba(255, 255, 255, 0.38);
+
+            padding: 7px 16px;
+
+            border-radius: 6px;
+
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+
+            /* Lumière autour du texte */
             text-shadow:
-                    0 0 8px rgba(255, 255, 255, 0.95),
-                    0 0 18px rgba(255, 255, 255, 0.8);
+                    0 1px 2px rgba(120, 55, 35, 0.25),
+                    0 0 8px rgba(255, 255, 255, 1),
+                    0 0 16px rgba(255, 255, 255, 1),
+                    0 0 28px rgba(255, 255, 255, 0.95),
+                    0 0 45px rgba(255, 255, 255, 0.75);
+
+            /* Petit halo autour du fond */
+            box-shadow:
+                    0 0 15px rgba(255, 255, 255, 0.25);
         }
 
         /* =========================
@@ -174,7 +192,9 @@
 
         .decoration {
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             gap: 12px;
@@ -187,6 +207,7 @@
             content: "";
 
             width: 45px;
+
             height: 1px;
 
             background: #C66A4A;
@@ -200,6 +221,10 @@
             font-size: 12px;
 
             opacity: 0.8;
+
+            text-shadow:
+                    0 0 8px rgba(255, 255, 255, 1),
+                    0 0 15px rgba(255, 255, 255, 0.8);
         }
 
         /* =========================
@@ -210,6 +235,7 @@
             display: inline-flex;
 
             align-items: center;
+
             justify-content: center;
 
             min-width: 180px;
@@ -257,47 +283,6 @@
         }
 
         /* =========================
-           CONTRÔLE MUSIQUE
-        ========================= */
-
-        .music-control {
-            position: fixed;
-
-            bottom: 25px;
-            right: 25px;
-
-            z-index: 20;
-
-            width: 38px;
-            height: 38px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border: 1px solid rgba(198, 106, 74, 0.5);
-
-            background: rgba(255, 255, 255, 0.2);
-
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-
-            color: #C66A4A;
-
-            cursor: pointer;
-
-            font-size: 13px;
-
-            transition: 0.3s;
-        }
-
-        .music-control:hover {
-            background: rgba(255, 255, 255, 0.4);
-
-            transform: scale(1.05);
-        }
-
-        /* =========================
            MOBILE
         ========================= */
 
@@ -308,7 +293,8 @@
             }
 
             .top-label {
-                font-size: 7px;
+                font-size: 10px;
+
                 letter-spacing: 4px;
 
                 margin-bottom: 15px;
@@ -327,9 +313,22 @@
             }
 
             .date {
-                font-size: 0.65rem;
+                font-size: 0.9rem;
 
                 letter-spacing: 3px;
+
+                font-weight: 400;
+
+                padding: 6px 12px;
+
+                background: rgba(255, 255, 255, 0.38);
+
+                text-shadow:
+                        0 1px 2px rgba(120, 55, 35, 0.25),
+                        0 0 7px rgba(255, 255, 255, 1),
+                        0 0 15px rgba(255, 255, 255, 1),
+                        0 0 25px rgba(255, 255, 255, 0.9),
+                        0 0 38px rgba(255, 255, 255, 0.7);
             }
 
             .decoration {
@@ -349,11 +348,6 @@
                 font-size: 8px;
 
                 letter-spacing: 3px;
-            }
-
-            .music-control {
-                bottom: 18px;
-                right: 18px;
             }
         }
 
@@ -394,7 +388,6 @@
 <!-- Voile léger -->
 <div class="bg-overlay"></div>
 
-
 <!-- Contenu principal -->
 <main class="main-ui">
 
@@ -402,10 +395,10 @@
         Notre mariage
     </div>
 
-
     <div class="names">
         SEPHORA
     </div>
+
     <br>
 
     <div class="ampersand">
@@ -416,116 +409,23 @@
         JONATHAN
     </div>
 
-
     <div class="date">
-        7 & 8 décembre 2026
+        7 & 8 DÉCEMBRE 2026
     </div>
-
 
     <div class="decoration">
         <span>✦</span>
     </div>
 
-
     <a
             href="menu.html"
             class="enter-button"
             target="_blank"
-            onclick="playMusic()"
     >
         Découvrir notre mariage
     </a>
 
 </main>
-
-
-<!-- Bouton musique -->
-<button
-        class="music-control"
-        id="musicControl"
-        onclick="toggleMusic()"
-        aria-label="Contrôler la musique"
->
-    ♫
-</button>
-
-
-<!-- Musique -->
-<audio
-        id="weddingMusic"
-        src="musique4.mp3"
-        loop
-></audio>
-
-
-<script>
-
-    const music = document.getElementById('weddingMusic');
-    const musicControl = document.getElementById('musicControl');
-
-    let musicStarted = false;
-
-
-    /* =========================
-       LANCER LA MUSIQUE
-    ========================= */
-
-    function playMusic() {
-
-        if (!musicStarted) {
-
-            music.volume = 0.35;
-
-            music.play()
-                .then(() => {
-                    musicStarted = true;
-                    musicControl.textContent = '♫';
-                })
-                .catch(() => {
-                    console.log("Lecture automatique bloquée.");
-                });
-        }
-    }
-
-
-    /* =========================
-       PLAY / PAUSE
-    ========================= */
-
-    function toggleMusic() {
-
-        if (music.paused) {
-
-            music.volume = 0.35;
-
-            music.play()
-                .then(() => {
-                    musicStarted = true;
-                    musicControl.textContent = '♫';
-                });
-
-        } else {
-
-            music.pause();
-
-            musicControl.textContent = '×';
-        }
-    }
-
-
-    /* =========================
-       PREMIÈRE INTERACTION
-    ========================= */
-
-    document.addEventListener('click', function () {
-
-        if (!musicStarted) {
-            playMusic();
-        }
-
-    }, { once: true });
-
-</script>
 
 </body>
 </html>
