@@ -6,7 +6,8 @@
 
     <title>Sephora & Jonathan</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- Même police que menu.html -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -18,21 +19,20 @@
 
         html,
         body {
-            height: 100dvh;
             width: 100%;
-            background-color: #000;
+            height: 100dvh;
+            background: #000;
             font-family: 'Montserrat', sans-serif;
             overflow: hidden;
         }
 
         /* =========================
-           IMAGE DE FOND
+           FOND
         ========================= */
 
         .bg-container {
             position: fixed;
             inset: 0;
-
             width: 100%;
             height: 100%;
 
@@ -42,10 +42,7 @@
             z-index: 1;
         }
 
-        /* =========================
-           VOILE GLOBAL TRÈS LÉGER
-        ========================= */
-
+        /* Léger voile blanc */
         .bg-overlay {
             position: fixed;
             inset: 0;
@@ -56,68 +53,70 @@
         }
 
         /* =========================
-           INTERFACE PRINCIPALE
+           CONTENU
         ========================= */
 
         .main-ui {
             position: relative;
-
             z-index: 10;
 
+            width: 100%;
             height: 100dvh;
 
             display: flex;
             flex-direction: column;
-
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+
+            padding: 30px 22px;
 
             text-align: center;
         }
 
         /* =========================
-           ZONE DES PRÉNOMS
+           PETIT TEXTE
         ========================= */
 
-        .names-container {
-            position: relative;
+        .top-label {
+            font-family: 'Montserrat', sans-serif;
 
-            padding: 35px 45px;
+            font-size: 8px;
+            letter-spacing: 5px;
 
-            animation: fadeIn 2.5s ease-in-out;
+            text-transform: uppercase;
 
-            /* Plus de carré blanc */
-            background: transparent;
+            color: #C66A4A;
 
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
+            font-weight: 600;
 
-            box-shadow: none;
+            margin-bottom: 18px;
+
+            opacity: 0.9;
         }
 
         /* =========================
-           PRÉNOMS
+           NOMS
         ========================= */
 
         .names {
             font-family: 'Montserrat', sans-serif;
 
-            font-size: clamp(2rem, 11vw, 3.8rem);
+            font-size: clamp(2.3rem, 10vw, 4.5rem);
+
+            font-weight: 700;
+
+            letter-spacing: 7px;
 
             color: #C66A4A;
 
-            font-weight: 500;
+            line-height: 1.15;
 
             text-transform: uppercase;
 
-            letter-spacing: 10px;
-
-            line-height: 1.4;
-
             text-shadow:
                     0 0 10px rgba(255, 255, 255, 0.95),
-                    0 0 20px rgba(255, 255, 255, 0.7),
-                    0 0 35px rgba(255, 255, 255, 0.45);
+                    0 0 25px rgba(255, 255, 255, 0.8),
+                    0 0 45px rgba(255, 255, 255, 0.5);
         }
 
         /* =========================
@@ -129,126 +128,173 @@
 
             font-family: 'Great Vibes', cursive;
 
-            font-size: 3.2rem;
-
-            color: #C66A4A;
-
-            text-transform: none;
-
-            letter-spacing: 0;
-
-            margin: -5px 0;
+            font-size: clamp(4rem, 17vw, 7rem);
 
             font-weight: 400;
-        }
-
-        /* =========================
-           SOUS-TITRE
-        ========================= */
-
-        .subtitle {
-            font-family: 'Montserrat', sans-serif;
 
             color: #C66A4A;
 
-            font-size: 10px;
+            line-height: 0.75;
 
-            text-transform: uppercase;
+            margin: 8px 0 12px;
 
-            letter-spacing: 8px;
-
-            margin-top: 25px;
-
-            font-weight: 700;
+            text-shadow:
+                    0 0 10px rgba(255, 255, 255, 0.95),
+                    0 0 25px rgba(255, 255, 255, 0.8),
+                    0 0 45px rgba(255, 255, 255, 0.5);
         }
 
         /* =========================
-           BOUTON DÉCOUVRIR
+           DATE
         ========================= */
 
-        .cta-container {
-            position: absolute;
+        .date {
+            font-family: 'Cinzel', serif;
 
-            bottom: 12dvh;
-        }
+            font-size: clamp(0.65rem, 2.5vw, 0.9rem);
 
-        .cta-center {
-            display: inline-block;
-
-            text-decoration: none;
-
-            color: #fff;
-
-            padding: 15px 50px;
-
-            font-size: 11px;
+            letter-spacing: 4px;
 
             text-transform: uppercase;
 
-            letter-spacing: 5px;
+            color: #C66A4A;
+
+            font-weight: 500;
+
+            margin-top: 14px;
+
+            text-shadow:
+                    0 0 8px rgba(255, 255, 255, 0.95),
+                    0 0 18px rgba(255, 255, 255, 0.8);
+        }
+
+        /* =========================
+           DÉCORATION
+        ========================= */
+
+        .decoration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 12px;
+
+            margin: 22px 0 30px;
+        }
+
+        .decoration::before,
+        .decoration::after {
+            content: "";
+
+            width: 45px;
+            height: 1px;
 
             background: #C66A4A;
 
-            transition: 0.4s;
+            opacity: 0.5;
+        }
+
+        .decoration span {
+            color: #C66A4A;
+
+            font-size: 12px;
+
+            opacity: 0.8;
+        }
+
+        /* =========================
+           BOUTON
+        ========================= */
+
+        .enter-button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-width: 180px;
+
+            padding: 15px 38px;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            background: #C66A4A;
+
+            border: none;
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 9px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 4px;
 
             font-weight: 600;
 
             box-shadow:
-                    0 4px 15px rgba(198, 106, 74, 0.45);
+                    0 5px 18px rgba(198, 106, 74, 0.3);
 
-            border: none;
-
-            cursor: pointer;
+            transition:
+                    transform 0.3s ease,
+                    background 0.3s ease,
+                    box-shadow 0.3s ease;
         }
 
-        .cta-center:hover {
+        .enter-button:hover {
+            transform: translateY(-3px);
+
             background: #B85D40;
 
-            transform: translateY(-2px);
-
             box-shadow:
-                    0 7px 20px rgba(198, 106, 74, 0.5);
+                    0 8px 25px rgba(198, 106, 74, 0.4);
+        }
+
+        .enter-button:active {
+            transform: translateY(-1px);
         }
 
         /* =========================
-           ANIMATION
+           CONTRÔLE MUSIQUE
         ========================= */
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* =========================
-           BOUTON SON
-        ========================= */
-
-        #mute-btn {
+        .music-control {
             position: fixed;
 
-            bottom: 20px;
-            right: 20px;
+            bottom: 25px;
+            right: 25px;
 
-            z-index: 100;
+            z-index: 20;
+
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(198, 106, 74, 0.5);
+
+            background: rgba(255, 255, 255, 0.2);
+
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
 
             color: #C66A4A;
 
-            font-size: 9px;
-
-            letter-spacing: 2px;
-
             cursor: pointer;
 
-            display: none;
+            font-size: 13px;
 
-            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .music-control:hover {
+            background: rgba(255, 255, 255, 0.4);
+
+            transform: scale(1.05);
         }
 
         /* =========================
@@ -257,119 +303,227 @@
 
         @media (max-width: 600px) {
 
-            .names-container {
-                padding: 28px 25px;
+            .main-ui {
+                padding: 25px 18px;
+            }
+
+            .top-label {
+                font-size: 7px;
+                letter-spacing: 4px;
+
+                margin-bottom: 15px;
             }
 
             .names {
-                letter-spacing: 7px;
+                font-size: 2.4rem;
+
+                letter-spacing: 5px;
             }
 
             .ampersand {
-                font-size: 2.8rem;
+                font-size: 4.5rem;
+
+                margin: 5px 0 10px;
             }
 
-            .cta-center {
-                padding: 14px 38px;
+            .date {
+                font-size: 0.65rem;
+
+                letter-spacing: 3px;
+            }
+
+            .decoration {
+                margin: 18px 0 25px;
+            }
+
+            .decoration::before,
+            .decoration::after {
+                width: 35px;
+            }
+
+            .enter-button {
+                min-width: 160px;
+
+                padding: 13px 30px;
+
+                font-size: 8px;
+
+                letter-spacing: 3px;
+            }
+
+            .music-control {
+                bottom: 18px;
+                right: 18px;
             }
         }
 
+        /* =========================
+           PETITS ÉCRANS
+        ========================= */
+
+        @media (max-height: 700px) {
+
+            .names {
+                font-size: 2.2rem;
+            }
+
+            .ampersand {
+                font-size: 4rem;
+            }
+
+            .date {
+                margin-top: 8px;
+            }
+
+            .decoration {
+                margin: 15px 0 20px;
+            }
+
+            .enter-button {
+                padding: 12px 30px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-<!-- IMAGE DE FOND -->
+<!-- Fond -->
 <div class="bg-container"></div>
 
-<!-- VOILE GLOBAL TRÈS LÉGER -->
+<!-- Voile léger -->
 <div class="bg-overlay"></div>
 
 
-<!-- MUSIQUE -->
-<audio id="bg-music" loop>
-    <source src="musique4.mp3" type="audio/mpeg">
-</audio>
+<!-- Contenu principal -->
+<main class="main-ui">
 
-
-<!-- BOUTON SON -->
-<div id="mute-btn" onclick="toggleMute()">
-    SOUND ON
-</div>
-
-
-<!-- CONTENU -->
-<div class="main-ui">
-
-    <div class="names-container">
-
-        <h1 class="names">
-
-            SEPHORA
-
-            <span class="ampersand">
-                &
-            </span>
-
-            JONATHAN
-
-        </h1>
-
-        <p class="subtitle"></p>
-
+    <div class="top-label">
+        Notre mariage
     </div>
 
 
-    <!-- BOUTON DÉCOUVRIR -->
-    <div class="cta-container">
+    <div class="names">
+        SEPHORA
+    </div>
+    <br>
 
-        <a
-                href="menu.html"
-                target="_blank"
-                class="cta-center"
-                onclick="playMusic()"
-        >
-            Découvrir
-        </a>
-
+    <div class="ampersand">
+        &
     </div>
 
-</div>
+    <div class="names">
+        JONATHAN
+    </div>
+
+
+    <div class="date">
+        7 & 8 décembre 2026
+    </div>
+
+
+    <div class="decoration">
+        <span>✦</span>
+    </div>
+
+
+    <a
+            href="menu.html"
+            class="enter-button"
+            target="_blank"
+            onclick="playMusic()"
+    >
+        Découvrir notre mariage
+    </a>
+
+</main>
+
+
+<!-- Bouton musique -->
+<button
+        class="music-control"
+        id="musicControl"
+        onclick="toggleMusic()"
+        aria-label="Contrôler la musique"
+>
+    ♫
+</button>
+
+
+<!-- Musique -->
+<audio
+        id="weddingMusic"
+        src="musique4.mp3"
+        loop
+></audio>
 
 
 <script>
 
-    const audio = document.getElementById('bg-music');
+    const music = document.getElementById('weddingMusic');
+    const musicControl = document.getElementById('musicControl');
 
-    const muteBtn = document.getElementById('mute-btn');
+    let musicStarted = false;
 
+
+    /* =========================
+       LANCER LA MUSIQUE
+    ========================= */
 
     function playMusic() {
 
-        audio.play();
+        if (!musicStarted) {
 
-        muteBtn.style.display = 'block';
+            music.volume = 0.35;
 
+            music.play()
+                .then(() => {
+                    musicStarted = true;
+                    musicControl.textContent = '♫';
+                })
+                .catch(() => {
+                    console.log("Lecture automatique bloquée.");
+                });
+        }
     }
 
 
-    function toggleMute() {
+    /* =========================
+       PLAY / PAUSE
+    ========================= */
 
-        if (audio.paused) {
+    function toggleMusic() {
 
-            audio.play();
+        if (music.paused) {
 
-            muteBtn.innerText = "SOUND ON";
+            music.volume = 0.35;
+
+            music.play()
+                .then(() => {
+                    musicStarted = true;
+                    musicControl.textContent = '♫';
+                });
 
         } else {
 
-            audio.pause();
+            music.pause();
 
-            muteBtn.innerText = "SOUND OFF";
+            musicControl.textContent = '×';
+        }
+    }
 
+
+    /* =========================
+       PREMIÈRE INTERACTION
+    ========================= */
+
+    document.addEventListener('click', function () {
+
+        if (!musicStarted) {
+            playMusic();
         }
 
-    }
+    }, { once: true });
 
 </script>
 
