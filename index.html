@@ -163,7 +163,6 @@
 
             line-height: 1.3;
 
-            /* Petit fond blanc très léger */
             background: rgba(255, 255, 255, 0.38);
 
             padding: 7px 16px;
@@ -173,7 +172,6 @@
             backdrop-filter: blur(2px);
             -webkit-backdrop-filter: blur(2px);
 
-            /* Lumière autour du texte */
             text-shadow:
                     0 1px 2px rgba(120, 55, 35, 0.25),
                     0 0 8px rgba(255, 255, 255, 1),
@@ -181,7 +179,6 @@
                     0 0 28px rgba(255, 255, 255, 0.95),
                     0 0 45px rgba(255, 255, 255, 0.75);
 
-            /* Petit halo autour du fond */
             box-shadow:
                     0 0 15px rgba(255, 255, 255, 0.25);
         }
@@ -317,7 +314,8 @@
 
                 letter-spacing: 3px;
 
-                font-weight: 400;
+                /* Gras uniquement sur mobile */
+                font-weight: 700;
 
                 padding: 6px 12px;
 
@@ -382,13 +380,19 @@
 
 <body>
 
-<!-- Fond -->
+<!-- =========================
+     FOND
+========================= -->
+
 <div class="bg-container"></div>
 
 <!-- Voile léger -->
 <div class="bg-overlay"></div>
 
-<!-- Contenu principal -->
+<!-- =========================
+     CONTENU PRINCIPAL
+========================= -->
+
 <main class="main-ui">
 
     <div class="top-label">
@@ -410,7 +414,7 @@
     </div>
 
     <div class="date">
-        7 & 8 DÉCEMBRE 2026
+        7 &amp; 8 DÉCEMBRE 2026
     </div>
 
     <div class="decoration">
