@@ -2,12 +2,11 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>Houppa & Soirée - Sephora & Jonathan</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700;800&family=Cinzel:wght@400;500;600;700;800&family=Assistant:wght@400;600;700&family=Frank+Ruhl+Libre:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700;800&family=Cinzel:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -26,43 +25,38 @@
             overflow: hidden;
         }
 
-        /* =========================
+        /* =========================================
            FOND
-        ========================= */
+        ========================================= */
 
         .bg-container {
             position: fixed;
             inset: 0;
             width: 100%;
             height: 100%;
-
             background: url('fond3.png') no-repeat center center;
             background-size: cover;
-
             z-index: 1;
         }
 
-        /* =========================
-           VOILE BLANC LÉGER
-        ========================= */
+        /* =========================================
+           VOILE LÉGER
+        ========================================= */
 
         .bg-overlay {
             position: fixed;
             inset: 0;
-
-            background: rgba(255, 255, 255, 0.04);
-
+            background: rgba(255, 255, 255, 0.02);
             z-index: 2;
         }
 
-        /* =========================
+        /* =========================================
            CONTENU
-        ========================= */
+        ========================================= */
 
         .main-ui {
             position: relative;
             z-index: 10;
-
             width: 100%;
             height: 100dvh;
 
@@ -72,82 +66,80 @@
             justify-content: center;
 
             padding: 20px;
-
             text-align: center;
         }
 
+        /* =========================================
+           CARTE CENTRALE
+        ========================================= */
+
         .content-card {
             width: min(470px, 100%);
-
             padding: 38px 28px 30px;
 
-            background: rgba(255, 255, 255, 0.43);
+            background: rgba(255, 255, 255, 0.20);
 
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
 
-            border: 1px solid rgba(255, 255, 255, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.30);
 
             box-shadow:
-                    0 12px 40px rgba(59, 30, 47, 0.13);
+                    0 10px 35px rgba(198, 106, 74, 0.10);
 
-            animation: fadeIn 1.5s ease-out;
+            animation: fadeIn 1.2s ease-out;
         }
 
-        /* =========================
+        /* =========================================
            PETIT LABEL
-        ========================= */
+        ========================================= */
 
         .top-label {
+            font-family: 'Montserrat', sans-serif;
             font-size: 8px;
-
             text-transform: uppercase;
-
             letter-spacing: 4px;
 
-            color: #3b1e2f;
+            color: #C66A4A;
+            font-weight: 700;
 
-            font-weight: 600;
-
-            opacity: 0.75;
+            opacity: 0.85;
 
             margin-bottom: 18px;
+
+            text-shadow:
+                    0 0 8px rgba(255, 255, 255, 1),
+                    0 0 15px rgba(255, 255, 255, 0.8);
         }
 
-        /* =========================
+        /* =========================================
            TITRE
-        ========================= */
+        ========================================= */
 
         .script-title {
             font-family: 'Great Vibes', cursive;
-
             font-size: clamp(3.8rem, 15vw, 5.2rem);
-
             font-weight: 400;
-
             line-height: 0.95;
 
-            color: #3b1e2f;
+            color: #C66A4A;
 
-            margin-top: 0;
             margin-bottom: 12px;
 
             text-shadow:
-                    0 0 10px rgba(255,255,255,0.95),
-                    0 0 20px rgba(255,255,255,0.8),
-                    0 0 35px rgba(255,255,255,0.6);
+                    0 0 10px rgba(255, 255, 255, 0.95),
+                    0 0 25px rgba(255, 255, 255, 0.8),
+                    0 0 45px rgba(255, 255, 255, 0.5);
         }
 
-        /* =========================
+        /* =========================================
            DÉCORATION
-        ========================= */
+        ========================================= */
 
         .title-decoration {
             display: flex;
-
             justify-content: center;
             align-items: center;
-
             gap: 10px;
 
             margin-bottom: 20px;
@@ -160,37 +152,35 @@
             width: 45px;
             height: 1px;
 
-            background: #3b1e2f;
-
-            opacity: 0.45;
+            background: #C66A4A;
+            opacity: 0.5;
         }
 
         .title-decoration span {
-            color: #3b1e2f;
-
+            color: #C66A4A;
             font-size: 12px;
+            opacity: 0.8;
 
-            opacity: 0.7;
+            text-shadow:
+                    0 0 8px rgba(255, 255, 255, 1),
+                    0 0 15px rgba(255, 255, 255, 0.8);
         }
 
-        /* =========================
+        /* =========================================
            NOMS
-        ========================= */
+        ========================================= */
 
         .couple-names-container {
             display: flex;
-
             align-items: center;
             justify-content: center;
 
             gap: 18px;
-
             margin-bottom: 20px;
         }
 
         .name-block {
             display: flex;
-
             flex-direction: column;
             align-items: center;
         }
@@ -200,22 +190,13 @@
 
             font-size: clamp(2.7rem, 11vw, 3.4rem);
 
-            color: #3b1e2f;
+            color: #C66A4A;
 
             line-height: 0.9;
 
             text-shadow:
-                    0 0 10px rgba(255,255,255,0.9);
-        }
-
-        .name-he {
-            font-family: 'Frank Ruhl Libre', serif;
-
-            font-size: 1.25rem;
-
-            color: #3b1e2f;
-
-            margin-top: 4px;
+                    0 0 10px rgba(255, 255, 255, 0.95),
+                    0 0 20px rgba(255, 255, 255, 0.7);
         }
 
         .ampersand {
@@ -223,31 +204,39 @@
 
             font-size: 2.6rem;
 
-            color: #3b1e2f;
+            color: #C66A4A;
 
             margin-top: -8px;
+
+            text-shadow:
+                    0 0 10px rgba(255, 255, 255, 0.95),
+                    0 0 20px rgba(255, 255, 255, 0.7);
         }
 
-        /* =========================
-           DATE
-        ========================= */
+        /* =========================================
+           DATE / LIEU
+        ========================================= */
 
         .event-details {
             margin-bottom: 17px;
         }
 
         .date-text {
-            font-size: 10px;
+            font-family: 'Montserrat', sans-serif;
 
+            font-size: 10px;
             font-weight: 700;
 
             text-transform: uppercase;
-
             letter-spacing: 2.5px;
 
-            color: #3b1e2f;
+            color: #C66A4A;
 
             margin-bottom: 7px;
+
+            text-shadow:
+                    0 0 8px rgba(255, 255, 255, 1),
+                    0 0 15px rgba(255, 255, 255, 0.8);
         }
 
         .location-name {
@@ -256,29 +245,20 @@
             font-size: clamp(1.1rem, 5vw, 1.35rem);
 
             letter-spacing: 2px;
-
             font-weight: 700;
 
-            color: #3b1e2f;
+            color: #C66A4A;
 
             margin-bottom: 5px;
+
+            text-shadow:
+                    0 0 8px rgba(255, 255, 255, 0.95),
+                    0 0 18px rgba(255, 255, 255, 0.7);
         }
 
-        .address-detail {
-            font-size: 9px;
-
-            color: #2a1522;
-
-            font-weight: 500;
-
-            line-height: 1.5;
-
-            letter-spacing: 0.4px;
-        }
-
-        /* =========================
+        /* =========================================
            BLOC SOIRÉE ORIENTALE
-        ========================= */
+        ========================================= */
 
         .oriental-box {
             margin: 18px auto 15px;
@@ -287,11 +267,14 @@
 
             padding: 14px 18px;
 
-            background: rgba(255, 255, 255, 0.34);
+            background: rgba(255, 255, 255, 0.18);
 
-            border: 1px solid rgba(59, 30, 47, 0.25);
+            border: 1px solid rgba(198, 106, 74, 0.30);
 
             position: relative;
+
+            box-shadow:
+                    0 5px 18px rgba(198, 106, 74, 0.06);
         }
 
         .oriental-box::before,
@@ -299,16 +282,17 @@
             content: "✦";
 
             position: absolute;
-
             top: 50%;
 
             transform: translateY(-50%);
 
-            color: #3b1e2f;
+            color: #C66A4A;
 
             font-size: 10px;
+            opacity: 0.7;
 
-            opacity: 0.6;
+            text-shadow:
+                    0 0 8px rgba(255, 255, 255, 1);
         }
 
         .oriental-box::before {
@@ -323,14 +307,12 @@
             font-family: 'Cinzel', serif;
 
             font-size: 10px;
-
             font-weight: 700;
 
             text-transform: uppercase;
-
             letter-spacing: 2px;
 
-            color: #3b1e2f;
+            color: #C66A4A;
 
             margin-bottom: 6px;
         }
@@ -340,46 +322,52 @@
 
             font-size: 1.55rem;
 
-            color: #3b1e2f;
+            color: #C66A4A;
 
             line-height: 1.1;
+
+            text-shadow:
+                    0 0 8px rgba(255, 255, 255, 0.95),
+                    0 0 18px rgba(255, 255, 255, 0.7);
         }
 
         .oriental-subtitle {
+            font-family: 'Montserrat', sans-serif;
+
             font-size: 8px;
 
             text-transform: uppercase;
-
             letter-spacing: 1.5px;
 
-            color: #2a1522;
+            color: #6F3828;
 
             margin-top: 5px;
 
             font-weight: 600;
         }
 
-        /* =========================
+        /* =========================================
            SÉPARATEUR
-        ========================= */
+        ========================================= */
 
         .divider {
             width: 50px;
-
             height: 1px;
 
-            background: #3b1e2f;
+            background: #C66A4A;
 
             margin: 17px auto;
 
-            opacity: 0.45;
+            opacity: 0.5;
         }
 
-        /* =========================
+        /* =========================================
            MESSAGE
-        ========================= */
+        ========================================= */
 
         .message {
+            font-family: 'Montserrat', sans-serif;
+
             font-size: 9px;
 
             line-height: 1.6;
@@ -388,16 +376,19 @@
 
             text-transform: uppercase;
 
-            color: #3b1e2f;
+            color: #C66A4A;
 
-            opacity: 0.7;
+            opacity: 0.75;
 
             font-weight: 500;
+
+            text-shadow:
+                    0 0 8px rgba(255, 255, 255, 0.9);
         }
 
-        /* =========================
-           BOUTON
-        ========================= */
+        /* =========================================
+           BOUTON RETOUR
+        ========================================= */
 
         .back-btn {
             display: inline-flex;
@@ -411,35 +402,42 @@
 
             min-width: 140px;
 
-            background: #3b1e2f;
+            background: #C66A4A;
 
             color: #fff;
 
             text-decoration: none;
 
+            font-family: 'Montserrat', sans-serif;
+
             font-size: 9px;
 
             text-transform: uppercase;
-
             letter-spacing: 4px;
 
             font-weight: 600;
 
             box-shadow:
-                    0 5px 18px rgba(59, 30, 47, 0.3);
+                    0 5px 18px rgba(198, 106, 74, 0.3);
 
-            transition: 0.3s ease;
+            transition:
+                    transform 0.3s ease,
+                    background 0.3s ease,
+                    box-shadow 0.3s ease;
         }
 
         .back-btn:hover {
-            background: #52283f;
+            background: #B85D40;
 
             transform: translateY(-2px);
+
+            box-shadow:
+                    0 8px 25px rgba(198, 106, 74, 0.4);
         }
 
-        /* =========================
+        /* =========================================
            ANIMATION
-        ========================= */
+        ========================================= */
 
         @keyframes fadeIn {
             from {
@@ -453,9 +451,9 @@
             }
         }
 
-        /* =========================
+        /* =========================================
            MOBILE
-        ========================= */
+        ========================================= */
 
         @media (max-width: 600px) {
 
@@ -493,9 +491,9 @@
             }
         }
 
-        /* =========================
+        /* =========================================
            PETITS ÉCRANS EN HAUTEUR
-        ========================= */
+        ========================================= */
 
         @media (max-height: 700px) {
 
@@ -545,53 +543,63 @@
 
 <body>
 
-<!-- FOND -->
-<div class="bg-container"></div>
+<!-- =========================================
+     FOND
+========================================= -->
 
-<!-- VOILE BLANC -->
+<div class="bg-container"></div>
 <div class="bg-overlay"></div>
+
+<!-- =========================================
+     CONTENU
+========================================= -->
 
 <main class="main-ui">
 
     <div class="content-card">
 
-        <!-- NOMS -->
+        <!-- PETIT LABEL -->
+
         <div class="top-label">
             Sephora & Jonathan
         </div>
 
         <!-- TITRE -->
+
         <h1 class="script-title">
             Houppa
         </h1>
 
         <!-- DÉCORATION -->
+
         <div class="title-decoration">
             <span>♡</span>
         </div>
 
         <!-- COUPLE -->
+
         <div class="couple-names-container">
 
             <div class="name-block">
-                <span class="name-fr">
-                    Sephora
-                </span>
+                    <span class="name-fr">
+                        Sephora
+                    </span>
             </div>
 
             <span class="ampersand">
-                &
-            </span>
+                    &
+                </span>
 
             <div class="name-block">
-                <span class="name-fr">
-                    Jonathan
-                </span>
+                    <span class="name-fr">
+                        Jonathan
+                    </span>
             </div>
 
         </div>
 
         <!-- INFORMATIONS -->
+
         <div class="event-details">
 
             <p class="date-text">
@@ -605,6 +613,7 @@
         </div>
 
         <!-- BLOC THÈME -->
+
         <div class="oriental-box">
 
             <div class="oriental-title">
@@ -622,15 +631,18 @@
         </div>
 
         <!-- SÉPARATEUR -->
+
         <div class="divider"></div>
 
         <!-- MESSAGE -->
+
         <p class="message">
             Une soirée placée sous le signe<br>
             de la fête, du partage et de la tradition
         </p>
 
         <!-- RETOUR -->
+
         <a href="menu.html" class="back-btn">
             Retour
         </a>
