@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Réponse — Sephora & Jonathan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            overflow-y: auto;
+            color: #29201c;
+        }
+
+        /* FOND */
+
+        .bg-container {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("fond1.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: rgba(255, 255, 255, .02);
+        }
+
+        /* CONTENU */
+
+        .main-ui {
+            min-height: 100dvh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 18px;
+        }
+
+        /* CARTE */
+
+        .overlay-card {
+            width: min(540px, 100%);
+            padding: 42px 38px 36px;
+            background: rgba(255, 255, 255, .65);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, .75);
+            box-shadow: 0 15px 40px rgba(198, 106, 74, .10);
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* TITRES */
+
+        .top-label {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: #A84F32;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            line-height: 1.7;
+        }
+
+        .script-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 64px;
+            font-weight: 400;
+            color: #B85D40;
+            line-height: 1.1;
+            text-shadow: 0 1px 4px rgba(255, 255, 255, .8);
+            margin-bottom: 12px;
+        }
+
+        .title-decoration {
+            width: 60px;
+            height: 2px;
+            margin: 0 auto 25px;
+            background: #C66A4A;
+            opacity: .75;
+        }
+
+        .instruction {
+            font-family: 'Cinzel', serif;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: .5px;
+            line-height: 1.6;
+            margin-bottom: 9px;
+            color: #392820;
+        }
+
+        .deadline {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .3px;
+            color: #65483B;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* FORMULAIRE */
+
+        .rsvp-form {
+            width: 100%;
+            text-align: left;
+        }
+
+        .rsvp-form > label,
+        .message-group > label {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            color: #392820;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* CHAMPS TEXTE */
+
+        .rsvp-form input[type="text"] {
+            width: 100%;
+            min-height: 48px;
+            padding: 12px 13px;
+            border: 1px solid rgba(198, 106, 74, .45);
+            border-radius: 4px;
+            outline: none;
+            background: rgba(255, 255, 255, .55);
+            color: #29201c;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            transition: .25s ease;
+        }
+
+        .rsvp-form input[type="text"]:focus {
+            border-color: #B85D40;
+            background: rgba(255, 255, 255, .8);
+            box-shadow: 0 3px 12px rgba(198, 106, 74, .12);
+        }
+
+        .rsvp-form input::placeholder,
+        .message-box::placeholder {
+            color: #77645A;
+            opacity: .8;
+        }
+
+        /* MESSAGE */
+
+        .message-group {
+            margin-bottom: 26px;
+        }
+
+        .message-box {
+            width: 100%;
+            min-height: 125px;
+            padding: 14px;
+            border: 1px solid rgba(198, 106, 74, .45);
+            border-radius: 5px;
+            outline: none;
+            resize: vertical;
+            background: rgba(255, 255, 255, .5);
+            color: #29201c;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.7;
+            transition: .25s ease;
+        }
+
+        .message-box:focus {
+            border-color: #B85D40;
+            background: rgba(255, 255, 255, .8);
+            box-shadow: 0 3px 12px rgba(198, 106, 74, .10);
+        }
+
+        /* PRÉSENCE OUI / NON */
+
+        .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 12px 0 16px;
+        }
+
+        .radio-option {
+            flex: 1;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 48px;
+            padding: 10px 14px;
+            margin: 0 !important;
+            border: 1px solid rgba(198, 106, 74, .45);
+            border-radius: 4px;
+            background: rgba(255, 255, 255, .4);
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0 !important;
+            color: #392820 !important;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .radio-option:has(input:checked) {
+            background: rgba(198, 106, 74, .13);
+            border-color: #B85D40;
+            color: #8E4029 !important;
+        }
+
+        .radio-option input {
+            appearance: none;
+            -webkit-appearance: none;
+            flex-shrink: 0;
+            width: 19px;
+            height: 19px;
+            border: 2px solid #B85D40;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .7);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .radio-option input:checked::after {
+            content: "";
+            position: absolute;
+            width: 9px;
+            height: 9px;
+            top: 3px;
+            left: 3px;
+            border-radius: 50%;
+            background: #B85D40;
+        }
+
+        /* SÉLECTEUR DU NOMBRE DE PERSONNES */
+
+        .guest-count-box {
+            display: none;
+            margin: 8px 0 22px;
+            padding: 16px;
+            background: rgba(255, 255, 255, .4);
+            border-left: 3px solid #C66A4A;
+        }
+
+        .guest-count-box label {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.6;
+            color: #392820;
+            margin-bottom: 9px;
+        }
+
+        .guest-count-box select {
+            width: 100%;
+            min-height: 48px;
+            padding: 12px 13px;
+            border: 1px solid rgba(198, 106, 74, .45);
+            border-radius: 4px;
+            outline: none;
+            background: rgba(255, 255, 255, .65);
+            color: #29201c;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: .25s ease;
+        }
+
+        .guest-count-box select:focus {
+            border-color: #B85D40;
+            background: rgba(255, 255, 255, .8);
+            box-shadow: 0 3px 12px rgba(198, 106, 74, .12);
+        }
+
+        /* SÉPARATEUR */
+
+        .form-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(198, 106, 74, .35);
+            margin: 12px 0 25px;
+        }
+
+        /* BOUTON */
+
+        .btn-submit {
+            width: 100%;
+            min-height: 52px;
+            padding: 15px;
+            border: none;
+            background: #B85D40;
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: .25s ease;
+            box-shadow: 0 5px 15px rgba(198, 106, 74, .2);
+        }
+
+        .btn-submit:hover {
+            background: #98452D;
+            transform: translateY(-1px);
+        }
+
+        .btn-submit:disabled {
+            opacity: .7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* RETOUR */
+
+        .back-btn {
+            display: block;
+            margin-top: 22px;
+            text-align: center;
+            color: #65483B;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            transition: .2s ease;
+        }
+
+        .back-btn:hover {
+            color: #B85D40;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+            .main-ui {
+                align-items: flex-start;
+                padding: 18px 12px;
+            }
+
+            .overlay-card {
+                width: 100%;
+                padding: 30px 21px 27px;
+                background: rgba(255, 255, 255, .65);
+                border: 1px solid rgba(255, 255, 255, .75);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+            }
+
+            .top-label {
+                font-size: 12px;
+                letter-spacing: 2px;
+            }
+
+            .script-title {
+                font-size: 58px;
+            }
+
+            .instruction {
+                font-size: 13px;
+            }
+
+            .deadline {
+                font-size: 11px;
+                margin-bottom: 25px;
+            }
+
+            .rsvp-form > label,
+            .message-group > label {
+                font-size: 12px;
+            }
+
+            .message-box {
+                min-height: 120px;
+                font-size: 14px;
+            }
+
+            .radio-group {
+                gap: 10px;
+            }
+
+            .radio-option {
+                min-height: 48px;
+                padding: 10px;
+                font-size: 13px !important;
+            }
+
+            .guest-count-box {
+                padding: 13px;
+            }
+
+            .guest-count-box select {
+                font-size: 14px;
+            }
+
+            .btn-submit {
+                min-height: 52px;
+                font-size: 12px;
+            }
+        }
+
+        /* PETITS ÉCRANS */
+
+        @media (max-width: 380px) {
+            .main-ui {
+                padding: 12px 8px;
+            }
+
+            .overlay-card {
+                padding: 26px 15px 23px;
+            }
+
+            .script-title {
+                font-size: 52px;
+            }
+
+            .radio-group {
+                gap: 8px;
+            }
+
+            .radio-option {
+                gap: 7px;
+                padding: 9px 7px;
+                font-size: 12px !important;
+            }
+        }
+    </style>
+    <link rel="preload" as="image" href="fond1.png">
+    <script src="site.js" defer></script>
+</head>
+
+<body>
+
+<div class="bg-container"></div>
+<div class="bg-overlay"></div>
+
+<main class="main-ui">
+    <section class="overlay-card">
+
+        <div class="top-label">
+            Sephora & Jonathan
+        </div>
+        <br>
+
+        <h1 class="script-title">Réponse</h1>
+
+        <div class="title-decoration"></div>
+
+        <p class="instruction">
+            Merci de confirmer votre présence
+        </p>
+
+        <p class="deadline">
+            Votre réponse est attendue avant le 16/11/2026
+        </p>
+
+        <form class="rsvp-form" id="rsvpForm">
+
+            <input type="hidden" name="Chabbat_present" value="Non">
+            <input type="hidden" name="Chabbat_nombre" value="0">
+
+            <label for="nom">Nom & Prénom</label>
+            <input
+                    type="text"
+                    id="nom"
+                    name="Nom"
+                    required
+                    placeholder="Ex : Famille Cohen"
+            >
+
+            <div class="message-group">
+                <label for="message">Un mot pour les mariés</label>
+                <textarea
+                        id="message"
+                        name="Mot_pour_les_maries"
+                        class="message-box"
+                        placeholder="Écrivez-nous un petit mot..."
+                        rows="4"
+                ></textarea>
+            </div>
+
+            <!-- MAIRIE -->
+
+            <label>Mairie — 7 décembre 2026</label>
+
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input
+                            type="radio"
+                            name="Mairie_present"
+                            value="Oui"
+                            onchange="showCount(event, true)"
+                            required
+                    >
+                    Oui
+                </label>
+
+                <label class="radio-option">
+                    <input
+                            type="radio"
+                            name="Mairie_present"
+                            value="Non"
+                            onchange="showCount(event, false)"
+                    >
+                    Non
+                </label>
+            </div>
+
+            <div class="guest-count-box" id="Mairie_count_box">
+                <label for="Mairie_nombre">Nombre de personnes</label>
+                <select id="Mairie_nombre" name="Mairie_nombre" disabled>
+                    <option value="1" selected>1 personne</option>
+                    <option value="2">2 personnes</option>
+                    <option value="3">3 personnes</option>
+                </select>
+            </div>
+
+            <div class="form-divider"></div>
+
+            <!-- HOUPPA -->
+
+            <label>Houppa & Soirée — 8 décembre 2026</label>
+
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input
+                            type="radio"
+                            name="Houppa_present"
+                            value="Oui"
+                            onchange="showCount(event, true)"
+                            required
+                    >
+                    Oui
+                </label>
+
+                <label class="radio-option">
+                    <input
+                            type="radio"
+                            name="Houppa_present"
+                            value="Non"
+                            onchange="showCount(event, false)"
+                    >
+                    Non
+                </label>
+            </div>
+
+            <div class="guest-count-box" id="Houppa_count_box">
+                <label for="Houppa_nombre">Nombre de personnes</label>
+                <select id="Houppa_nombre" name="Houppa_nombre" disabled>
+                    <option value="1" selected>1 personne</option>
+                    <option value="2">2 personnes</option>
+                    <option value="3">3 personnes</option>
+                </select>
+            </div>
+
+            <button
+                    type="submit"
+                    class="btn-submit"
+                    id="submitBtn"
+            >
+                Confirmer ma venue
+            </button>
+        </form>
+
+        <a href="menu.html" class="back-btn">← Retour</a>
+
+    </section>
+</main>
+
+<script>
+    (() => {
+        'use strict';
+
+        /* AFFICHER / MASQUER LE SÉLECTEUR */
+
+        function showCount(event, isPresent) {
+            const name = event.target.name;
+
+            const boxId = name === "Mairie_present"
+                ? "Mairie_count_box"
+                : "Houppa_count_box";
+
+            const box = document.getElementById(boxId);
+            const select = box.querySelector("select");
+
+            if (isPresent) {
+                box.style.display = "block";
+                select.disabled = false;
+                select.required = true;
+            } else {
+                box.style.display = "none";
+                select.disabled = true;
+                select.required = false;
+                select.value = "1";
+            }
+        }
+
+        window.showCount = showCount;
+
+        /* ENVOI GOOGLE APPS SCRIPT */
+
+        const form = document.getElementById("rsvpForm");
+        const submitBtn = document.getElementById("submitBtn");
+
+        const scriptURL =
+            "https://script.google.com/macros/s/AKfycbzgO_pKk71SNylgqJyOF7YgQNtc8eEDsVbZDw90ezy_ZK7tjM1qnDJMADwyG5GvlGzy/exec";
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Envoi en cours...";
+
+            const formData = new FormData(form);
+
+            fetch(scriptURL, {
+                method: "POST",
+                body: formData
+            })
+                .then(function(response) {
+                    if (!response.ok) {
+                        throw new Error("Erreur serveur");
+                    }
+
+                    return response.text();
+                })
+                .then(function() {
+                    submitBtn.textContent = "Merci !";
+                    form.reset();
+
+                    document.getElementById("Mairie_count_box").style.display = "none";
+                    document.getElementById("Houppa_count_box").style.display = "none";
+
+                    document.getElementById("Mairie_nombre").disabled = true;
+                    document.getElementById("Houppa_nombre").disabled = true;
+
+                    setTimeout(function() {
+                        (window.siteGo || function(u) { window.location.href = u; })("index.html");
+                    }, 2000);
+                })
+                .catch(function(error) {
+                    console.error(error);
+
+                    alert("Une erreur est survenue. Merci de réessayer.");
+
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Confirmer ma venue";
+                });
+        });
+    })();
+</script>
+
+</body>
+</html>
