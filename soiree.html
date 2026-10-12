@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Mariage - Sephora & Jonathan</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700;800&family=Cinzel:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            background: #000;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        /* FOND */
+
+        .bg-container {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: url('fond3.png') no-repeat center center;
+            background-size: cover;
+            z-index: 1;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.02);
+            z-index: 2;
+        }
+
+        /* CONTENU */
+
+        .main-ui {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* CARTE : MÊME OPACITÉ QUE LA PAGE MAIRIE */
+
+        .content-card {
+            width: min(500px, 100%);
+            padding: 32px 28px 30px;
+
+            background: rgba(255, 255, 255, 0.65);
+
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+
+            border: 1px solid rgba(255, 255, 255, 0.75);
+
+            box-shadow: 0 10px 35px rgba(198, 106, 74, 0.10);
+
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        /* PARENTS */
+
+        .parents-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 22px;
+        }
+
+        .parent-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .parent-side.left {
+            text-align: right;
+        }
+
+        .parent-side.right {
+            text-align: left;
+        }
+
+        .parent-name {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.6;
+            letter-spacing: 0.8px;
+            color: #C66A4A;
+            text-shadow:
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 15px rgba(255,255,255,.85);
+        }
+
+        .parents-separator {
+            width: 1px;
+            height: 48px;
+            background: #C66A4A;
+            opacity: .55;
+        }
+
+        /* INTRODUCTION */
+
+        .top-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            line-height: 1.8;
+            color: #C66A4A;
+            font-weight: 700;
+            margin-bottom: 14px;
+            text-shadow:
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 15px rgba(255,255,255,.85);
+        }
+
+        /* TITRE */
+
+        .script-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3.8rem, 14vw, 5rem);
+            font-weight: 400;
+            line-height: .95;
+            color: #C66A4A;
+            margin-bottom: 9px;
+            text-shadow:
+                    0 0 10px rgba(255,255,255,.95),
+                    0 0 25px rgba(255,255,255,.8),
+                    0 0 45px rgba(255,255,255,.5);
+        }
+
+        /* DÉCORATION */
+
+        .title-decoration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .title-decoration::before,
+        .title-decoration::after {
+            content: "";
+            width: 42px;
+            height: 1px;
+            background: #C66A4A;
+            opacity: .6;
+        }
+
+        .title-decoration span {
+            color: #C66A4A;
+            font-size: 13px;
+            opacity: .9;
+            text-shadow:
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 15px rgba(255,255,255,.8);
+        }
+
+        /* NOMS DES MARIÉS */
+
+        .couple-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 12vw, 4rem);
+            font-weight: 400;
+            line-height: 1;
+            color: #C66A4A;
+            margin: 5px 0 15px;
+            text-shadow:
+                    0 0 10px rgba(255,255,255,.95),
+                    0 0 20px rgba(255,255,255,.7);
+        }
+
+        /* DATE */
+
+        .date-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #C66A4A;
+            line-height: 1.7;
+            margin-bottom: 7px;
+            text-shadow:
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 15px rgba(255,255,255,.8);
+        }
+
+        .hebrew-date {
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #6F3828;
+            margin-bottom: 11px;
+            text-shadow:
+                    0 0 7px rgba(255,255,255,.9),
+                    0 0 12px rgba(255,255,255,.7);
+        }
+
+        .time {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #C66A4A;
+            margin-bottom: 18px;
+            text-shadow: 0 0 8px rgba(255,255,255,.95);
+        }
+
+        /* LIEU */
+
+        .location-name {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.2rem, 5vw, 1.55rem);
+            letter-spacing: 1.2px;
+            font-weight: 800;
+            color: #C66A4A;
+            line-height: 1.5;
+            margin-bottom: 9px;
+            text-shadow:
+                    0 0 8px rgba(255,255,255,1),
+                    0 0 16px rgba(255,255,255,.95);
+        }
+
+        /* ADRESSE */
+
+        .address {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            color: #6F3828;
+            font-weight: 600;
+            letter-spacing: .8px;
+            line-height: 1.8;
+            text-shadow: 0 0 7px rgba(255,255,255,.9);
+        }
+
+        /* SÉPARATEUR */
+
+        .divider {
+            width: 65px;
+            height: 1px;
+            background: #C66A4A;
+            margin: 20px auto;
+            opacity: .55;
+        }
+
+        /* SOUVENIR */
+
+        .memory-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            line-height: 1.9;
+            letter-spacing: .5px;
+            color: #6F3828;
+            font-weight: 600;
+            max-width: 420px;
+            margin: 0 auto;
+            text-shadow:
+                    0 0 7px rgba(255,255,255,1),
+                    0 0 13px rgba(255,255,255,.75);
+        }
+
+        .memory-text .za-l {
+            font-family: 'Cinzel', serif;
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        /* BOUTON */
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 21px;
+            padding: 12px 38px;
+            min-width: 145px;
+            background: #C66A4A;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            box-shadow: 0 5px 18px rgba(198,106,74,.3);
+            transition:
+                    transform .3s ease,
+                    background .3s ease,
+                    box-shadow .3s ease;
+        }
+
+        .back-btn:hover {
+            background: #B85D40;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(198,106,74,.4);
+        }
+
+        /* ANIMATION */
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+            .main-ui {
+                min-height: 100dvh;
+                padding: 14px 10px;
+                justify-content: center;
+            }
+
+            .content-card {
+                width: 100%;
+                max-width: 430px;
+                padding: 28px 18px 25px;
+                border-radius: 18px;
+
+                /* Même opacité que la page Mairie */
+                background: rgba(255, 255, 255, 0.65);
+                border: 1px solid rgba(255, 255, 255, 0.75);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+            }
+
+            .parents-container {
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+
+            .parent-name {
+                font-size: 11px;
+                line-height: 1.65;
+            }
+
+            .parents-separator {
+                height: 45px;
+            }
+
+            .top-label {
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 1.6px;
+                line-height: 1.8;
+                margin-bottom: 11px;
+            }
+
+            .script-title {
+                font-size: 4rem;
+                margin-bottom: 7px;
+            }
+
+            .title-decoration {
+                margin-bottom: 14px;
+            }
+
+            .title-decoration::before,
+            .title-decoration::after {
+                width: 35px;
+            }
+
+            .title-decoration span {
+                font-size: 14px;
+            }
+
+            .couple-names {
+                font-size: clamp(3.1rem, 12vw, 3.8rem);
+                margin-bottom: 17px;
+                white-space: normal;
+            }
+
+            .date-text {
+                font-size: 13px;
+                font-weight: 800;
+                letter-spacing: 1.3px;
+                line-height: 1.7;
+                margin-bottom: 5px;
+            }
+
+            .hebrew-date {
+                font-size: 11px;
+                letter-spacing: 1.4px;
+                margin-bottom: 9px;
+            }
+
+            .time {
+                font-size: 13px;
+                font-weight: 700;
+                margin-bottom: 15px;
+            }
+
+            .location-name {
+                font-size: clamp(1.12rem, 4.8vw, 1.35rem);
+                font-weight: 800;
+                letter-spacing: .5px;
+                line-height: 1.5;
+                margin-bottom: 7px;
+            }
+
+            .address {
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: .5px;
+                line-height: 1.8;
+            }
+
+            .divider {
+                width: 55px;
+                margin: 16px auto;
+            }
+
+            .memory-text {
+                font-size: 10px;
+                font-weight: 600;
+                line-height: 1.8;
+                letter-spacing: .3px;
+                max-width: 350px;
+            }
+
+            .memory-text .za-l {
+                font-size: 7px;
+            }
+
+            .back-btn {
+                margin-top: 17px;
+                padding: 12px 32px;
+                font-size: 9px;
+                font-weight: 700;
+                letter-spacing: 2.5px;
+            }
+        }
+
+        /* TRÈS PETITS TÉLÉPHONES */
+
+        @media (max-width: 380px) {
+            .main-ui {
+                padding: 10px 7px;
+            }
+
+            .content-card {
+                padding: 23px 14px 21px;
+
+                /* Même opacité que la page Mairie */
+                background: rgba(255, 255, 255, 0.65);
+                border: 1px solid rgba(255, 255, 255, 0.75);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+            }
+
+            .parents-container {
+                gap: 7px;
+                margin-bottom: 17px;
+            }
+
+            .parent-name {
+                font-size: 9px;
+                line-height: 1.55;
+            }
+
+            .parents-separator {
+                height: 40px;
+            }
+
+            .top-label {
+                font-size: 9px;
+                letter-spacing: 1.2px;
+            }
+
+            .script-title {
+                font-size: 3.6rem;
+            }
+
+            .couple-names {
+                font-size: clamp(2.7rem, 11vw, 3.1rem);
+            }
+
+            .date-text {
+                font-size: 11px;
+                letter-spacing: 1px;
+            }
+
+            .hebrew-date {
+                font-size: 10px;
+            }
+
+            .time {
+                font-size: 11px;
+            }
+
+            .location-name {
+                font-size: 1.08rem;
+                letter-spacing: .2px;
+            }
+
+            .address {
+                font-size: 11px;
+            }
+
+            .memory-text {
+                font-size: 9px;
+            }
+        }
+
+        /* PETITS ÉCRANS EN HAUTEUR */
+
+        @media (max-height: 700px) and (max-width: 600px) {
+            .main-ui {
+                justify-content: flex-start;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .content-card {
+                padding-top: 20px;
+                padding-bottom: 19px;
+
+                /* Même opacité que la page Mairie */
+                background: rgba(255, 255, 255, 0.65);
+                border: 1px solid rgba(255, 255, 255, 0.75);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+            }
+
+            .parents-container {
+                margin-bottom: 13px;
+            }
+
+            .top-label {
+                margin-bottom: 8px;
+            }
+
+            .script-title {
+                font-size: 3.3rem;
+            }
+
+            .title-decoration {
+                margin-bottom: 9px;
+            }
+
+            .couple-names {
+                font-size: 2.7rem;
+                margin-bottom: 11px;
+            }
+
+            .time {
+                margin-bottom: 10px;
+            }
+
+            .divider {
+                margin: 12px auto;
+            }
+
+            .memory-text {
+                line-height: 1.6;
+            }
+
+            .back-btn {
+                margin-top: 11px;
+            }
+        }
+    </style>
+    <link rel="preload" as="image" href="fond3.png">
+    <script src="site.js" defer></script>
+</head>
+
+<body>
+
+<div class="bg-container"></div>
+<div class="bg-overlay"></div>
+
+<main class="main-ui">
+    <div class="content-card">
+
+        <!-- PARENTS -->
+        <div class="parents-container">
+            <div class="parent-side left">
+                <div class="parent-name">
+                    Joelle & Éric<br>
+                    Zaghdoun
+                </div>
+            </div>
+
+            <div class="parents-separator"></div>
+
+            <div class="parent-side right">
+                <div class="parent-name">
+                    Michele & Louis<br>
+                    Cohen-Zardi
+                </div>
+            </div>
+        </div>
+
+        <!-- INTRODUCTION -->
+        <div class="top-label">
+            Ont l'honneur de vous convier<br>
+            au mariage de leurs enfants
+        </div>
+
+        <!-- TITRE -->
+        <h1 class="script-title"></h1>
+
+        <!-- DÉCORATION -->
+        <div class="title-decoration">
+            <span>♡</span>
+        </div>
+
+        <!-- NOMS -->
+        <div class="couple-names">
+            Sephora & Jonathan
+        </div>
+
+        <!-- DATE -->
+        <div class="date-text">
+            Le mardi 8 décembre 2026
+        </div>
+
+        <div class="hebrew-date">
+            28 Kislev 5787
+        </div>
+
+        <div class="time">
+            À 18h
+        </div>
+
+        <!-- LIEU -->
+        <div class="location-name">
+            À l'InterContinental Paris<br>
+            Le Grand Hôtel
+        </div>
+
+        <div class="address">
+            2 rue Scribe<br>
+            75009 Paris
+        </div>
+
+        <!-- SÉPARATEUR -->
+        <div class="divider"></div>
+
+        <!-- SOUVENIR -->
+        <div class="memory-text">
+            Nous portons dans nos cœurs le souvenir béni<br>
+            de nos chers grands-parents
+            <br>
+            Henriette et Albert Zaghdoun
+            <span class="za-l">Za’l</span>
+            <br>
+            Marguerite et Hateni Boukhboza
+            <span class="za-l">Za’l</span>
+        </div>
+
+        <!-- RETOUR -->
+        <a href="menu.html" class="back-btn">
+            Retour
+        </a>
+
+    </div>
+</main>
+
+</body>
+</html>
